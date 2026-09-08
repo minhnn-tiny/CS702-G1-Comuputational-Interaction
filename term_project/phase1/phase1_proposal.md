@@ -8,8 +8,7 @@ subtitle: "CS702 Computational Interaction, AY2026-27 Term 1 — Phase 1"
 | Name | Email |
 |---|---|
 | Nguyen Nhat Minh | nm.nguyen.2026@smu.edu.sg |
-| Koti Sampath | <email> |
-| Do Duc Anh | <email> |
+| Do Duc Anh | <email> | doducanh.2026@phdcs.smu.edu.sg
 
 ## 2. Selected paper
 
