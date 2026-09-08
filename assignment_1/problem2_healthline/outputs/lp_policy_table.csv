@@ -1,0 +1,12 @@
+state,state_name,action,Q,V,optimal,decision_state
+s0,initial,classify,5.857,5.857,True,False
+s1,acute_track,quick_screen,5.7,6.0,False,True
+s1,acute_track,thorough_screen,6.0,6.0,True,True
+s2,general_track,brief_response,5.7,6.46,False,True
+s2,general_track,detailed_response,6.46,6.46,True,True
+s3,admin_track,auto_process,7.25,7.25,True,True
+s3,admin_track,transfer_to_admin,4.5,7.25,False,True
+s4,triage_complete (warning signs),emergency_referral,12.0,12.0,True,True
+s4,triage_complete (warning signs),offer_nurse,6.9,12.0,False,True
+s5,triage_complete (no warning signs),offer_nurse,6.0,6.0,True,False
+s6,information_delivered,check_satisfaction,7.6,7.6,True,False

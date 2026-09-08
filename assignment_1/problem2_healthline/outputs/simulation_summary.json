@@ -1,0 +1,53 @@
+{
+  "n_traces": 100,
+  "outcome_counts": {
+    "resolved": 23,
+    "escalated_nurse": 37,
+    "escalated_admin": 7,
+    "emergency": 5,
+    "abandoned": 28
+  },
+  "outcome_share": {
+    "resolved": 0.23,
+    "escalated_nurse": 0.37,
+    "escalated_admin": 0.07,
+    "emergency": 0.05,
+    "abandoned": 0.28
+  },
+  "expected_share_random_policy": {
+    "resolved": 0.258,
+    "escalated_nurse": 0.291,
+    "escalated_admin": 0.11499999999999999,
+    "emergency": 0.028749999999999998,
+    "abandoned": 0.30725
+  },
+  "abandonment_rate": 0.28,
+  "abandonment_rate_ci95": [
+    0.2013955916759837,
+    0.37488212361345724
+  ],
+  "expected_abandonment_random_policy": 0.30725,
+  "average_reward": 5.47,
+  "reward_sd": 3.937529861999959,
+  "reward_se": 0.3937529861999959,
+  "expected_reward_random_policy": 5.246,
+  "average_transitions": 2.6,
+  "transition_counts": {
+    "1": 7,
+    "2": 26,
+    "3": 67
+  },
+  "action_counts": {
+    "classify": 100,
+    "check_satisfaction": 42,
+    "detailed_response": 27,
+    "brief_response": 22,
+    "offer_nurse": 20,
+    "thorough_screen": 15,
+    "quick_screen": 15,
+    "auto_process": 8,
+    "transfer_to_admin": 6,
+    "emergency_referral": 5
+  },
+  "most_common_outcome": "escalated_nurse"
+}

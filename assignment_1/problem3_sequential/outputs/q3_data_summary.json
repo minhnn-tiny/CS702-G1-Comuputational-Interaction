@@ -1,0 +1,77 @@
+{
+  "n_steps": 100,
+  "state_visits": {
+    "0": 40,
+    "1": 35,
+    "2": 25
+  },
+  "state_action_counts": {
+    "fresh/rest": 21,
+    "fresh/work": 19,
+    "tired/rest": 15,
+    "tired/work": 20,
+    "exhausted/rest": 14,
+    "exhausted/work": 11
+  },
+  "transition_counts": {
+    "fresh/rest": [
+      20,
+      1,
+      0
+    ],
+    "fresh/work": [
+      8,
+      10,
+      1
+    ],
+    "tired/rest": [
+      9,
+      6,
+      0
+    ],
+    "tired/work": [
+      0,
+      8,
+      12
+    ],
+    "exhausted/rest": [
+      2,
+      10,
+      2
+    ],
+    "exhausted/work": [
+      0,
+      0,
+      11
+    ]
+  },
+  "work_reward_stats": {
+    "fresh": {
+      "count": 19.0,
+      "mean": 0.9601024469758627,
+      "std": 0.2761398166747439,
+      "min": 0.43856919088877033,
+      "max": 1.6355906744878541
+    },
+    "tired": {
+      "count": 20.0,
+      "mean": 0.431898815305483,
+      "std": 0.3587603016392245,
+      "min": -0.0803011032904333,
+      "max": 1.1073816418171782
+    },
+    "exhausted": {
+      "count": 11.0,
+      "mean": -0.4335490629619246,
+      "std": 0.32070307311266943,
+      "min": -0.9541265203756886,
+      "max": 0.11310222871835414
+    }
+  },
+  "reward_overall": {
+    "mean": 0.22110883106069884,
+    "sd": 0.48482114455954145,
+    "total": 22.110883106069885,
+    "share_zero_rest": 0.5
+  }
+}

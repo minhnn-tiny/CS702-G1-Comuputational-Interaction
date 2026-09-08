@@ -1,0 +1,8 @@
+// Reachability probabilities of the DTMC induced by the optimal policy
+P=? [ F "resolved" ]
+P=? [ F "abandoned" ]
+P=? [ F "escalated_nurse" ]
+P=? [ F "escalated_admin" ]
+P=? [ F "emergency" ]
+P=? [ F ("terminal" & !"abandoned") ]
+R{"outcome"}=? [ I=3 ]

@@ -1,0 +1,27 @@
+// PCTL properties for the HealthLine MDP (Problem 2, Q1.d)
+// Run:  prism healthline.pm healthline.props
+
+// 1. Maximum probability of self-resolution (reaching `resolved`)
+Pmax=? [ F "resolved" ]
+
+// 2. Abandonment probability: maximum and minimum over all policies
+Pmax=? [ F "abandoned" ]
+Pmin=? [ F "abandoned" ]
+
+// 3. Overall success rate: maximum probability of reaching any terminal state except `abandoned`
+Pmax=? [ F ("terminal" & !"abandoned") ]
+Pmin=? [ F ("terminal" & !"abandoned") ]
+
+// 4. Expected outcome reward: maximum and minimum over all policies.
+//    Rewards are attached to the terminal states.  PRISM's reachability reward
+//    R[F "terminal"] excludes the reward of the target state itself, so we use
+//    the instantaneous reward at step 3: every episode is absorbed in a terminal
+//    state within 3 transitions, hence E[reward of the state at step 3] equals
+//    the expected terminal reward (identical for any step >= 3).
+R{"outcome"}max=? [ I=3 ]
+R{"outcome"}min=? [ I=3 ]
+
+// Extra: minimum probability of self-resolution (worst-case policy) and a
+// sanity check that the instantaneous reward is stable for a later step
+Pmin=? [ F "resolved" ]
+R{"outcome"}max=? [ I=10 ]

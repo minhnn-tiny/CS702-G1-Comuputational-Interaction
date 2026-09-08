@@ -1,0 +1,149 @@
+{
+  "A: well separated (beta=0.9,0.5,0.1; delta=0.5)": {
+    "betas": [
+      0.9,
+      0.5,
+      0.1
+    ],
+    "delta": 0.5,
+    "success_probs": [
+      0.5987,
+      0.5,
+      0.4013
+    ],
+    "best_arm": 0,
+    "gap_best_second": 0.098687660112452,
+    "oracle_expected_reward": 598.687660112452,
+    "algorithms": {
+      "epsilon-greedy (eps=0.1)": {
+        "final_regret_mean": 27.408030404730734,
+        "final_regret_q10_q90": [
+          10.056272565458846,
+          64.94634912000534
+        ],
+        "regret_at_200": 10.609910338689719,
+        "mean_cumulative_reward": 570.415,
+        "reward_gap_to_oracle": 28.52500000000009
+      },
+      "epsilon-greedy (eps=0.02)": {
+        "final_regret_mean": 46.34520550370887,
+        "final_regret_q10_q90": [
+          1.97375320224904,
+          104.61878848520968
+        ],
+        "regret_at_200": 14.894928540772394,
+        "mean_cumulative_reward": 552.485,
+        "reward_gap_to_oracle": 46.45500000000004
+      },
+      "Thompson sampling (Beta(1,1))": {
+        "final_regret_mean": 19.62700184316447,
+        "final_regret_q10_q90": [
+          7.786456382872452,
+          35.971652110988984
+        ],
+        "regret_at_200": 9.399012749109922,
+        "mean_cumulative_reward": 579.115,
+        "reward_gap_to_oracle": 19.825000000000045
+      }
+    },
+    "oracle_mean_cumulative_reward": 598.94
+  },
+  "B: close abilities (beta=0.6,0.5,0.4; delta=0.5)": {
+    "betas": [
+      0.6,
+      0.5,
+      0.4
+    ],
+    "delta": 0.5,
+    "success_probs": [
+      0.525,
+      0.5,
+      0.475
+    ],
+    "best_arm": 0,
+    "gap_best_second": 0.0249791874789399,
+    "oracle_expected_reward": 524.9791874789399,
+    "algorithms": {
+      "epsilon-greedy (eps=0.1)": {
+        "final_regret_mean": 17.67477347634835,
+        "final_regret_q10_q90": [
+          2.995004578724904,
+          42.84430236387773
+        ],
+        "regret_at_200": 4.119692494964178,
+        "mean_cumulative_reward": 508.255,
+        "reward_gap_to_oracle": 17.340000000000032
+      },
+      "epsilon-greedy (eps=0.02)": {
+        "final_regret_mean": 19.03239231582875,
+        "final_regret_q10_q90": [
+          0.7993339993260783,
+          48.21482767184998
+        ],
+        "regret_at_200": 4.227352792998411,
+        "mean_cumulative_reward": 505.88,
+        "reward_gap_to_oracle": 19.715000000000032
+      },
+      "Thompson sampling (Beta(1,1))": {
+        "final_regret_mean": 16.760410318681668,
+        "final_regret_q10_q90": [
+          7.53122502490041,
+          27.80683150155606
+        ],
+        "regret_at_200": 4.189884011779996,
+        "mean_cumulative_reward": 507.42,
+        "reward_gap_to_oracle": 18.17500000000001
+      }
+    },
+    "oracle_mean_cumulative_reward": 525.595
+  },
+  "C: hard task, one expert (beta=1.0,0.2,0.0; delta=0.9)": {
+    "betas": [
+      1.0,
+      0.2,
+      0.0
+    ],
+    "delta": 0.9,
+    "success_probs": [
+      0.525,
+      0.3318,
+      0.2891
+    ],
+    "best_arm": 0,
+    "gap_best_second": 0.19316695964710595,
+    "oracle_expected_reward": 524.9791874789399,
+    "algorithms": {
+      "epsilon-greedy (eps=0.1)": {
+        "final_regret_mean": 29.248474111445745,
+        "final_regret_q10_q90": [
+          13.940593271272105,
+          58.23288459725208
+        ],
+        "regret_at_200": 13.162908209312777,
+        "mean_cumulative_reward": 496.525,
+        "reward_gap_to_oracle": 26.235000000000014
+      },
+      "epsilon-greedy (eps=0.02)": {
+        "final_regret_mean": 55.463673731950024,
+        "final_regret_q10_q90": [
+          2.6173356289631373,
+          191.9160885720053
+        ],
+        "regret_at_200": 20.508960310315953,
+        "mean_cumulative_reward": 469.055,
+        "reward_gap_to_oracle": 53.704999999999984
+      },
+      "Thompson sampling (Beta(1,1))": {
+        "final_regret_mean": 16.06539424725871,
+        "final_regret_q10_q90": [
+          7.24109996543767,
+          24.61034112417479
+        ],
+        "regret_at_200": 10.28151586208305,
+        "mean_cumulative_reward": 508.575,
+        "reward_gap_to_oracle": 14.185000000000002
+      }
+    },
+    "oracle_mean_cumulative_reward": 522.76
+  }
+}

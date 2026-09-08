@@ -1,0 +1,80 @@
+{
+  "build": {
+    "states": 12,
+    "transitions": 31
+  },
+  "properties": [
+    {
+      "property": "Pmax=? [ F \"resolved\" ]",
+      "prism": 0.33037500000000003,
+      "python_value_iteration": 0.330375,
+      "agree": true
+    },
+    {
+      "property": "Pmax=? [ F \"abandoned\" ]",
+      "prism": 0.33875,
+      "python_value_iteration": 0.33875,
+      "agree": true
+    },
+    {
+      "property": "Pmin=? [ F \"abandoned\" ]",
+      "prism": 0.27575,
+      "python_value_iteration": 0.27575,
+      "agree": true
+    },
+    {
+      "property": "Pmax=? [ F (\"terminal\"&!\"abandoned\") ]",
+      "prism": 0.7242500000000001,
+      "python_value_iteration": 0.7242500000000001,
+      "agree": true
+    },
+    {
+      "property": "Pmin=? [ F (\"terminal\"&!\"abandoned\") ]",
+      "prism": 0.66125,
+      "python_value_iteration": 0.66125,
+      "agree": true
+    },
+    {
+      "property": "R{\"outcome\"}max=? [ I=3 ]",
+      "prism": 5.857,
+      "python_value_iteration": 5.857,
+      "agree": true
+    },
+    {
+      "property": "R{\"outcome\"}min=? [ I=3 ]",
+      "prism": 4.64625,
+      "python_value_iteration": 4.64625,
+      "agree": true
+    },
+    {
+      "property": "Pmin=? [ F \"resolved\" ]",
+      "prism": 0.185625,
+      "python_value_iteration": 0.185625,
+      "agree": true
+    },
+    {
+      "property": "R{\"outcome\"}max=? [ I=10 ]",
+      "prism": 5.857,
+      "python_value_iteration": 5.857,
+      "agree": true
+    }
+  ],
+  "policy_max_reward": {
+    "0": "classify",
+    "1": "thorough_screen",
+    "2": "detailed_response",
+    "3": "auto_process",
+    "4": "emergency_referral",
+    "5": "offer_nurse",
+    "6": "check_satisfaction"
+  },
+  "policy_min_reward": {
+    "0": "classify",
+    "1": "thorough_screen",
+    "2": "brief_response",
+    "3": "transfer_to_admin",
+    "4": "offer_nurse",
+    "5": "offer_nurse",
+    "6": "check_satisfaction"
+  }
+}

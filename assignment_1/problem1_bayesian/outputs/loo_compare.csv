@@ -1,0 +1,3 @@
+,rank,elpd_diff,dse,p_worse,diag_diff,diag_elpd,p,elpd,se,weight
+M2_hier,0,0.0,0.0,,,,11.5,-1130.0,15.0,0.67
+M1_pooled,1,-1.0,2.1,0.63,|elpd_diff| < 4,,7.8,-1130.0,14.0,0.33

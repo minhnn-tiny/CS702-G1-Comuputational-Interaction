@@ -1,0 +1,285 @@
+PRISM
+=====
+
+Version: 4.10.1
+Date: Mon Sep 07 14:52:18 SGT 2026
+Hostname: Minhs-MacBook-Pro.local
+Memory limits: cudd=1g, java(heap)=4g
+Command line: prism /Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/assignment_1/problem2_healthline/healthline.pm /Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/assignment_1/problem2_healthline/healthline.props
+
+Parsing PRISM model file "/Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/assignment_1/problem2_healthline/healthline.pm"...
+
+Type:        MDP
+Modules:     healthline
+Actions:     [classify] [quick_screen] [thorough_screen] [brief_response] [detailed_response] [auto_process] [transfer_to_admin] [emergency_referral] [offer_nurse] [check_satisfaction] [done]
+Variables:   s
+Labels:      "initial" "acute_track" "general_track" "admin_track" "triage_complete" "warning_signs" "no_warning_signs" "information_delivered" "resolved" "escalated_nurse" "escalated_admin" "emergency" "abandoned" "terminal"
+Rewards:     "outcome"
+
+Parsing properties file "/Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/assignment_1/problem2_healthline/healthline.props"...
+
+9 properties:
+(1) Pmax=? [ F "resolved" ]
+(2) Pmax=? [ F "abandoned" ]
+(3) Pmin=? [ F "abandoned" ]
+(4) Pmax=? [ F ("terminal"&!"abandoned") ]
+(5) Pmin=? [ F ("terminal"&!"abandoned") ]
+(6) R{"outcome"}max=? [ I=3 ]
+(7) R{"outcome"}min=? [ I=3 ]
+(8) Pmin=? [ F "resolved" ]
+(9) R{"outcome"}max=? [ I=10 ]
+
+---------------------------------------------------------------------
+
+Model checking: Pmax=? [ F "resolved" ]
+
+Building model (engine:symbolic)...
+
+Computing reachable states...
+
+Reachability (BFS): 4 iterations in 0.00 seconds (average 0.000000, setup 0.00)
+
+Time for model construction: 0.045 seconds.
+
+Type:        MDP
+States:      12 (1 initial)
+Transitions: 31
+
+Transition matrix: 218 nodes (15 terminal), 31 minterms, vars: 4r/4c/11nd
+
+Prob0A: 3 iterations in 0.00 seconds (average 0.000000, setup 0.00)
+
+Prob1E: 4 iterations in 0.00 seconds (average 0.000000, setup 0.00)
+
+yes = 1, no = 7, maybe = 4
+
+Computing remaining probabilities...
+Engine: Hybrid
+
+Building hybrid MTBDD matrices... [nm=6, levels=4, nodes=108] [5.1 KB]
+Adding sparse bits... [levels=4-4, num=6, compact=6/6] [0.3 KB]
+Creating vector for yes... [dist=2, compact] [0.0 KB]
+Allocating iteration vectors... [3 x 0.1 KB]
+TOTAL: [5.6 KB]
+
+Starting iterations...
+
+Iterative method: 4 iterations in 0.00 seconds (average 0.000000, setup 0.00)
+
+Value in the initial state: 0.33037500000000003
+
+Time for model checking: 0.005 seconds.
+
+Result: 0.33037500000000003 (exact floating point)
+
+---------------------------------------------------------------------
+
+Model checking: Pmax=? [ F "abandoned" ]
+
+Prob0A: 2 iterations in 0.00 seconds (average 0.000000, setup 0.00)
+
+Prob1E: 7 iterations in 0.00 seconds (average 0.000000, setup 0.00)
+
+yes = 1, no = 6, maybe = 5
+
+Computing remaining probabilities...
+Engine: Hybrid
+
+Building hybrid MTBDD matrices... [nm=8, levels=4, nodes=143] [6.7 KB]
+Adding sparse bits... [levels=4-4, num=8, compact=8/8] [0.3 KB]
+Creating vector for yes... [dist=2, compact] [0.0 KB]
+Allocating iteration vectors... [3 x 0.1 KB]
+TOTAL: [7.4 KB]
+
+Starting iterations...
+
+Iterative method: 4 iterations in 0.00 seconds (average 0.000000, setup 0.00)
+
+Value in the initial state: 0.33875
+
+Time for model checking: 0.001 seconds.
+
+Result: 0.33875 (exact floating point)
+
+---------------------------------------------------------------------
+
+Model checking: Pmin=? [ F "abandoned" ]
+
+Prob0E: 2 iterations in 0.00 seconds (average 0.000000, setup 0.00)
+
+Prob1A: 3 iterations in 0.00 seconds (average 0.000000, setup 0.00)
+
+yes = 1, no = 6, maybe = 5
+
+Computing remaining probabilities...
+Engine: Hybrid
+
+Building hybrid MTBDD matrices... [nm=8, levels=4, nodes=143] [6.7 KB]
+Adding sparse bits... [levels=4-4, num=8, compact=8/8] [0.3 KB]
+Creating vector for yes... [dist=2, compact] [0.0 KB]
+Allocating iteration vectors... [3 x 0.1 KB]
+TOTAL: [7.4 KB]
+
+Starting iterations...
+
+Iterative method: 4 iterations in 0.00 seconds (average 0.000000, setup 0.00)
+
+Value in the initial state: 0.27575
+
+Time for model checking: 0.0 seconds.
+
+Result: 0.27575 (exact floating point)
+
+---------------------------------------------------------------------
+
+Model checking: Pmax=? [ F ("terminal"&!"abandoned") ]
+
+Prob0A: 3 iterations in 0.00 seconds (average 0.000000, setup 0.00)
+
+Prob1E: 6 iterations in 0.00 seconds (average 0.000000, setup 0.00)
+
+yes = 6, no = 1, maybe = 5
+
+Computing remaining probabilities...
+Engine: Hybrid
+
+Building hybrid MTBDD matrices... [nm=8, levels=4, nodes=143] [6.7 KB]
+Adding sparse bits... [levels=4-4, num=8, compact=8/8] [0.3 KB]
+Creating vector for yes... [dist=2, compact] [0.0 KB]
+Allocating iteration vectors... [3 x 0.1 KB]
+TOTAL: [7.4 KB]
+
+Starting iterations...
+
+Iterative method: 4 iterations in 0.00 seconds (average 0.000000, setup 0.00)
+
+Value in the initial state: 0.7242500000000001
+
+Time for model checking: 0.0 seconds.
+
+Result: 0.7242500000000001 (exact floating point)
+
+---------------------------------------------------------------------
+
+Model checking: Pmin=? [ F ("terminal"&!"abandoned") ]
+
+Prob0E: 3 iterations in 0.00 seconds (average 0.000000, setup 0.00)
+
+Prob1A: 2 iterations in 0.00 seconds (average 0.000000, setup 0.00)
+
+yes = 6, no = 1, maybe = 5
+
+Computing remaining probabilities...
+Engine: Hybrid
+
+Building hybrid MTBDD matrices... [nm=8, levels=4, nodes=143] [6.7 KB]
+Adding sparse bits... [levels=4-4, num=8, compact=8/8] [0.3 KB]
+Creating vector for yes... [dist=2, compact] [0.0 KB]
+Allocating iteration vectors... [3 x 0.1 KB]
+TOTAL: [7.4 KB]
+
+Starting iterations...
+
+Iterative method: 4 iterations in 0.00 seconds (average 0.000000, setup 0.00)
+
+Value in the initial state: 0.66125
+
+Time for model checking: 0.001 seconds.
+
+Result: 0.66125 (exact floating point)
+
+---------------------------------------------------------------------
+
+Model checking: R{"outcome"}max=? [ I=3 ]
+
+Computing rewards...
+Switching engine since hybrid engine does yet support this computation...
+Engine: Sparse
+
+Building sparse matrix (transitions)... [n=12, nc=16, nnz=31, k=2] [0.5 KB]
+Allocating iteration vectors... [2 x 0.1 KB]
+TOTAL: [0.7 KB]
+
+Starting iterations...
+
+Iterative method: 3 iterations in 0.00 seconds (average 0.000000, setup 0.00)
+
+Value in the initial state: 5.857
+
+Time for model checking: 0.002 seconds.
+
+Result: 5.857 (exact floating point)
+
+---------------------------------------------------------------------
+
+Model checking: R{"outcome"}min=? [ I=3 ]
+
+Computing rewards...
+Switching engine since hybrid engine does yet support this computation...
+Engine: Sparse
+
+Building sparse matrix (transitions)... [n=12, nc=16, nnz=31, k=2] [0.5 KB]
+Allocating iteration vectors... [2 x 0.1 KB]
+TOTAL: [0.7 KB]
+
+Starting iterations...
+
+Iterative method: 3 iterations in 0.00 seconds (average 0.000000, setup 0.00)
+
+Value in the initial state: 4.64625
+
+Time for model checking: 0.001 seconds.
+
+Result: 4.64625 (exact floating point)
+
+---------------------------------------------------------------------
+
+Model checking: Pmin=? [ F "resolved" ]
+
+Prob0E: 4 iterations in 0.00 seconds (average 0.000000, setup 0.00)
+
+Prob1A: 2 iterations in 0.00 seconds (average 0.000000, setup 0.00)
+
+yes = 1, no = 8, maybe = 3
+
+Computing remaining probabilities...
+Engine: Hybrid
+
+Building hybrid MTBDD matrices... [nm=4, levels=4, nodes=75] [3.5 KB]
+Adding sparse bits... [levels=4-4, num=4, compact=4/4] [0.2 KB]
+Creating vector for yes... [dist=2, compact] [0.0 KB]
+Allocating iteration vectors... [3 x 0.1 KB]
+TOTAL: [4.0 KB]
+
+Starting iterations...
+
+Iterative method: 4 iterations in 0.00 seconds (average 0.000000, setup 0.00)
+
+Value in the initial state: 0.185625
+
+Time for model checking: 0.0 seconds.
+
+Result: 0.185625 (exact floating point)
+
+---------------------------------------------------------------------
+
+Model checking: R{"outcome"}max=? [ I=10 ]
+
+Computing rewards...
+Switching engine since hybrid engine does yet support this computation...
+Engine: Sparse
+
+Building sparse matrix (transitions)... [n=12, nc=16, nnz=31, k=2] [0.5 KB]
+Allocating iteration vectors... [2 x 0.1 KB]
+TOTAL: [0.7 KB]
+
+Starting iterations...
+
+Iterative method: 10 iterations in 0.00 seconds (average 0.000000, setup 0.00)
+
+Value in the initial state: 5.857
+
+Time for model checking: 0.0 seconds.
+
+Result: 5.857 (exact floating point)
+

@@ -1,0 +1,329 @@
+{
+  "A: specialists": {
+    "betas": [
+      [
+        0.9,
+        0.1,
+        0.1
+      ],
+      [
+        0.1,
+        0.9,
+        0.1
+      ],
+      [
+        0.1,
+        0.1,
+        0.9
+      ]
+    ],
+    "deltas": [
+      0.5,
+      0.5,
+      0.5
+    ],
+    "P": [
+      [
+        0.599,
+        0.401,
+        0.401
+      ],
+      [
+        0.401,
+        0.599,
+        0.401
+      ],
+      [
+        0.401,
+        0.401,
+        0.599
+      ]
+    ],
+    "optimal_assignment_member_to_task": [
+      1,
+      2,
+      3
+    ],
+    "optimal_expected_reward_per_round": 1.796062980337356,
+    "gap_to_second_best_assignment": 0.394750640449808,
+    "spread_of_P": 0.197375320224904,
+    "algorithms": {
+      "combinatorial Thompson sampling": {
+        "final_regret_mean": 29.079305928735085,
+        "final_regret_q10_q90": [
+          15.790025617992313,
+          44.448922114648326
+        ],
+        "regret_at_200": 21.034287876367994,
+        "mean_cumulative_reward": 1770.75,
+        "oracle_cumulative_reward": 1796.062980337356,
+        "share_runs_ending_on_optimal_assignment": 0.975,
+        "learned_P_last_run": [
+          [
+            0.602,
+            0.5,
+            0.381
+          ],
+          [
+            0.463,
+            0.603,
+            0.368
+          ],
+          [
+            0.375,
+            0.375,
+            0.614
+          ]
+        ],
+        "mean_abs_error_P_last_run": 0.03207750208270577
+      },
+      "epsilon-greedy matching (eps=0.1)": {
+        "final_regret_mean": 59.89255404564602,
+        "final_regret_q10_q90": [
+          38.665825232058666,
+          95.05595422031375
+        ],
+        "regret_at_200": 25.00251868948971,
+        "mean_cumulative_reward": 1732.37,
+        "oracle_cumulative_reward": 1796.062980337356,
+        "share_runs_ending_on_optimal_assignment": 0.91,
+        "learned_P_last_run": [
+          [
+            0.602,
+            0.302,
+            0.365
+          ],
+          [
+            0.333,
+            0.603,
+            0.329
+          ],
+          [
+            0.459,
+            0.431,
+            0.593
+          ]
+        ],
+        "mean_abs_error_P_last_run": 0.041836655077165726
+      }
+    }
+  },
+  "B: generalists": {
+    "betas": [
+      [
+        0.55,
+        0.5,
+        0.45
+      ],
+      [
+        0.5,
+        0.55,
+        0.5
+      ],
+      [
+        0.45,
+        0.5,
+        0.55
+      ]
+    ],
+    "deltas": [
+      0.3,
+      0.5,
+      0.7
+    ],
+    "P": [
+      [
+        0.562,
+        0.5,
+        0.438
+      ],
+      [
+        0.55,
+        0.512,
+        0.45
+      ],
+      [
+        0.537,
+        0.5,
+        0.463
+      ]
+    ],
+    "optimal_assignment_member_to_task": [
+      1,
+      2,
+      3
+    ],
+    "optimal_expected_reward_per_round": 1.5372440520262587,
+    "gap_to_second_best_assignment": 0.02483990005753034,
+    "spread_of_P": 0.12435300177159614,
+    "algorithms": {
+      "combinatorial Thompson sampling": {
+        "final_regret_mean": 26.2748831431957,
+        "final_regret_q10_q90": [
+          15.615920436315477,
+          38.55634507718326
+        ],
+        "regret_at_200": 6.18359333560364,
+        "mean_cumulative_reward": 1511.8,
+        "oracle_cumulative_reward": 1537.2440520262587,
+        "share_runs_ending_on_optimal_assignment": 0.335,
+        "learned_P_last_run": [
+          [
+            0.423,
+            0.545,
+            0.451
+          ],
+          [
+            0.521,
+            0.581,
+            0.465
+          ],
+          [
+            0.553,
+            0.447,
+            0.457
+          ]
+        ],
+        "mean_abs_error_P_last_run": 0.04268476019588584
+      },
+      "epsilon-greedy matching (eps=0.1)": {
+        "final_regret_mean": 27.114172455323196,
+        "final_regret_q10_q90": [
+          5.631699123065653,
+          46.86484593321852
+        ],
+        "regret_at_200": 6.0929806319576745,
+        "mean_cumulative_reward": 1508.16,
+        "oracle_cumulative_reward": 1537.2440520262587,
+        "share_runs_ending_on_optimal_assignment": 0.355,
+        "learned_P_last_run": [
+          [
+            0.538,
+            0.475,
+            0.407
+          ],
+          [
+            0.549,
+            0.496,
+            0.461
+          ],
+          [
+            0.46,
+            0.511,
+            0.351
+          ]
+        ],
+        "mean_abs_error_P_last_run": 0.03425951988400991
+      }
+    }
+  },
+  "C: one strong member": {
+    "betas": [
+      [
+        1.0,
+        0.9,
+        0.8
+      ],
+      [
+        0.3,
+        0.6,
+        0.2
+      ],
+      [
+        0.2,
+        0.2,
+        0.7
+      ]
+    ],
+    "deltas": [
+      0.4,
+      0.6,
+      0.8
+    ],
+    "P": [
+      [
+        0.646,
+        0.574,
+        0.5
+      ],
+      [
+        0.475,
+        0.5,
+        0.354
+      ],
+      [
+        0.45,
+        0.401,
+        0.475
+      ]
+    ],
+    "optimal_assignment_member_to_task": [
+      1,
+      2,
+      3
+    ],
+    "optimal_expected_reward_per_round": 1.6206771187468554,
+    "gap_to_second_best_assignment": 0.09619297689307627,
+    "spread_of_P": 0.29131261245159085,
+    "algorithms": {
+      "combinatorial Thompson sampling": {
+        "final_regret_mean": 45.27527683063008,
+        "final_regret_q10_q90": [
+          23.071979261421163,
+          72.24647192323772
+        ],
+        "regret_at_200": 19.452628370662957,
+        "mean_cumulative_reward": 1571.535,
+        "oracle_cumulative_reward": 1620.6771187468553,
+        "share_runs_ending_on_optimal_assignment": 0.86,
+        "learned_P_last_run": [
+          [
+            0.678,
+            0.525,
+            0.529
+          ],
+          [
+            0.513,
+            0.489,
+            0.46
+          ],
+          [
+            0.25,
+            0.323,
+            0.469
+          ]
+        ],
+        "mean_abs_error_P_last_run": 0.06128123665357907
+      },
+      "epsilon-greedy matching (eps=0.1)": {
+        "final_regret_mean": 59.01767278502073,
+        "final_regret_q10_q90": [
+          17.632139524679438,
+          129.030492614836
+        ],
+        "regret_at_200": 20.251682162559607,
+        "mean_cumulative_reward": 1561.42,
+        "oracle_cumulative_reward": 1620.6771187468553,
+        "share_runs_ending_on_optimal_assignment": 0.695,
+        "learned_P_last_run": [
+          [
+            0.661,
+            0.536,
+            0.543
+          ],
+          [
+            0.52,
+            0.535,
+            0.333
+          ],
+          [
+            0.333,
+            0.289,
+            0.499
+          ]
+        ],
+        "mean_abs_error_P_last_run": 0.050054270351882306
+      }
+    }
+  }
+}

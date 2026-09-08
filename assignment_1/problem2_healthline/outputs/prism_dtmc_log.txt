@@ -1,0 +1,245 @@
+PRISM
+=====
+
+Version: 4.10.1
+Date: Mon Sep 07 14:52:19 SGT 2026
+Hostname: Minhs-MacBook-Pro.local
+Memory limits: cudd=1g, java(heap)=4g
+Command line: prism /Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/assignment_1/problem2_healthline/healthline_optimal.pm /Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/assignment_1/problem2_healthline/healthline_optimal.props
+
+Parsing PRISM model file "/Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/assignment_1/problem2_healthline/healthline_optimal.pm"...
+
+Type:        DTMC
+Modules:     healthline_dtmc
+Actions:     [classify] [thorough_screen] [detailed_response] [auto_process] [emergency_referral] [offer_nurse] [check_satisfaction] [done]
+Variables:   s
+Labels:      "initial" "acute_track" "general_track" "admin_track" "warning_signs" "no_warning_signs" "information_delivered" "resolved" "escalated_nurse" "escalated_admin" "emergency" "abandoned" "terminal"
+Rewards:     "outcome"
+
+Parsing properties file "/Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/assignment_1/problem2_healthline/healthline_optimal.props"...
+
+7 properties:
+(1) P=? [ F "resolved" ]
+(2) P=? [ F "abandoned" ]
+(3) P=? [ F "escalated_nurse" ]
+(4) P=? [ F "escalated_admin" ]
+(5) P=? [ F "emergency" ]
+(6) P=? [ F ("terminal"&!"abandoned") ]
+(7) R{"outcome"}=? [ I=3 ]
+
+---------------------------------------------------------------------
+
+Model checking: P=? [ F "resolved" ]
+
+Building model (engine:symbolic)...
+
+Computing reachable states...
+
+Reachability (BFS): 4 iterations in 0.00 seconds (average 0.000000, setup 0.00)
+
+Time for model construction: 0.021 seconds.
+
+Type:        DTMC
+States:      12 (1 initial)
+Transitions: 22
+
+Transition matrix: 62 nodes (12 terminal), 22 minterms, vars: 4r/4c
+
+Prob0: 3 iterations in 0.00 seconds (average 0.000000, setup 0.00)
+
+Prob1: 2 iterations in 0.00 seconds (average 0.000000, setup 0.00)
+
+yes = 1, no = 7, maybe = 4
+
+Computing remaining probabilities...
+Engine: Hybrid
+
+Building hybrid MTBDD matrix... [levels=4, nodes=45] [2.1 KB]
+Adding explicit sparse matrices... [levels=4, num=1, compact] [0.1 KB]
+Creating vector for diagonals... [dist=1, compact] [0.0 KB]
+Creating vector for RHS... [dist=2, compact] [0.0 KB]
+Allocating iteration vectors... [2 x 0.1 KB]
+TOTAL: [2.5 KB]
+
+Starting iterations...
+
+Jacobi: 4 iterations in 0.00 seconds (average 0.000000, setup 0.00)
+
+Value in the initial state: 0.33037500000000003
+
+Time for model checking: 0.005 seconds.
+
+Result: 0.33037500000000003 (exact floating point)
+
+---------------------------------------------------------------------
+
+Model checking: P=? [ F "abandoned" ]
+
+Prob0: 2 iterations in 0.00 seconds (average 0.000000, setup 0.00)
+
+Prob1: 3 iterations in 0.00 seconds (average 0.000000, setup 0.00)
+
+yes = 1, no = 6, maybe = 5
+
+Computing remaining probabilities...
+Engine: Hybrid
+
+Building hybrid MTBDD matrix... [levels=4, nodes=50] [2.3 KB]
+Adding explicit sparse matrices... [levels=4, num=1, compact] [0.1 KB]
+Creating vector for diagonals... [dist=1, compact] [0.0 KB]
+Creating vector for RHS... [dist=2, compact] [0.0 KB]
+Allocating iteration vectors... [2 x 0.1 KB]
+TOTAL: [2.8 KB]
+
+Starting iterations...
+
+Jacobi: 4 iterations in 0.00 seconds (average 0.000000, setup 0.00)
+
+Value in the initial state: 0.29825
+
+Time for model checking: 0.0 seconds.
+
+Result: 0.29825 (exact floating point)
+
+---------------------------------------------------------------------
+
+Model checking: P=? [ F "escalated_nurse" ]
+
+Prob0: 4 iterations in 0.00 seconds (average 0.000000, setup 0.00)
+
+Prob1: 2 iterations in 0.00 seconds (average 0.000000, setup 0.00)
+
+yes = 2, no = 6, maybe = 4
+
+Computing remaining probabilities...
+Engine: Hybrid
+
+Building hybrid MTBDD matrix... [levels=4, nodes=47] [2.2 KB]
+Adding explicit sparse matrices... [levels=4, num=1, compact] [0.1 KB]
+Creating vector for diagonals... [dist=1, compact] [0.0 KB]
+Creating vector for RHS... [dist=2, compact] [0.0 KB]
+Allocating iteration vectors... [2 x 0.1 KB]
+TOTAL: [2.6 KB]
+
+Starting iterations...
+
+Jacobi: 4 iterations in 0.00 seconds (average 0.000000, setup 0.00)
+
+Value in the initial state: 0.258875
+
+Time for model checking: 0.0 seconds.
+
+Result: 0.258875 (exact floating point)
+
+---------------------------------------------------------------------
+
+Model checking: P=? [ F "escalated_admin" ]
+
+Prob0: 3 iterations in 0.00 seconds (average 0.000000, setup 0.00)
+
+Prob1: 2 iterations in 0.00 seconds (average 0.000000, setup 0.00)
+
+yes = 1, no = 9, maybe = 2
+
+Computing remaining probabilities...
+Engine: Hybrid
+
+Building hybrid MTBDD matrix... [levels=4, nodes=31] [1.5 KB]
+Adding explicit sparse matrices... [levels=4, num=1, compact] [0.1 KB]
+Creating vector for diagonals... [dist=1, compact] [0.0 KB]
+Creating vector for RHS... [dist=2, compact] [0.0 KB]
+Allocating iteration vectors... [2 x 0.1 KB]
+TOTAL: [1.8 KB]
+
+Starting iterations...
+
+Jacobi: 3 iterations in 0.00 seconds (average 0.000000, setup 0.00)
+
+Value in the initial state: 0.05
+
+Time for model checking: 0.0 seconds.
+
+Result: 0.05 (exact floating point)
+
+---------------------------------------------------------------------
+
+Model checking: P=? [ F "emergency" ]
+
+Prob0: 4 iterations in 0.00 seconds (average 0.000000, setup 0.00)
+
+Prob1: 2 iterations in 0.00 seconds (average 0.000000, setup 0.00)
+
+yes = 2, no = 8, maybe = 2
+
+Computing remaining probabilities...
+Engine: Hybrid
+
+Building hybrid MTBDD matrix... [levels=4, nodes=26] [1.2 KB]
+Adding explicit sparse matrices... [levels=4, num=1, compact] [0.1 KB]
+Creating vector for diagonals... [dist=1, compact] [0.0 KB]
+Creating vector for RHS... [dist=2, compact] [0.0 KB]
+Allocating iteration vectors... [2 x 0.1 KB]
+TOTAL: [1.6 KB]
+
+Starting iterations...
+
+Jacobi: 3 iterations in 0.00 seconds (average 0.000000, setup 0.00)
+
+Value in the initial state: 0.0625
+
+Time for model checking: 0.0 seconds.
+
+Result: 0.0625 (exact floating point)
+
+---------------------------------------------------------------------
+
+Model checking: P=? [ F ("terminal"&!"abandoned") ]
+
+Prob0: 3 iterations in 0.00 seconds (average 0.000000, setup 0.00)
+
+Prob1: 2 iterations in 0.00 seconds (average 0.000000, setup 0.00)
+
+yes = 6, no = 1, maybe = 5
+
+Computing remaining probabilities...
+Engine: Hybrid
+
+Building hybrid MTBDD matrix... [levels=4, nodes=50] [2.3 KB]
+Adding explicit sparse matrices... [levels=4, num=1, compact] [0.1 KB]
+Creating vector for diagonals... [dist=1, compact] [0.0 KB]
+Creating vector for RHS... [dist=2, compact] [0.0 KB]
+Allocating iteration vectors... [2 x 0.1 KB]
+TOTAL: [2.8 KB]
+
+Starting iterations...
+
+Jacobi: 4 iterations in 0.00 seconds (average 0.000000, setup 0.00)
+
+Value in the initial state: 0.7017500000000001
+
+Time for model checking: 0.0 seconds.
+
+Result: 0.7017500000000001 (exact floating point)
+
+---------------------------------------------------------------------
+
+Model checking: R{"outcome"}=? [ I=3 ]
+
+Computing rewards...
+Engine: Hybrid
+
+Building hybrid MTBDD matrix... [levels=4, nodes=63] [3.0 KB]
+Adding explicit sparse matrices... [levels=4, num=1, compact] [0.2 KB]
+Allocating iteration vectors... [2 x 0.1 KB]
+TOTAL: [3.3 KB]
+
+Starting iterations...
+
+Iterative method: 3 iterations in 0.00 seconds (average 0.000000, setup 0.00)
+
+Value in the initial state: 5.857
+
+Time for model checking: 0.001 seconds.
+
+Result: 5.857 (exact floating point)
+

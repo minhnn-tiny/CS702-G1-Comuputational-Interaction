@@ -1,0 +1,119 @@
+{
+  "n_students": 395,
+  "n_columns": 32,
+  "G3_mean": 10.415189873417722,
+  "G3_sd": 4.5814426109978434,
+  "G3_median": 11.0,
+  "G3_min": 0,
+  "G3_max": 20,
+  "G3_zero_count": 38,
+  "G3_zero_share": 0.09620253164556962,
+  "school_counts": {
+    "GP": 349,
+    "MS": 46
+  },
+  "G3_by_school": {
+    "GP": {
+      "count": 349,
+      "mean": 10.49,
+      "std": 4.63
+    },
+    "MS": {
+      "count": 46,
+      "mean": 9.85,
+      "std": 4.24
+    }
+  },
+  "G3_by_mjob": {
+    "at_home": {
+      "count": 59,
+      "mean": 9.15,
+      "std": 4.73
+    },
+    "health": {
+      "count": 34,
+      "mean": 12.15,
+      "std": 4.23
+    },
+    "other": {
+      "count": 141,
+      "mean": 9.82,
+      "std": 4.36
+    },
+    "services": {
+      "count": 103,
+      "mean": 11.02,
+      "std": 4.76
+    },
+    "teacher": {
+      "count": 58,
+      "mean": 11.05,
+      "std": 4.4
+    }
+  },
+  "G3_by_failures": {
+    "0": {
+      "count": 312,
+      "mean": 11.25
+    },
+    "1": {
+      "count": 50,
+      "mean": 8.12
+    },
+    "2": {
+      "count": 17,
+      "mean": 6.24
+    },
+    "3": {
+      "count": 16,
+      "mean": 5.69
+    }
+  },
+  "G3_by_studytime": {
+    "1": {
+      "count": 105,
+      "mean": 10.05
+    },
+    "2": {
+      "count": 198,
+      "mean": 10.17
+    },
+    "3": {
+      "count": 65,
+      "mean": 11.4
+    },
+    "4": {
+      "count": 27,
+      "mean": 11.26
+    }
+  },
+  "G3_by_higher": {
+    "0": {
+      "count": 20,
+      "mean": 6.8
+    },
+    "1": {
+      "count": 375,
+      "mean": 10.61
+    }
+  },
+  "absences_mean_zeroG3": 0.0,
+  "absences_mean_posG3": 6.3165266106442575,
+  "absences_max": 75,
+  "corr_with_G3": {
+    "failures": -0.36,
+    "absences": 0.034,
+    "studytime": 0.098,
+    "higher": 0.182,
+    "goout": -0.133,
+    "Medu": 0.217
+  },
+  "features": [
+    "failures",
+    "absences_log",
+    "studytime",
+    "higher",
+    "goout",
+    "Medu"
+  ]
+}
