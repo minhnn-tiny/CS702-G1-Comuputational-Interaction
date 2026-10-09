@@ -57,10 +57,12 @@ def model2():
     g.node("ss", "<&sigma;<SUB>sch</SUB>>")
     g.node("sm", "<&sigma;<SUB>job</SUB>>")
     with g.subgraph(name="cluster_school") as c:
-        c.attr(label="schools  j ∈ {GP, MS}", **PLATE)
+        c.attr(label="schools  j ∈ {GP, MS}", **{**PLATE, "labelloc": "t"})
         c.node("a_s", "<a<SUB>j</SUB>>")
+        c.node("pad_s", "", shape="box", style="invis", width="0.85", height="0.3", fixedsize="true")
     with g.subgraph(name="cluster_mjob") as c:
-        c.attr(label="mother's job  m = 1, …, 5", **PLATE)
+        c.attr(label="mother's job  m = 1, …, 5", **{**PLATE, "labelloc": "t"})
+        c.node("pad_m", "", shape="box", style="invis", width="1.1", height="0.3", fixedsize="true")
         c.node("a_m", "<b<SUB>m</SUB>>")
     with g.subgraph(name="cluster_students") as c:
         c.attr(label="students  i = 1, …, 395", **PLATE)
@@ -69,13 +71,24 @@ def model2():
         c.node("G3", "<G3<SUB>i</SUB>>", **OBS)
         c.edge("x", "mu")
         c.edge("mu", "G3")
-    g.edge("ss", "a_s")
-    g.edge("sm", "a_m")
+    # group scales sit beside their plates (minlen=0: same row), so no arrow
+    # crosses a plate label
+    g.edge("ss", "a_s", minlen="0")
+    g.edge("a_m", "sm", minlen="0", dir="back")  # laid out left to right, arrow points at b_m
     g.edge("a_s", "mu")
     g.edge("a_m", "mu")
     g.edge("alpha", "mu")
     g.edge("beta", "mu")
     g.edge("sigma", "G3")
+    # group plates on the row above the student plate instead of beside it
+    g.edge("a_s", "x", style="invis")
+    g.edge("a_m", "x", style="invis")
+    # left-to-right order of the top row: sigma, sigma_sch -> a_j, b_m <- sigma_job, beta, alpha.
+    # The invisible pads make each group plate as wide as its label, otherwise
+    # the label widens the plate after layout and the two plates touch.
+    for tail, head in [("sigma", "ss"), ("a_s", "pad_s"), ("pad_s", "pad_m"), ("pad_m", "a_m"),
+                       ("sm", "beta"), ("beta", "alpha")]:
+        g.edge(tail, head, style="invis", minlen="0")
     # keep hyper-parameters on one row
     with g.subgraph() as s:
         s.attr(rank="same")

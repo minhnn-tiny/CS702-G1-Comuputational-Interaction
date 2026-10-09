@@ -20,6 +20,7 @@ SHORT = {
     4: "warning\nsigns", 5: "no warning\nsigns", 6: "info\ndelivered",
     7: "resolved", 8: "escalated\nnurse", 9: "escalated\nadmin", 10: "emergency", 11: "abandoned",
 }
+ACTION_COLOURS = ["#1f5fa8", "#c4501b"]  # first / second action of a decision state
 
 
 def build() -> graphviz.Digraph:
@@ -33,20 +34,28 @@ def build() -> graphviz.Digraph:
     for s in sorted(STATE_NAMES):
         shape = "doublecircle" if s in TERMINAL else "circle"
         fill = {"style": "filled", "fillcolor": "#eeeeee"} if s == 11 else {}
-        g.node(f"s{s}", label=f"<<I>s</I><SUB>{s}</SUB><BR/><FONT POINT-SIZE=\"7\">{SHORT[s].replace(chr(10), '<BR/>')}</FONT>>",
+        # table rows keep the subscript from running into the state name below it
+        name = SHORT[s].replace(chr(10), "<BR/>")
+        g.node(f"s{s}", label=f"<<TABLE BORDER=\"0\" CELLSPACING=\"0\" CELLPADDING=\"0\"><TR><TD><I>s</I><SUB>{s}</SUB></TD></TR><TR><TD HEIGHT=\"2\"></TD></TR>"
+                              f"<TR><TD><FONT POINT-SIZE=\"7\">{name}</FONT></TD></TR></TABLE>>",
                shape=shape, **fill)
     g.edge("start", f"s{INITIAL}")
 
     for (s, a), P in TRANSITIONS.items():
+        # the two actions of a decision state get their own colour so that each
+        # probability label can be matched to its action where edges cross
+        actions = [act for (st, act) in TRANSITIONS if st == s]
+        col = ACTION_COLOURS[actions.index(a)] if len(actions) > 1 else "#222222"
+        style = dict(color=col, fontcolor=col)
         if len(P) == 1:  # deterministic action: direct edge
             (sn, p), = P.items()
-            g.edge(f"s{s}", f"s{sn}", label=f"{a}\n{p:.2f}")
+            g.edge(f"s{s}", f"s{sn}", label=f"{a}\n{p:.2f}", **style)
             continue
         b = f"b_{s}_{a}"
         g.node(b, label="", shape="square", style="filled", fillcolor="black", width="0.11", height="0.11")
-        g.edge(f"s{s}", b, label=a, arrowhead="none")
+        g.edge(f"s{s}", b, label=a, arrowhead="none", **style)
         for sn, p in P.items():
-            g.edge(b, f"s{sn}", label=f"{p:.2f}")
+            g.edge(b, f"s{sn}", label=f"{p:.2f}", **style)
 
     # keep terminal states in one column
     with g.subgraph() as sg:

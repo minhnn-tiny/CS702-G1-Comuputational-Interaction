@@ -77,7 +77,7 @@ with the same priors for $\alpha,\beta,\sigma$. The intercepts are partially poo
 \begin{figure}[t]
 \centering
 \begin{subfigure}[b]{0.30\textwidth}\centering\includegraphics[height=3.4cm]{figures/plate_m1.pdf}\caption{Model 1 (complete pooling)}\end{subfigure}\hspace{1.2cm}
-\begin{subfigure}[b]{0.55\textwidth}\centering\includegraphics[height=3.4cm]{figures/plate_m2.pdf}\caption{Model 2 (varying intercepts by school and mother's job)}\end{subfigure}
+\begin{subfigure}[b]{0.55\textwidth}\centering\includegraphics[width=\linewidth]{figures/plate_m2.pdf}\caption{Model 2 (varying intercepts by school and mother's job)}\end{subfigure}
 \caption{Plate diagrams. $x_i$: standardised predictors; $\mu_i=\alpha+x_i^\top\beta$ (+ $a_j+b_m$ in Model 2); $G3_i\sim\mathcal N(\mu_i,\sigma)$.}
 \label{fig:plates}
 \end{figure}
@@ -152,7 +152,7 @@ Figure~\ref{fig:mdp} draws the twelve states $s_0,\dots,s_{11}$ (terminal states
 
 \begin{figure}[!htb]
 \centering\includegraphics[width=0.96\textwidth]{figures/fig_mdp.pdf}
-\caption{The HealthLine MDP. Circles: states; double circles: terminal states; black squares: probabilistic branching points of the actions; edge labels: action names and transition probabilities.}
+\caption{The HealthLine MDP. Circles: states; double circles: terminal states; black squares: probabilistic branching points of the actions; edge labels: action names and transition probabilities. In the decision states $s_1$--$s_4$ the two actions are drawn in blue and orange, so each probability can be traced to its action.}
 \label{fig:mdp}
 \end{figure}
 
