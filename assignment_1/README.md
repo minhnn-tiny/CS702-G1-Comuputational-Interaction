@@ -4,7 +4,8 @@ Code and report for the three problems of Group Assignment 1.
 
 ```
 assignment_1/
-├── report/                     report.tex → report.pdf (the submitted report), figures/
+├── GA_1_report.pdf             the submitted report
+├── report/                     report.tex + figures/ (LaTeX source; not in the submission archive)
 ├── common/plotstyle.py         shared matplotlib style
 ├── problem1_bayesian/          Problem 1 – Bayesian hierarchical modelling (NumPyro + ArviZ)
 │   ├── data/student-mat.csv    UCI Student Performance data (mathematics)
@@ -48,7 +49,7 @@ External tools:
 * **PRISM 4.x** for Problem 2 (https://www.prismmodelchecker.org/download.php). The scripts look for
   `$PRISM_HOME/bin/prism`, then `prism` on the PATH, then `../tools/prism-*/bin/prism`.
   Java (JRE 11+) is required by PRISM.
-* **Tectonic** (or any LaTeX with `pdflatex`) to rebuild the report (`report/build.sh`).
+* **Tectonic** (or any LaTeX with `pdflatex`) to rebuild the report (`report/build.sh`, repository only).
 
 ## Running
 
@@ -76,9 +77,13 @@ python problem3_sequential/p3_q1_bandit.py
 python problem3_sequential/p3_q2_contextual.py
 python problem3_sequential/p3_q3_bayes_rl.py
 
-# Report
+# Report (repository only; the submission archive ships the rendered GA_1_report.pdf)
 cd report && ./build.sh
 ```
 
-All random seeds are fixed, so the numbers in the report are reproducible (MCMC results may differ
-in the last digit across JAX versions).
+All Python random seeds are fixed, so the numbers in the report are reproducible (MCMC results may
+differ in the last digit across JAX versions). The one exception is `p2_simulate.py`: PRISM's
+discrete-event simulator offers no seed option, so re-running it gives a different sample of 100
+traces. The counts quoted for Q1.c are those of the recorded run in
+`problem2_healthline/outputs/prism_traces.csv`; the exact probabilities they are compared with are
+computed analytically and do not vary.

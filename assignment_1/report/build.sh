@@ -12,3 +12,6 @@ else
     pdflatex -interaction=nonstopmode report.tex && pdflatex -interaction=nonstopmode report.tex
 fi
 echo "built report.pdf"
+
+# copy the built report.pdf into the root directory for easy access
+cp report.pdf ../GA_1_report.pdf

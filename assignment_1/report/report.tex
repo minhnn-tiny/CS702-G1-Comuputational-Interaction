@@ -42,7 +42,7 @@
 {\LARGE\bfseries CS702 Computational Interaction --- Group Assignment 1}\\[4pt]
 {\large Bayesian hierarchical modelling $\cdot$ Simulating a conversational agent $\cdot$ Sequential decision making}\\[5pt]
 {\textbf{Team members:} \textit{Do Duc Anh (doducanh.2026@phdcs.smu.edu.sg), Nguyen Nhat Minh (nm.nguyen.2026@phdcs.smu.edu.sg)} \qquad AY2026--27 Term 1, Week 8}\\[3pt]
-{\small All code (Python 3.12, NumPyro/ArviZ, PRISM 4.10, Pyomo/HiGHS) is in the accompanying archive; \code{README.md} lists how to run every script. All seeds are fixed.}
+{\small All code (Python 3.12, NumPyro/ArviZ, PRISM 4.10, Pyomo/HiGHS) is in the accompanying archive; \code{README.md} lists how to run every script. All Python seeds are fixed; PRISM's simulator has no seed option, so the Q1.c trace counts are those of one recorded run.}
 \end{center}
 \vspace{-4pt}
 
@@ -184,7 +184,7 @@ endrewards
 \end{lstlisting}
 
 \subsection{Q1.c Forward simulation}
-We generated 100 traces with PRISM's simulator (\code{prism healthline.pm -simpath 20 <file>}, once per trace). PRISM resolves the nondeterministic choice in $s_1$--$s_4$ uniformly at random and stops a path when the terminal self-loop is detected, so every trace runs from $s_0$ to a terminal state. Table~\ref{tab:sim} and Fig.~\ref{fig:sim} summarise the traces; the exact outcome distribution of the same uniform-random policy, computed from the transition matrix, is shown for comparison.
+We generated 100 traces with PRISM's simulator (\code{prism healthline.pm -simpath 20 <file>}, once per trace). PRISM resolves the nondeterministic choice in $s_1$--$s_4$ uniformly at random and stops a path when the terminal self-loop is detected, so every trace runs from $s_0$ to a terminal state. PRISM's simulator cannot be seeded, so the counts below are those of one recorded run (\code{outputs/prism\_traces.csv}); a repeated run gives a different sample. Table~\ref{tab:sim} and Fig.~\ref{fig:sim} summarise the traces; the exact outcome distribution of the same uniform-random policy, computed from the transition matrix, is shown for comparison.
 \begin{itemize}
 \item \textbf{Most common outcomes.} Escalation to a nurse (37 traces) is the most common outcome, followed by abandonment (28) and resolution without escalation (23). The nurse outcome is frequent because every acute-track conversation without warning signs ends there and 35\% of the general-track conversations do too.
 \item \textbf{Abandonment.} 28 of 100 traces ended in \code{abandoned} (Wilson 95\% interval 20--37\%), in line with the exact value 30.7\% for random choices; a tenth of all conversations are already lost at the classification step.

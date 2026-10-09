@@ -49,3 +49,7 @@ env/
 *.tmp
 *.temp
 *~
+
+# Remove copy of report
+assignment_1/report/report.pdf
+*.zip
