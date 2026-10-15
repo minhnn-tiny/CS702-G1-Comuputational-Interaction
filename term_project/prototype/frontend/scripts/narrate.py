@@ -32,7 +32,7 @@ def duration(path: Path) -> float:
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("video"); ap.add_argument("vtt"); ap.add_argument("--voice", default="Ava (Premium)"); ap.add_argument("--rate", type=int, default=205)
+    ap.add_argument("video"); ap.add_argument("vtt"); ap.add_argument("--voice", default="Karen (Premium)"); ap.add_argument("--rate", type=int, default=205)
     a = ap.parse_args()
     video, cues = Path(a.video), parse_vtt(Path(a.vtt))
     total = duration(video)
