@@ -56,7 +56,7 @@ def main():
     total += tail
     graph = ";".join(filters) + f";{''.join(mix)}amix=inputs={n}:normalize=0:dropout_transition=0,apad=whole_dur={total:.3f}[out]"
     narration = video.with_name(video.stem + "_narration.m4a")
-    subprocess.run(["ffmpeg", "-v", "error", "-y", *inputs, "-filter_complex", graph, "-map", "[out]", "-t", f"{total:.3f}", "-c:a", "aac", "-b:a", "128k", str(narration)], check=True)
+    subprocess.run(["ffmpeg", "-v", "warning", "-y", *inputs, "-filter_complex", graph, "-map", "[out]", "-t", f"{total:.3f}", "-c:a", "aac", "-b:a", "128k", str(narration)], check=True)
     out = video.with_name(video.stem + "_narrated.mp4")
     vcodec = ["-c:v", "copy"] if tail == 0 else ["-vf", f"tpad=stop_mode=clone:stop_duration={tail:.3f}", "-c:v", "libx264", "-preset", "medium", "-crf", "23", "-pix_fmt", "yuv420p"]
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", str(video), "-i", str(narration), "-map", "0:v", "-map", "1:a", *vcodec, "-c:a", "copy", "-t", f"{total:.3f}", "-movflags", "+faststart", str(out)], check=True)
