@@ -1,0 +1,39 @@
+ANTHROPIC_API_KEY is set and takes precedence over the SDK's profile / federation auto-discovery; unset ANTHROPIC_API_KEY to use the auto-discovered credential.
+/Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/backend/agdbg/team.py:124: UserWarning: Using LocalCommandLineCodeExecutor may execute code on the local machine which can be unsafe. For security, it is recommended to use DockerCommandLineCodeExecutor instead. To install Docker, visit: https://docs.docker.com/get-docker/
+  "Executor", code_executor=LocalCommandLineCodeExecutor(work_dir=work_dir, timeout=60)
+/Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/backend/agdbg/team.py:123: UserWarning: No approval function set for CodeExecutorAgent. This means code will be executed automatically without human oversight. For security, consider setting an approval_func to review and approve code before execution. See the CodeExecutorAgent documentation for examples of approval functions.
+  executor = CodeExecutorAgent(
+/Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/.venv/lib/python3.12/site-packages/autogen_core/_single_threaded_agent_runtime.py:772: RuntimeWarning: Intervention handler on_response returned None. This might be unintentional. Consider returning the original message or DropMessage explicitly.
+  _warn_if_none(temp_message, "on_response")
+[  0] send     user                     -> MagenticOneOrchestrator  TextMessage                'How many years after the Eiffel Tower was completed did the Empire State Building open? Re'
+[  1] publish  MagenticOneOrchestrator  -> output                   TextMessage                'How many years after the Eiffel Tower was completed did the Empire State Building open? Re'
+[  2] send     user                     -> Coder                    GroupChatReset             ''
+[  3] response Coder                    -> None                     NoneType                   ''
+[  4] send     user                     -> Executor                 GroupChatReset             ''
+[  5] response Executor                 -> None                     NoneType                   ''
+[  6] send     user                     -> WebSearcher              GroupChatReset             ''
+[  7] response WebSearcher              -> None                     NoneType                   ''
+[  8] publish  MagenticOneOrchestrator  -> output                   TextMessage                '\nWe are working to address the following user request:\n\nHow many years after the Eiffel To'
+[  9] publish  MagenticOneOrchestrator  -> group                    TextMessage                '\nWe are working to address the following user request:\n\nHow many years after the Eiffel To'
+[ 10] publish  MagenticOneOrchestrator  -> output                   TextMessage                "Please fetch the Wikipedia article on the Eiffel Tower (or SETE's official history page) a"
+[ 11] publish  MagenticOneOrchestrator  -> group                    TextMessage                "Please fetch the Wikipedia article on the Eiffel Tower (or SETE's official history page) a"
+[ 12] publish  MagenticOneOrchestrator  -> WebSearcher              GroupChatRequestPublish    ''
+[ 13] response MagenticOneOrchestrator  -> None                     NoneType                   ''
+[ 14] publish  WebSearcher              -> output                   ToolCallRequestEvent       '[\n {\n  "id": "toolu_01SLmjPTDsB2L7ccH9g7M9dB",\n  "arguments": "{\\"url\\": \\"Eiffel Tower\\"}'
+[ 15] publish  WebSearcher              -> output                   ToolCallExecutionEvent     '[\n {\n  "content": "# Eiffel Tower\\n\\nThe Eiffel Tower (  EYE-f\\u0259l; French: Tour Eiffel'
+[ 16] publish  WebSearcher              -> output                   ToolCallRequestEvent       '[\n {\n  "id": "toolu_01LDezgWMG5p7Tjcw32FJ422",\n  "arguments": "{\\"url\\": \\"Eiffel Tower\\",'
+[ 17] publish  WebSearcher              -> output                   ToolCallExecutionEvent     '[\n {\n  "content": "ers standing apart at the base and coming together at the top, joined t'
+[ 18] publish  WebSearcher              -> output                   TextMessage                '42\n\nSources: https://en.wikipedia.org/wiki/Eiffel_Tower (built 1887 to 1889) and https://e'
+[ 19] publish  WebSearcher              -> group                    TextMessage                '42\n\nSources: https://en.wikipedia.org/wiki/Eiffel_Tower (built 1887 to 1889) and https://e'
+[ 20] publish  MagenticOneOrchestrator  -> output                   TextMessage                'Please run the following Python script and report its output: ```python\ncompletion_year = '
+[ 21] publish  MagenticOneOrchestrator  -> group                    TextMessage                'Please run the following Python script and report its output: ```python\ncompletion_year = '
+[ 22] publish  MagenticOneOrchestrator  -> Executor                 GroupChatRequestPublish    ''
+[ 23] publish  Executor                 -> output                   TextMessage                '42\n'
+[ 24] publish  Executor                 -> group                    TextMessage                '42\n'
+[ 25] publish  MagenticOneOrchestrator  -> output                   TextMessage                '42'
+[ 26] publish  MagenticOneOrchestrator  -> group                    TextMessage                '42'
+[ 27] publish  MagenticOneOrchestrator  -> output                   GroupChatTermination       ''
+expected: 42
+answer: 42
+messages: 28 RESULT: PASS
+saved: /Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/recordings/haiku2_w7_eiffel_empire_r1.pkl

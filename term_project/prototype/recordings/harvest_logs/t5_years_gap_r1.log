@@ -1,0 +1,44 @@
+ANTHROPIC_API_KEY is set and takes precedence over the SDK's profile / federation auto-discovery; unset ANTHROPIC_API_KEY to use the auto-discovered credential.
+/Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/backend/agdbg/team.py:76: UserWarning: Using LocalCommandLineCodeExecutor may execute code on the local machine which can be unsafe. For security, it is recommended to use DockerCommandLineCodeExecutor instead. To install Docker, visit: https://docs.docker.com/get-docker/
+  "Executor", code_executor=LocalCommandLineCodeExecutor(work_dir=work_dir, timeout=60)
+/Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/backend/agdbg/team.py:75: UserWarning: No approval function set for CodeExecutorAgent. This means code will be executed automatically without human oversight. For security, consider setting an approval_func to review and approve code before execution. See the CodeExecutorAgent documentation for examples of approval functions.
+  executor = CodeExecutorAgent(
+/Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/.venv/lib/python3.12/site-packages/autogen_core/_single_threaded_agent_runtime.py:772: RuntimeWarning: Intervention handler on_response returned None. This might be unintentional. Consider returning the original message or DropMessage explicitly.
+  _warn_if_none(temp_message, "on_response")
+[  0] send     user                     -> MagenticOneOrchestrator  TextMessage                'How many years passed between the founding of the Lumen Valley Astronomical Society and th'
+[  1] publish  MagenticOneOrchestrator  -> output                   TextMessage                'How many years passed between the founding of the Lumen Valley Astronomical Society and th'
+[  2] send     user                     -> Coder                    GroupChatReset             ''
+[  3] response Coder                    -> None                     NoneType                   ''
+[  4] send     user                     -> Executor                 GroupChatReset             ''
+[  5] response Executor                 -> None                     NoneType                   ''
+[  6] send     user                     -> WebSearcher              GroupChatReset             ''
+[  7] response WebSearcher              -> None                     NoneType                   ''
+[  8] publish  MagenticOneOrchestrator  -> output                   TextMessage                '\nWe are working to address the following user request:\n\nHow many years passed between the '
+[  9] publish  MagenticOneOrchestrator  -> group                    TextMessage                '\nWe are working to address the following user request:\n\nHow many years passed between the '
+[ 10] publish  MagenticOneOrchestrator  -> output                   TextMessage                'Search the web for "Lumen Valley Astronomical Society" and "Lumen Valley Observatory", usi'
+[ 11] publish  MagenticOneOrchestrator  -> group                    TextMessage                'Search the web for "Lumen Valley Astronomical Society" and "Lumen Valley Observatory", usi'
+[ 12] publish  MagenticOneOrchestrator  -> WebSearcher              GroupChatRequestPublish    ''
+[ 13] response MagenticOneOrchestrator  -> None                     NoneType                   ''
+[ 14] publish  WebSearcher              -> output                   ToolCallRequestEvent       '[\n {\n  "id": "toolu_01DHMK3Ja7vjdxCvQQNF84xb",\n  "arguments": "{\\"query\\": \\"\\\\\\"Lumen Val'
+[ 15] publish  WebSearcher              -> output                   ToolCallExecutionEvent     '[\n {\n  "content": "[1] Lumen Valley Astronomical Society - 50th anniversary gala (2008)\\nh'
+[ 16] publish  WebSearcher              -> output                   ToolCallRequestEvent       '[\n {\n  "id": "toolu_01XBYzGoVKju6D6YzYCSR6o3",\n  "arguments": "{\\"url\\": \\"https://en.wiki'
+[ 17] publish  WebSearcher              -> output                   ToolCallExecutionEvent     '[\n {\n  "content": "# Lumen Valley Observatory - Wikipedia\\n\\nThe Lumen Valley Observatory '
+[ 18] publish  WebSearcher              -> output                   ThoughtEvent               'Need official facilities list.'
+[ 19] publish  WebSearcher              -> output                   ToolCallRequestEvent       '[\n {\n  "id": "toolu_0138DpbLLXVVVCmUxow3DfR1",\n  "arguments": "{\\"url\\": \\"https://www.lum'
+[ 20] publish  WebSearcher              -> output                   ToolCallExecutionEvent     '[\n {\n  "content": "# Facilities | Lumen Valley Observatory\\n\\nLumen Valley Observatory | H'
+[ 21] publish  WebSearcher              -> output                   ToolCallRequestEvent       '[\n {\n  "id": "toolu_01DCJ1fGirtA7epaQFJUvm7p",\n  "arguments": "{\\"url\\": \\"https://www.lum'
+[ 22] publish  WebSearcher              -> output                   ToolCallExecutionEvent     '[\n {\n  "content": "infrared instrument commissioned in 2022, and the 0.8 m Pallas robotic '
+[ 23] publish  WebSearcher              -> output                   TextMessage                '**Answer: 66**\n\nBoth organizations exist on the web, and all the dates I needed were found'
+[ 24] publish  WebSearcher              -> group                    TextMessage                '**Answer: 66**\n\nBoth organizations exist on the web, and all the dates I needed were found'
+[ 25] publish  MagenticOneOrchestrator  -> output                   TextMessage                "Please verify the WebSearcher's findings and give the final answer. The Society was founde"
+[ 26] publish  MagenticOneOrchestrator  -> group                    TextMessage                "Please verify the WebSearcher's findings and give the final answer. The Society was founde"
+[ 27] publish  MagenticOneOrchestrator  -> Coder                    GroupChatRequestPublish    ''
+[ 28] publish  Coder                    -> output                   TextMessage                '66'
+[ 29] publish  Coder                    -> group                    TextMessage                '66'
+[ 30] publish  MagenticOneOrchestrator  -> output                   TextMessage                '66'
+[ 31] publish  MagenticOneOrchestrator  -> group                    TextMessage                '66'
+[ 32] publish  MagenticOneOrchestrator  -> output                   GroupChatTermination       ''
+expected: 66
+answer: 66
+messages: 33 RESULT: PASS
+saved: /Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/recordings/t5_years_gap_r1.pkl

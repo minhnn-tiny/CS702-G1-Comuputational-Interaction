@@ -1,0 +1,51 @@
+ANTHROPIC_API_KEY is set and takes precedence over the SDK's profile / federation auto-discovery; unset ANTHROPIC_API_KEY to use the auto-discovered credential.
+/Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/backend/agdbg/team.py:124: UserWarning: Using LocalCommandLineCodeExecutor may execute code on the local machine which can be unsafe. For security, it is recommended to use DockerCommandLineCodeExecutor instead. To install Docker, visit: https://docs.docker.com/get-docker/
+  "Executor", code_executor=LocalCommandLineCodeExecutor(work_dir=work_dir, timeout=60)
+/Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/backend/agdbg/team.py:123: UserWarning: No approval function set for CodeExecutorAgent. This means code will be executed automatically without human oversight. For security, consider setting an approval_func to review and approve code before execution. See the CodeExecutorAgent documentation for examples of approval functions.
+  executor = CodeExecutorAgent(
+/Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/.venv/lib/python3.12/site-packages/autogen_core/_single_threaded_agent_runtime.py:772: RuntimeWarning: Intervention handler on_response returned None. This might be unintentional. Consider returning the original message or DropMessage explicitly.
+  _warn_if_none(temp_message, "on_response")
+[  0] send     user                     -> MagenticOneOrchestrator  TextMessage                'What is the aperture, in metres, of the largest telescope at the Lumen Valley Public Obser'
+[  1] publish  MagenticOneOrchestrator  -> output                   TextMessage                'What is the aperture, in metres, of the largest telescope at the Lumen Valley Public Obser'
+[  2] send     user                     -> Coder                    GroupChatReset             ''
+[  3] response Coder                    -> None                     NoneType                   ''
+[  4] send     user                     -> Executor                 GroupChatReset             ''
+[  5] response Executor                 -> None                     NoneType                   ''
+[  6] send     user                     -> WebSearcher              GroupChatReset             ''
+[  7] response WebSearcher              -> None                     NoneType                   ''
+[  8] publish  MagenticOneOrchestrator  -> output                   TextMessage                '\nWe are working to address the following user request:\n\nWhat is the aperture, in metres, o'
+[  9] publish  MagenticOneOrchestrator  -> group                    TextMessage                '\nWe are working to address the following user request:\n\nWhat is the aperture, in metres, o'
+[ 10] publish  MagenticOneOrchestrator  -> output                   TextMessage                'Please search the web for "Lumen Valley Public Observatory" and fetch its official website'
+[ 11] publish  MagenticOneOrchestrator  -> group                    TextMessage                'Please search the web for "Lumen Valley Public Observatory" and fetch its official website'
+[ 12] publish  MagenticOneOrchestrator  -> WebSearcher              GroupChatRequestPublish    ''
+[ 13] response MagenticOneOrchestrator  -> None                     NoneType                   ''
+[ 14] publish  WebSearcher              -> output                   ToolCallRequestEvent       '[\n {\n  "id": "toolu_01HrDafDyecTu1FUhXwHo6Qi",\n  "arguments": "{\\"query\\": \\"Lumen Valley '
+[ 15] publish  WebSearcher              -> output                   ToolCallExecutionEvent     '[\n {\n  "content": "[1] Lumen Valley Public Observatory - home\\nhttps://lvpo.org/\\nWelcome '
+[ 16] publish  WebSearcher              -> output                   ThoughtEvent               'Let me read the official telescopes page to confirm the full list.'
+[ 17] publish  WebSearcher              -> output                   ToolCallRequestEvent       '[\n {\n  "id": "toolu_01CCs88Q7vpABCbomDfwjBSh",\n  "arguments": "{\\"url\\": \\"https://lvpo.or'
+[ 18] publish  WebSearcher              -> output                   ToolCallExecutionEvent     '[\n {\n  "content": "# Lumen Valley Public Observatory - telescopes\\n\\nLumen Valley Public O'
+[ 19] publish  WebSearcher              -> output                   TextMessage                '**0.4**\n\nSource: https://lvpo.org/telescopes (the official Lumen Valley Public Observatory'
+[ 20] publish  WebSearcher              -> group                    TextMessage                '**0.4**\n\nSource: https://lvpo.org/telescopes (the official Lumen Valley Public Observatory'
+[ 21] publish  MagenticOneOrchestrator  -> output                   TextMessage                'Please fetch https://lvpo.org/telescopes and confirm that it belongs to the Lumen Valley P'
+[ 22] publish  MagenticOneOrchestrator  -> group                    TextMessage                'Please fetch https://lvpo.org/telescopes and confirm that it belongs to the Lumen Valley P'
+[ 23] publish  MagenticOneOrchestrator  -> WebSearcher              GroupChatRequestPublish    ''
+[ 24] publish  WebSearcher              -> output                   ToolCallRequestEvent       '[\n {\n  "id": "toolu_01E5W13VvVbPRfRmPS3aczxz",\n  "arguments": "{\\"url\\": \\"https://lvpo.or'
+[ 25] publish  WebSearcher              -> output                   ToolCallExecutionEvent     '[\n {\n  "content": "# Lumen Valley Public Observatory - telescopes\\n\\nLumen Valley Public O'
+[ 26] publish  WebSearcher              -> output                   ToolCallRequestEvent       '[\n {\n  "id": "toolu_016ebNU31PSneD7MqMirKqGK",\n  "arguments": "{\\"url\\": \\"https://lvpo.or'
+[ 27] publish  WebSearcher              -> output                   ToolCallExecutionEvent     '[\n {\n  "content": "# Lumen Valley Public Observatory - home\\n\\nLumen Valley Public Observa'
+[ 28] publish  WebSearcher              -> output                   TextMessage                "**Answer: 0.4 m**, confirmed by the observatory's own site. I did not find an independent "
+[ 29] publish  WebSearcher              -> group                    TextMessage                "**Answer: 0.4 m**, confirmed by the observatory's own site. I did not find an independent "
+[ 30] publish  MagenticOneOrchestrator  -> output                   TextMessage                "Search for 'Lumen Valley Public Observatory' together with terms such as '0.4 m', 'Dobsoni"
+[ 31] publish  MagenticOneOrchestrator  -> group                    TextMessage                "Search for 'Lumen Valley Public Observatory' together with terms such as '0.4 m', 'Dobsoni"
+[ 32] publish  MagenticOneOrchestrator  -> WebSearcher              GroupChatRequestPublish    ''
+[ 33] publish  WebSearcher              -> output                   ToolCallRequestEvent       '[\n {\n  "id": "toolu_01BThquf9tvwG7ML2Caj5CeZ",\n  "arguments": "{\\"query\\": \\"\\\\\\"Lumen Val'
+[ 34] publish  WebSearcher              -> output                   ToolCallExecutionEvent     '[\n {\n  "content": "[1] Lumen Valley Public Observatory - home\\nhttps://lvpo.org/\\nWelcome '
+[ 35] publish  WebSearcher              -> output                   TextMessage                'No independent source exists in the search results. I ran two searches combining "Lumen Va'
+[ 36] publish  WebSearcher              -> group                    TextMessage                'No independent source exists in the search results. I ran two searches combining "Lumen Va'
+[ 37] publish  MagenticOneOrchestrator  -> output                   TextMessage                "0.4\n\nThis comes from the observatory's own website (lvpo.org), which lists its largest tel"
+[ 38] publish  MagenticOneOrchestrator  -> group                    TextMessage                "0.4\n\nThis comes from the observatory's own website (lvpo.org), which lists its largest tel"
+[ 39] publish  MagenticOneOrchestrator  -> output                   GroupChatTermination       ''
+expected: 0.4
+answer: 0.4  This comes from the observatory's own website (lvpo.org), which lists its largest telescope as a 0.4 m Dobsonian. I found no independent source to confirm it.
+messages: 40 RESULT: PASS
+saved: /Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/recordings/haiku2_t6_public_aperture_r1.pkl

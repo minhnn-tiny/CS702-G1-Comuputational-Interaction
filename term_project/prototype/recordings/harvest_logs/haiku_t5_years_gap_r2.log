@@ -1,0 +1,63 @@
+ANTHROPIC_API_KEY is set and takes precedence over the SDK's profile / federation auto-discovery; unset ANTHROPIC_API_KEY to use the auto-discovered credential.
+/Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/backend/agdbg/team.py:76: UserWarning: Using LocalCommandLineCodeExecutor may execute code on the local machine which can be unsafe. For security, it is recommended to use DockerCommandLineCodeExecutor instead. To install Docker, visit: https://docs.docker.com/get-docker/
+  "Executor", code_executor=LocalCommandLineCodeExecutor(work_dir=work_dir, timeout=60)
+/Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/backend/agdbg/team.py:75: UserWarning: No approval function set for CodeExecutorAgent. This means code will be executed automatically without human oversight. For security, consider setting an approval_func to review and approve code before execution. See the CodeExecutorAgent documentation for examples of approval functions.
+  executor = CodeExecutorAgent(
+/Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/.venv/lib/python3.12/site-packages/autogen_core/_single_threaded_agent_runtime.py:772: RuntimeWarning: Intervention handler on_response returned None. This might be unintentional. Consider returning the original message or DropMessage explicitly.
+  _warn_if_none(temp_message, "on_response")
+[  0] send     user                     -> MagenticOneOrchestrator  TextMessage                'How many years passed between the founding of the Lumen Valley Astronomical Society and th'
+[  1] publish  MagenticOneOrchestrator  -> output                   TextMessage                'How many years passed between the founding of the Lumen Valley Astronomical Society and th'
+[  2] send     user                     -> Coder                    GroupChatReset             ''
+[  3] response Coder                    -> None                     NoneType                   ''
+[  4] send     user                     -> Executor                 GroupChatReset             ''
+[  5] response Executor                 -> None                     NoneType                   ''
+[  6] send     user                     -> WebSearcher              GroupChatReset             ''
+[  7] response WebSearcher              -> None                     NoneType                   ''
+[  8] publish  MagenticOneOrchestrator  -> output                   TextMessage                '\nWe are working to address the following user request:\n\nHow many years passed between the '
+[  9] publish  MagenticOneOrchestrator  -> group                    TextMessage                '\nWe are working to address the following user request:\n\nHow many years passed between the '
+[ 10] publish  MagenticOneOrchestrator  -> output                   TextMessage                "Please search the web for 'Lumen Valley Astronomical Society' and 'Lumen Valley Observator"
+[ 11] publish  MagenticOneOrchestrator  -> group                    TextMessage                "Please search the web for 'Lumen Valley Astronomical Society' and 'Lumen Valley Observator"
+[ 12] publish  MagenticOneOrchestrator  -> WebSearcher              GroupChatRequestPublish    ''
+[ 13] response MagenticOneOrchestrator  -> None                     NoneType                   ''
+[ 14] publish  WebSearcher              -> output                   ToolCallRequestEvent       '[\n {\n  "id": "toolu_012grteYTzhyPc1roe9b5yAT",\n  "arguments": "{\\"query\\": \\"Lumen Valley '
+[ 15] publish  WebSearcher              -> output                   ToolCallExecutionEvent     '[\n {\n  "content": "[1] Lumen Valley Astronomical Society - 50th anniversary gala (2008)\\nh'
+[ 16] publish  WebSearcher              -> output                   ToolCallRequestEvent       '[\n {\n  "id": "toolu_01WedWxyfWvciqJNquzdBHsr",\n  "arguments": "{\\"url\\": \\"https://en.wiki'
+[ 17] publish  WebSearcher              -> output                   ToolCallExecutionEvent     '[\n {\n  "content": "# Lumen Valley Observatory - Wikipedia\\n\\nThe Lumen Valley Observatory '
+[ 18] publish  WebSearcher              -> output                   ToolCallRequestEvent       '[\n {\n  "id": "toolu_011ez8TTYbfidB4WXdrJP2PU",\n  "arguments": "{\\"url\\": \\"https://www.lum'
+[ 19] publish  WebSearcher              -> output                   ToolCallExecutionEvent     '[\n {\n  "content": "# Governance and reporting | Lumen Valley Observatory\\n\\nLumen Valley O'
+[ 20] publish  WebSearcher              -> output                   ToolCallRequestEvent       '[\n {\n  "id": "toolu_014eA3i31hassCEJPSQBtckp",\n  "arguments": "{\\"url\\": \\"https://www.lum'
+[ 21] publish  WebSearcher              -> output                   ToolCallExecutionEvent     '[\n {\n  "content": "# Facilities | Lumen Valley Observatory\\n\\nLumen Valley Observatory | H'
+[ 22] publish  WebSearcher              -> output                   TextMessage                'I could not confirm the answer. The facilities page was cut off before the sixth instrumen'
+[ 23] publish  WebSearcher              -> group                    TextMessage                'I could not confirm the answer. The facilities page was cut off before the sixth instrumen'
+[ 24] publish  MagenticOneOrchestrator  -> output                   TextMessage                'Please fetch https://www.lumenvalleyobservatory.org/facilities again, starting from offset'
+[ 25] publish  MagenticOneOrchestrator  -> group                    TextMessage                'Please fetch https://www.lumenvalleyobservatory.org/facilities again, starting from offset'
+[ 26] publish  MagenticOneOrchestrator  -> WebSearcher              GroupChatRequestPublish    ''
+[ 27] publish  WebSearcher              -> output                   ToolCallRequestEvent       '[\n {\n  "id": "toolu_01Y78DDY7qertXALChuoEujj",\n  "arguments": "{\\"url\\": \\"https://www.lum'
+[ 28] publish  WebSearcher              -> output                   ToolCallExecutionEvent     '[\n {\n  "content": "infrared instrument commissioned in 2022, and the 0.8 m Pallas robotic '
+[ 29] publish  WebSearcher              -> output                   TextMessage                '**Corvid and Pallas, from https://www.lumenvalleyobservatory.org/facilities (offset 900 co'
+[ 30] publish  WebSearcher              -> group                    TextMessage                '**Corvid and Pallas, from https://www.lumenvalleyobservatory.org/facilities (offset 900 co'
+[ 31] publish  MagenticOneOrchestrator  -> output                   TextMessage                'Please search for and fetch the Lumen Valley Observatory news page, press releases, and an'
+[ 32] publish  MagenticOneOrchestrator  -> group                    TextMessage                'Please search for and fetch the Lumen Valley Observatory news page, press releases, and an'
+[ 33] publish  MagenticOneOrchestrator  -> WebSearcher              GroupChatRequestPublish    ''
+[ 34] publish  WebSearcher              -> output                   ToolCallRequestEvent       '[\n {\n  "id": "toolu_01Gpk4JcyFASMGZnCQmRmu8k",\n  "arguments": "{\\"query\\": \\"Lumen Valley '
+[ 35] publish  WebSearcher              -> output                   ToolCallExecutionEvent     '[\n {\n  "content": "[1] Pallas robotic telescope declared operational - Lumen Valley Observ'
+[ 36] publish  WebSearcher              -> output                   ToolCallRequestEvent       '[\n {\n  "id": "toolu_01JRgQRimJyXoSkBUwj5iyY9",\n  "arguments": "{\\"url\\": \\"https://www.lum'
+[ 37] publish  WebSearcher              -> output                   ToolCallExecutionEvent     '[\n {\n  "content": "# Pallas robotic telescope declared operational - Lumen Valley Observat'
+[ 38] publish  WebSearcher              -> output                   ToolCallRequestEvent       '[\n {\n  "id": "toolu_01GKCPvnyAaUKqbm1Atc8knD",\n  "arguments": "{\\"url\\": \\"https://www.lum'
+[ 39] publish  WebSearcher              -> output                   ToolCallExecutionEvent     '[\n {\n  "content": "e automated survey programme. Director Dr. Ilse Varga thanked the engin'
+[ 40] publish  WebSearcher              -> output                   TextMessage                'The 2024 date stands. I found no source that conflicts with the facilities page, and no so'
+[ 41] publish  WebSearcher              -> group                    TextMessage                'The 2024 date stands. I found no source that conflicts with the facilities page, and no so'
+[ 42] publish  MagenticOneOrchestrator  -> output                   TextMessage                'Please fetch https://www.lumenvalleyobservatory.org/news/2024/pallas-operational in full a'
+[ 43] publish  MagenticOneOrchestrator  -> group                    TextMessage                'Please fetch https://www.lumenvalleyobservatory.org/news/2024/pallas-operational in full a'
+[ 44] publish  MagenticOneOrchestrator  -> WebSearcher              GroupChatRequestPublish    ''
+[ 45] publish  WebSearcher              -> output                   ToolCallRequestEvent       '[\n {\n  "id": "toolu_01YWLJu4QCVB8UNGGW6S8sv2",\n  "arguments": "{\\"url\\": \\"https://www.lum'
+[ 46] publish  WebSearcher              -> output                   ToolCallExecutionEvent     '[\n {\n  "content": "# Pallas robotic telescope declared operational - Lumen Valley Observat'
+[ 47] publish  WebSearcher              -> output                   TextMessage                'I fetched the full Pallas news item. It does not describe Pallas as newest or as the most '
+[ 48] publish  WebSearcher              -> group                    TextMessage                'I fetched the full Pallas news item. It does not describe Pallas as newest or as the most '
+[ 49] publish  MagenticOneOrchestrator  -> output                   TextMessage                '**66**'
+[ 50] publish  MagenticOneOrchestrator  -> group                    TextMessage                '**66**'
+[ 51] publish  MagenticOneOrchestrator  -> output                   GroupChatTermination       ''
+expected: 66
+answer: **66**
+messages: 52 RESULT: PASS
+saved: /Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/recordings/haiku_t5_years_gap_r2.pkl

@@ -1,0 +1,45 @@
+ANTHROPIC_API_KEY is set and takes precedence over the SDK's profile / federation auto-discovery; unset ANTHROPIC_API_KEY to use the auto-discovered credential.
+/Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/backend/agdbg/team.py:124: UserWarning: Using LocalCommandLineCodeExecutor may execute code on the local machine which can be unsafe. For security, it is recommended to use DockerCommandLineCodeExecutor instead. To install Docker, visit: https://docs.docker.com/get-docker/
+  "Executor", code_executor=LocalCommandLineCodeExecutor(work_dir=work_dir, timeout=60)
+/Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/backend/agdbg/team.py:123: UserWarning: No approval function set for CodeExecutorAgent. This means code will be executed automatically without human oversight. For security, consider setting an approval_func to review and approve code before execution. See the CodeExecutorAgent documentation for examples of approval functions.
+  executor = CodeExecutorAgent(
+/Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/.venv/lib/python3.12/site-packages/autogen_core/_single_threaded_agent_runtime.py:772: RuntimeWarning: Intervention handler on_response returned None. This might be unintentional. Consider returning the original message or DropMessage explicitly.
+  _warn_if_none(temp_message, "on_response")
+[  0] send     user                     -> MagenticOneOrchestrator  TextMessage                'The file server.log in your working directory contains one log line per request in the for'
+[  1] publish  MagenticOneOrchestrator  -> output                   TextMessage                'The file server.log in your working directory contains one log line per request in the for'
+[  2] send     user                     -> Coder                    GroupChatReset             ''
+[  3] response Coder                    -> None                     NoneType                   ''
+[  4] send     user                     -> Executor                 GroupChatReset             ''
+[  5] response Executor                 -> None                     NoneType                   ''
+[  6] send     user                     -> WebSearcher              GroupChatReset             ''
+[  7] response WebSearcher              -> None                     NoneType                   ''
+[  8] publish  MagenticOneOrchestrator  -> output                   TextMessage                '\nWe are working to address the following user request:\n\nThe file server.log in your workin'
+[  9] publish  MagenticOneOrchestrator  -> group                    TextMessage                '\nWe are working to address the following user request:\n\nThe file server.log in your workin'
+[ 10] publish  MagenticOneOrchestrator  -> output                   TextMessage                'Please run the following shell script and return its full output: ```sh\npwd\nwc -l server.l'
+[ 11] publish  MagenticOneOrchestrator  -> group                    TextMessage                'Please run the following shell script and return its full output: ```sh\npwd\nwc -l server.l'
+[ 12] publish  MagenticOneOrchestrator  -> Executor                 GroupChatRequestPublish    ''
+[ 13] response MagenticOneOrchestrator  -> None                     NoneType                   ''
+[ 14] publish  Executor                 -> output                   TextMessage                '/Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/w'
+[ 15] publish  Executor                 -> group                    TextMessage                '/Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/w'
+[ 16] publish  MagenticOneOrchestrator  -> output                   TextMessage                'Write a Python script that opens server.log, splits each line on whitespace, and takes fie'
+[ 17] publish  MagenticOneOrchestrator  -> group                    TextMessage                'Write a Python script that opens server.log, splits each line on whitespace, and takes fie'
+[ 18] publish  MagenticOneOrchestrator  -> Coder                    GroupChatRequestPublish    ''
+[ 19] publish  Coder                    -> output                   TextMessage                '```python\nimport sys\n\nerror_ips = set()\nskipped = 0\n\nwith open("server.log", "r", encoding'
+[ 20] publish  Coder                    -> group                    TextMessage                '```python\nimport sys\n\nerror_ips = set()\nskipped = 0\n\nwith open("server.log", "r", encoding'
+[ 21] publish  MagenticOneOrchestrator  -> output                   TextMessage                'Please run the following Python script in the working directory containing server.log and '
+[ 22] publish  MagenticOneOrchestrator  -> group                    TextMessage                'Please run the following Python script in the working directory containing server.log and '
+[ 23] publish  MagenticOneOrchestrator  -> Executor                 GroupChatRequestPublish    ''
+[ 24] publish  Executor                 -> output                   TextMessage                'Skipped lines: 0\n21\nSkipped lines: 0\n21\n'
+[ 25] publish  Executor                 -> group                    TextMessage                'Skipped lines: 0\n21\nSkipped lines: 0\n21\n'
+[ 26] publish  MagenticOneOrchestrator  -> output                   TextMessage                'Please run the following shell script in the working directory and return its full output:'
+[ 27] publish  MagenticOneOrchestrator  -> group                    TextMessage                'Please run the following shell script in the working directory and return its full output:'
+[ 28] publish  MagenticOneOrchestrator  -> Executor                 GroupChatRequestPublish    ''
+[ 29] publish  Executor                 -> output                   TextMessage                '      21\n27\n'
+[ 30] publish  Executor                 -> group                    TextMessage                '      21\n27\n'
+[ 31] publish  MagenticOneOrchestrator  -> output                   TextMessage                '21'
+[ 32] publish  MagenticOneOrchestrator  -> group                    TextMessage                '21'
+[ 33] publish  MagenticOneOrchestrator  -> output                   GroupChatTermination       ''
+expected: 21
+answer: 21
+messages: 34 RESULT: PASS
+saved: /Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/recordings/haiku_t3_log_ips_r1.pkl

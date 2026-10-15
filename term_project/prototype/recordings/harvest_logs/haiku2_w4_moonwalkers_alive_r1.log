@@ -1,0 +1,32 @@
+ANTHROPIC_API_KEY is set and takes precedence over the SDK's profile / federation auto-discovery; unset ANTHROPIC_API_KEY to use the auto-discovered credential.
+/Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/backend/agdbg/team.py:124: UserWarning: Using LocalCommandLineCodeExecutor may execute code on the local machine which can be unsafe. For security, it is recommended to use DockerCommandLineCodeExecutor instead. To install Docker, visit: https://docs.docker.com/get-docker/
+  "Executor", code_executor=LocalCommandLineCodeExecutor(work_dir=work_dir, timeout=60)
+/Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/backend/agdbg/team.py:123: UserWarning: No approval function set for CodeExecutorAgent. This means code will be executed automatically without human oversight. For security, consider setting an approval_func to review and approve code before execution. See the CodeExecutorAgent documentation for examples of approval functions.
+  executor = CodeExecutorAgent(
+/Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/.venv/lib/python3.12/site-packages/autogen_core/_single_threaded_agent_runtime.py:772: RuntimeWarning: Intervention handler on_response returned None. This might be unintentional. Consider returning the original message or DropMessage explicitly.
+  _warn_if_none(temp_message, "on_response")
+[  0] send     user                     -> MagenticOneOrchestrator  TextMessage                'How many of the twelve people who have walked on the Moon were still alive on 31 December '
+[  1] publish  MagenticOneOrchestrator  -> output                   TextMessage                'How many of the twelve people who have walked on the Moon were still alive on 31 December '
+[  2] send     user                     -> Coder                    GroupChatReset             ''
+[  3] response Coder                    -> None                     NoneType                   ''
+[  4] send     user                     -> Executor                 GroupChatReset             ''
+[  5] response Executor                 -> None                     NoneType                   ''
+[  6] send     user                     -> WebSearcher              GroupChatReset             ''
+[  7] response WebSearcher              -> None                     NoneType                   ''
+[  8] publish  MagenticOneOrchestrator  -> output                   TextMessage                '\nWe are working to address the following user request:\n\nHow many of the twelve people who '
+[  9] publish  MagenticOneOrchestrator  -> group                    TextMessage                '\nWe are working to address the following user request:\n\nHow many of the twelve people who '
+[ 10] publish  MagenticOneOrchestrator  -> output                   TextMessage                "Please fetch NASA's Apollo astronaut biographies and the Wikipedia 'List of Apollo astrona"
+[ 11] publish  MagenticOneOrchestrator  -> group                    TextMessage                "Please fetch NASA's Apollo astronaut biographies and the Wikipedia 'List of Apollo astrona"
+[ 12] publish  MagenticOneOrchestrator  -> WebSearcher              GroupChatRequestPublish    ''
+[ 13] response MagenticOneOrchestrator  -> None                     NoneType                   ''
+[ 14] publish  WebSearcher              -> output                   ToolCallRequestEvent       '[\n {\n  "id": "toolu_01VJznHSvP91F6MDYvx58imF",\n  "arguments": "{\\"url\\": \\"List of Apollo '
+[ 15] publish  WebSearcher              -> output                   ToolCallExecutionEvent     '[\n {\n  "content": "# List of Apollo astronauts\\n\\nAs part of the Apollo program by NASA, 2'
+[ 16] publish  WebSearcher              -> output                   TextMessage                "**Answer: 4**\n\nI checked three sources directly. The other walkers' dates are from my back"
+[ 17] publish  WebSearcher              -> group                    TextMessage                "**Answer: 4**\n\nI checked three sources directly. The other walkers' dates are from my back"
+[ 18] publish  MagenticOneOrchestrator  -> output                   TextMessage                'Four of the twelve Moon walkers were still alive on 31 December 2024: Buzz Aldrin, David S'
+[ 19] publish  MagenticOneOrchestrator  -> group                    TextMessage                'Four of the twelve Moon walkers were still alive on 31 December 2024: Buzz Aldrin, David S'
+[ 20] publish  MagenticOneOrchestrator  -> output                   GroupChatTermination       ''
+expected: 4
+answer: Four of the twelve Moon walkers were still alive on 31 December 2024: Buzz Aldrin, David Scott, Charlie Duke, and Harrison Schmitt.  The other eight had died before that date. John Young died on January 5, 2018, so the "2019" in the earlier correction was a mistake. Michael Collins orbited the Moon 
+messages: 21 RESULT: FAIL
+saved: /Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/recordings/haiku2_w4_moonwalkers_alive_r1.pkl

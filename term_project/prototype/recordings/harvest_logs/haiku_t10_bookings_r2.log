@@ -1,0 +1,50 @@
+ANTHROPIC_API_KEY is set and takes precedence over the SDK's profile / federation auto-discovery; unset ANTHROPIC_API_KEY to use the auto-discovered credential.
+/Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/backend/agdbg/team.py:76: UserWarning: Using LocalCommandLineCodeExecutor may execute code on the local machine which can be unsafe. For security, it is recommended to use DockerCommandLineCodeExecutor instead. To install Docker, visit: https://docs.docker.com/get-docker/
+  "Executor", code_executor=LocalCommandLineCodeExecutor(work_dir=work_dir, timeout=60)
+/Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/backend/agdbg/team.py:75: UserWarning: No approval function set for CodeExecutorAgent. This means code will be executed automatically without human oversight. For security, consider setting an approval_func to review and approve code before execution. See the CodeExecutorAgent documentation for examples of approval functions.
+  executor = CodeExecutorAgent(
+/Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/.venv/lib/python3.12/site-packages/autogen_core/_single_threaded_agent_runtime.py:772: RuntimeWarning: Intervention handler on_response returned None. This might be unintentional. Consider returning the original message or DropMessage explicitly.
+  _warn_if_none(temp_message, "on_response")
+[  0] send     user                     -> MagenticOneOrchestrator  TextMessage                'The file bookings.csv in your working directory is an export of 2025 night-tour bookings ('
+[  1] publish  MagenticOneOrchestrator  -> output                   TextMessage                'The file bookings.csv in your working directory is an export of 2025 night-tour bookings ('
+[  2] send     user                     -> Coder                    GroupChatReset             ''
+[  3] response Coder                    -> None                     NoneType                   ''
+[  4] send     user                     -> Executor                 GroupChatReset             ''
+[  5] response Executor                 -> None                     NoneType                   ''
+[  6] send     user                     -> WebSearcher              GroupChatReset             ''
+[  7] response WebSearcher              -> None                     NoneType                   ''
+[  8] publish  MagenticOneOrchestrator  -> output                   TextMessage                '\nWe are working to address the following user request:\n\nThe file bookings.csv in your work'
+[  9] publish  MagenticOneOrchestrator  -> group                    TextMessage                '\nWe are working to address the following user request:\n\nThe file bookings.csv in your work'
+[ 10] publish  MagenticOneOrchestrator  -> output                   TextMessage                'Write a short Python script that reads bookings.csv from the working directory with the cs'
+[ 11] publish  MagenticOneOrchestrator  -> group                    TextMessage                'Write a short Python script that reads bookings.csv from the working directory with the cs'
+[ 12] publish  MagenticOneOrchestrator  -> Coder                    GroupChatRequestPublish    ''
+[ 13] response MagenticOneOrchestrator  -> None                     NoneType                   ''
+[ 14] publish  Coder                    -> output                   TextMessage                "I'll start by inspecting the file. The plan is: first run an inspection script to learn th"
+[ 15] publish  Coder                    -> group                    TextMessage                "I'll start by inspecting the file. The plan is: first run an inspection script to learn th"
+[ 16] publish  MagenticOneOrchestrator  -> output                   TextMessage                'Please run the inspection Python script from the previous message in the working directory'
+[ 17] publish  MagenticOneOrchestrator  -> group                    TextMessage                'Please run the inspection Python script from the previous message in the working directory'
+[ 18] publish  MagenticOneOrchestrator  -> Executor                 GroupChatRequestPublish    ''
+[ 19] publish  Executor                 -> output                   TextMessage                "HEADER: ['booking_id', 'date', 'party_size', 'channel']\nROW COUNT (excluding header): 214\n"
+[ 20] publish  Executor                 -> group                    TextMessage                "HEADER: ['booking_id', 'date', 'party_size', 'channel']\nROW COUNT (excluding header): 214\n"
+[ 21] publish  MagenticOneOrchestrator  -> output                   TextMessage                'Using the inspection results (214 data rows, 34 exact duplicate extra copies, every repeat'
+[ 22] publish  MagenticOneOrchestrator  -> group                    TextMessage                'Using the inspection results (214 data rows, 34 exact duplicate extra copies, every repeat'
+[ 23] publish  MagenticOneOrchestrator  -> Coder                    GroupChatRequestPublish    ''
+[ 24] publish  Coder                    -> output                   TextMessage                'The inspection results show the duplicates are exact copies: 34 extra copies, every repeat'
+[ 25] publish  Coder                    -> group                    TextMessage                'The inspection results show the duplicates are exact copies: 34 extra copies, every repeat'
+[ 26] publish  MagenticOneOrchestrator  -> output                   TextMessage                'Please run the following Python script in the working directory containing bookings.csv an'
+[ 27] publish  MagenticOneOrchestrator  -> group                    TextMessage                'Please run the following Python script in the working directory containing bookings.csv an'
+[ 28] publish  MagenticOneOrchestrator  -> Executor                 GroupChatRequestPublish    ''
+[ 29] publish  Executor                 -> output                   TextMessage                '647\n647\n'
+[ 30] publish  Executor                 -> group                    TextMessage                '647\n647\n'
+[ 31] publish  MagenticOneOrchestrator  -> output                   TextMessage                "Confirm that the deduplicated headcount from the executor's output is 647, and reply with "
+[ 32] publish  MagenticOneOrchestrator  -> group                    TextMessage                "Confirm that the deduplicated headcount from the executor's output is 647, and reply with "
+[ 33] publish  MagenticOneOrchestrator  -> Coder                    GroupChatRequestPublish    ''
+[ 34] publish  Coder                    -> output                   TextMessage                '647'
+[ 35] publish  Coder                    -> group                    TextMessage                '647'
+[ 36] publish  MagenticOneOrchestrator  -> output                   TextMessage                '647'
+[ 37] publish  MagenticOneOrchestrator  -> group                    TextMessage                '647'
+[ 38] publish  MagenticOneOrchestrator  -> output                   GroupChatTermination       ''
+expected: 647
+answer: 647
+messages: 39 RESULT: PASS
+saved: /Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/recordings/haiku_t10_bookings_r2.pkl

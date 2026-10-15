@@ -1,0 +1,35 @@
+ANTHROPIC_API_KEY is set and takes precedence over the SDK's profile / federation auto-discovery; unset ANTHROPIC_API_KEY to use the auto-discovered credential.
+/Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/backend/agdbg/team.py:124: UserWarning: Using LocalCommandLineCodeExecutor may execute code on the local machine which can be unsafe. For security, it is recommended to use DockerCommandLineCodeExecutor instead. To install Docker, visit: https://docs.docker.com/get-docker/
+  "Executor", code_executor=LocalCommandLineCodeExecutor(work_dir=work_dir, timeout=60)
+/Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/backend/agdbg/team.py:123: UserWarning: No approval function set for CodeExecutorAgent. This means code will be executed automatically without human oversight. For security, consider setting an approval_func to review and approve code before execution. See the CodeExecutorAgent documentation for examples of approval functions.
+  executor = CodeExecutorAgent(
+/Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/.venv/lib/python3.12/site-packages/autogen_core/_single_threaded_agent_runtime.py:772: RuntimeWarning: Intervention handler on_response returned None. This might be unintentional. Consider returning the original message or DropMessage explicitly.
+  _warn_if_none(temp_message, "on_response")
+[  0] send     user                     -> MagenticOneOrchestrator  TextMessage                'The file server.log in your working directory contains one log line per request in the for'
+[  1] publish  MagenticOneOrchestrator  -> output                   TextMessage                'The file server.log in your working directory contains one log line per request in the for'
+[  2] send     user                     -> Coder                    GroupChatReset             ''
+[  3] response Coder                    -> None                     NoneType                   ''
+[  4] send     user                     -> Executor                 GroupChatReset             ''
+[  5] response Executor                 -> None                     NoneType                   ''
+[  6] send     user                     -> WebSearcher              GroupChatReset             ''
+[  7] response WebSearcher              -> None                     NoneType                   ''
+[  8] publish  MagenticOneOrchestrator  -> output                   TextMessage                '\nWe are working to address the following user request:\n\nThe file server.log in your workin'
+[  9] publish  MagenticOneOrchestrator  -> group                    TextMessage                '\nWe are working to address the following user request:\n\nThe file server.log in your workin'
+[ 10] publish  MagenticOneOrchestrator  -> output                   TextMessage                "Write a Python script that opens 'server.log' in the working directory and, for each line,"
+[ 11] publish  MagenticOneOrchestrator  -> group                    TextMessage                "Write a Python script that opens 'server.log' in the working directory and, for each line,"
+[ 12] publish  MagenticOneOrchestrator  -> Coder                    GroupChatRequestPublish    ''
+[ 13] response MagenticOneOrchestrator  -> None                     NoneType                   ''
+[ 14] publish  Coder                    -> output                   TextMessage                'I\'ll read server.log from the working directory, keep only lines whose LEVEL is exactly "E'
+[ 15] publish  Coder                    -> group                    TextMessage                'I\'ll read server.log from the working directory, keep only lines whose LEVEL is exactly "E'
+[ 16] publish  MagenticOneOrchestrator  -> output                   TextMessage                'Please run the following Python script in the working directory, where server.log is locat'
+[ 17] publish  MagenticOneOrchestrator  -> group                    TextMessage                'Please run the following Python script in the working directory, where server.log is locat'
+[ 18] publish  MagenticOneOrchestrator  -> Executor                 GroupChatRequestPublish    ''
+[ 19] publish  Executor                 -> output                   TextMessage                '21\n21\n'
+[ 20] publish  Executor                 -> group                    TextMessage                '21\n21\n'
+[ 21] publish  MagenticOneOrchestrator  -> output                   TextMessage                '21'
+[ 22] publish  MagenticOneOrchestrator  -> group                    TextMessage                '21'
+[ 23] publish  MagenticOneOrchestrator  -> output                   GroupChatTermination       ''
+expected: 21
+answer: 21
+messages: 24 RESULT: PASS
+saved: /Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/recordings/haiku2_t3_log_ips_r1.pkl

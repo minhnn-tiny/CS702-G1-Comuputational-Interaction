@@ -1,0 +1,83 @@
+ANTHROPIC_API_KEY is set and takes precedence over the SDK's profile / federation auto-discovery; unset ANTHROPIC_API_KEY to use the auto-discovered credential.
+/Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/backend/agdbg/team.py:124: UserWarning: Using LocalCommandLineCodeExecutor may execute code on the local machine which can be unsafe. For security, it is recommended to use DockerCommandLineCodeExecutor instead. To install Docker, visit: https://docs.docker.com/get-docker/
+  "Executor", code_executor=LocalCommandLineCodeExecutor(work_dir=work_dir, timeout=60)
+/Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/backend/agdbg/team.py:123: UserWarning: No approval function set for CodeExecutorAgent. This means code will be executed automatically without human oversight. For security, consider setting an approval_func to review and approve code before execution. See the CodeExecutorAgent documentation for examples of approval functions.
+  executor = CodeExecutorAgent(
+/Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/.venv/lib/python3.12/site-packages/autogen_core/_single_threaded_agent_runtime.py:772: RuntimeWarning: Intervention handler on_response returned None. This might be unintentional. Consider returning the original message or DropMessage explicitly.
+  _warn_if_none(temp_message, "on_response")
+[  0] send     user                     -> MagenticOneOrchestrator  TextMessage                'How many of the instruments that the Lumen Valley Observatory currently operates were comm'
+[  1] publish  MagenticOneOrchestrator  -> output                   TextMessage                'How many of the instruments that the Lumen Valley Observatory currently operates were comm'
+[  2] send     user                     -> Coder                    GroupChatReset             ''
+[  3] response Coder                    -> None                     NoneType                   ''
+[  4] send     user                     -> Executor                 GroupChatReset             ''
+[  5] response Executor                 -> None                     NoneType                   ''
+[  6] send     user                     -> WebSearcher              GroupChatReset             ''
+[  7] response WebSearcher              -> None                     NoneType                   ''
+[  8] publish  MagenticOneOrchestrator  -> output                   TextMessage                '\nWe are working to address the following user request:\n\nHow many of the instruments that t'
+[  9] publish  MagenticOneOrchestrator  -> group                    TextMessage                '\nWe are working to address the following user request:\n\nHow many of the instruments that t'
+[ 10] publish  MagenticOneOrchestrator  -> output                   TextMessage                'Please search the web for the Lumen Valley Observatory and the Lumen Valley Astronomical S'
+[ 11] publish  MagenticOneOrchestrator  -> group                    TextMessage                'Please search the web for the Lumen Valley Observatory and the Lumen Valley Astronomical S'
+[ 12] publish  MagenticOneOrchestrator  -> WebSearcher              GroupChatRequestPublish    ''
+[ 13] response MagenticOneOrchestrator  -> None                     NoneType                   ''
+[ 14] publish  WebSearcher              -> output                   ToolCallRequestEvent       '[\n {\n  "id": "toolu_01PEHp1mfA8JCT2CgcRAVYxK",\n  "arguments": "{\\"query\\": \\"Lumen Valley '
+[ 15] publish  WebSearcher              -> output                   ToolCallExecutionEvent     '[\n {\n  "content": "[1] Visiting Lumen Valley Observatory and its four telescopes\\nhttps://'
+[ 16] publish  WebSearcher              -> output                   ToolCallRequestEvent       '[\n {\n  "id": "toolu_01JaqHQ74rNWocTGxyuF6d3b",\n  "arguments": "{\\"url\\": \\"https://en.wiki'
+[ 17] publish  WebSearcher              -> output                   ToolCallExecutionEvent     '[\n {\n  "content": "# Lumen Valley Observatory - Wikipedia\\n\\nThe Lumen Valley Observatory '
+[ 18] publish  WebSearcher              -> output                   ToolCallRequestEvent       '[\n {\n  "id": "toolu_01UUws4N4WcaXMB12JQCFREV",\n  "arguments": "{\\"query\\": \\"lumenvalleyob'
+[ 19] publish  WebSearcher              -> output                   ToolCallExecutionEvent     '[\n {\n  "content": "[1] Visiting Lumen Valley Observatory and its four telescopes\\nhttps://'
+[ 20] publish  WebSearcher              -> output                   ThoughtEvent               "The official facilities page is the authoritative source for the current list, so I'll rea"
+[ 21] publish  WebSearcher              -> output                   ToolCallRequestEvent       '[\n {\n  "id": "toolu_01HDSK1rRZEwCPULeQxPbhbn",\n  "arguments": "{\\"url\\": \\"https://www.lum'
+[ 22] publish  WebSearcher              -> output                   ToolCallExecutionEvent     '[\n {\n  "content": "# Facilities | Lumen Valley Observatory\\n\\nLumen Valley Observatory | H'
+[ 23] publish  WebSearcher              -> output                   TextMessage                "I can't give a confirmed count yet. The facilities page was cut off before the sixth instr"
+[ 24] publish  WebSearcher              -> group                    TextMessage                "I can't give a confirmed count yet. The facilities page was cut off before the sixth instr"
+[ 25] publish  MagenticOneOrchestrator  -> output                   TextMessage                'Please fetch https://www.lumenvalleyobservatory.org/facilities again using fetch_page with'
+[ 26] publish  MagenticOneOrchestrator  -> group                    TextMessage                'Please fetch https://www.lumenvalleyobservatory.org/facilities again using fetch_page with'
+[ 27] publish  MagenticOneOrchestrator  -> WebSearcher              GroupChatRequestPublish    ''
+[ 28] publish  WebSearcher              -> output                   ToolCallRequestEvent       '[\n {\n  "id": "toolu_011TYxwsD8sRaJxT8twx8aSY",\n  "arguments": "{\\"url\\": \\"https://www.lum'
+[ 29] publish  WebSearcher              -> output                   ToolCallExecutionEvent     '[\n {\n  "content": "infrared instrument commissioned in 2022, and the 0.8 m Pallas robotic '
+[ 30] publish  WebSearcher              -> output                   TextMessage                '**Answer: 3**\n\nThe full page confirms the count. The facilities page at https://www.lumenv'
+[ 31] publish  WebSearcher              -> group                    TextMessage                '**Answer: 3**\n\nThe full page confirms the count. The facilities page at https://www.lumenv'
+[ 32] publish  MagenticOneOrchestrator  -> output                   TextMessage                'Please fetch https://www.lumenvalleyobservatory.org/facilities in full, without relying on'
+[ 33] publish  MagenticOneOrchestrator  -> group                    TextMessage                'Please fetch https://www.lumenvalleyobservatory.org/facilities in full, without relying on'
+[ 34] publish  MagenticOneOrchestrator  -> WebSearcher              GroupChatRequestPublish    ''
+[ 35] publish  WebSearcher              -> output                   ToolCallRequestEvent       '[\n {\n  "id": "toolu_01S1jzSK64cpyEJjTyXXdah8",\n  "arguments": "{\\"url\\": \\"https://www.lum'
+[ 36] publish  WebSearcher              -> output                   ToolCallExecutionEvent     '[\n {\n  "content": "# Facilities | Lumen Valley Observatory\\n\\nLumen Valley Observatory | H'
+[ 37] publish  WebSearcher              -> output                   ToolCallRequestEvent       '[\n {\n  "id": "toolu_017KkqwGYJfTWBA2e5BD8fDy",\n  "arguments": "{\\"url\\": \\"https://www.lum'
+[ 38] publish  WebSearcher              -> output                   ToolCallExecutionEvent     '[\n {\n  "content": "infrared instrument commissioned in 2022, and the 0.8 m Pallas robotic '
+[ 39] publish  WebSearcher              -> output                   TextMessage                '**Answer: 3.** Three instruments were commissioned before 2008, and all six are described '
+[ 40] publish  WebSearcher              -> group                    TextMessage                '**Answer: 3.** Three instruments were commissioned before 2008, and all six are described '
+[ 41] publish  MagenticOneOrchestrator  -> output                   TextMessage                'Write a Python dictionary listing each instrument with its commissioning year as recorded '
+[ 42] publish  MagenticOneOrchestrator  -> group                    TextMessage                'Write a Python dictionary listing each instrument with its commissioning year as recorded '
+[ 43] publish  MagenticOneOrchestrator  -> Coder                    GroupChatRequestPublish    ''
+[ 44] publish  Coder                    -> output                   TextMessage                'The count is a simple comparison of commissioning years against the 2008 cutoff. The scrip'
+[ 45] publish  Coder                    -> group                    TextMessage                'The count is a simple comparison of commissioning years against the 2008 cutoff. The scrip'
+[ 46] publish  MagenticOneOrchestrator  -> output                   TextMessage                'Please run the following Python script and report its full output, including the final lin'
+[ 47] publish  MagenticOneOrchestrator  -> group                    TextMessage                'Please run the following Python script and report its full output, including the final lin'
+[ 48] publish  MagenticOneOrchestrator  -> Executor                 GroupChatRequestPublish    ''
+[ 49] publish  Executor                 -> output                   TextMessage                'Before 2008: 2.4 m Aster reflector (1988)\nBefore 2008: 1.0 m Meridian survey instrument (2'
+[ 50] publish  Executor                 -> group                    TextMessage                'Before 2008: 2.4 m Aster reflector (1988)\nBefore 2008: 1.0 m Meridian survey instrument (2'
+[ 51] publish  MagenticOneOrchestrator  -> output                   TextMessage                "Please search for current operational status of the Lumen Valley Observatory's instruments"
+[ 52] publish  MagenticOneOrchestrator  -> group                    TextMessage                "Please search for current operational status of the Lumen Valley Observatory's instruments"
+[ 53] publish  MagenticOneOrchestrator  -> WebSearcher              GroupChatRequestPublish    ''
+[ 54] publish  WebSearcher              -> output                   ToolCallRequestEvent       '[\n {\n  "id": "toolu_013tcyxAtrXZJ4QhEMctJu6E",\n  "arguments": "{\\"query\\": \\"Lumen Valley '
+[ 55] publish  WebSearcher              -> output                   ToolCallExecutionEvent     '[\n {\n  "content": "[1] Meridian 1.0 m survey instrument | Lumen Valley Observatory\\nhttps:'
+[ 56] publish  WebSearcher              -> output                   ToolCallRequestEvent       '[\n {\n  "id": "toolu_019gJsN9eLbekpeeyQgS2Qdm",\n  "arguments": "{\\"url\\": \\"https://www.lum'
+[ 57] publish  WebSearcher              -> output                   ToolCallExecutionEvent     '[\n {\n  "content": "# Meridian 1.0 m survey instrument | Lumen Valley Observatory\\n\\nLumen '
+[ 58] publish  WebSearcher              -> output                   ToolCallRequestEvent       '[\n {\n  "id": "toolu_01VybXExUHtC7rHWeLjjXkAK",\n  "arguments": "{\\"url\\": \\"https://www.lum'
+[ 59] publish  WebSearcher              -> output                   ToolCallExecutionEvent     '[\n {\n  "content": "# Aster 2.4 m reflector | Lumen Valley Observatory\\n\\nLumen Valley Obse'
+[ 60] publish  WebSearcher              -> output                   TextMessage                '**Answer: 3.** Three of the six instruments were commissioned before the 2008 cutoff, and '
+[ 61] publish  WebSearcher              -> group                    TextMessage                '**Answer: 3.** Three of the six instruments were commissioned before the 2008 cutoff, and '
+[ 62] publish  MagenticOneOrchestrator  -> output                   TextMessage                'Please fetch https://www.lumenvalleyobservatory.org/facilities/pallas (or the full Pallas '
+[ 63] publish  MagenticOneOrchestrator  -> group                    TextMessage                'Please fetch https://www.lumenvalleyobservatory.org/facilities/pallas (or the full Pallas '
+[ 64] publish  MagenticOneOrchestrator  -> WebSearcher              GroupChatRequestPublish    ''
+[ 65] publish  WebSearcher              -> output                   ToolCallRequestEvent       '[\n {\n  "id": "toolu_01A35aUTec2ThStB7nRUXjQE",\n  "arguments": "{\\"url\\": \\"https://www.lum'
+[ 66] publish  WebSearcher              -> output                   ToolCallExecutionEvent     '[\n {\n  "content": "404: no page at https://www.lumenvalleyobservatory.org/facilities/palla'
+[ 67] publish  WebSearcher              -> output                   TextMessage                'I could not find a Pallas-specific status page, and the Meridian page gives no current-ope'
+[ 68] publish  WebSearcher              -> group                    TextMessage                'I could not find a Pallas-specific status page, and the Meridian page gives no current-ope'
+[ 69] publish  MagenticOneOrchestrator  -> output                   TextMessage                '3'
+[ 70] publish  MagenticOneOrchestrator  -> group                    TextMessage                '3'
+[ 71] publish  MagenticOneOrchestrator  -> output                   GroupChatTermination       ''
+expected: 3
+answer: 3
+messages: 72 RESULT: PASS
+saved: /Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/recordings/haiku2_t8_pre_anniversary_r2.pkl

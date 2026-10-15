@@ -1,0 +1,64 @@
+ANTHROPIC_API_KEY is set and takes precedence over the SDK's profile / federation auto-discovery; unset ANTHROPIC_API_KEY to use the auto-discovered credential.
+/Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/backend/agdbg/team.py:124: UserWarning: Using LocalCommandLineCodeExecutor may execute code on the local machine which can be unsafe. For security, it is recommended to use DockerCommandLineCodeExecutor instead. To install Docker, visit: https://docs.docker.com/get-docker/
+  "Executor", code_executor=LocalCommandLineCodeExecutor(work_dir=work_dir, timeout=60)
+/Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/backend/agdbg/team.py:123: UserWarning: No approval function set for CodeExecutorAgent. This means code will be executed automatically without human oversight. For security, consider setting an approval_func to review and approve code before execution. See the CodeExecutorAgent documentation for examples of approval functions.
+  executor = CodeExecutorAgent(
+/Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/.venv/lib/python3.12/site-packages/autogen_core/_single_threaded_agent_runtime.py:772: RuntimeWarning: Intervention handler on_response returned None. This might be unintentional. Consider returning the original message or DropMessage explicitly.
+  _warn_if_none(temp_message, "on_response")
+[  0] send     user                     -> MagenticOneOrchestrator  TextMessage                'How many of the twelve people who have walked on the Moon were born in the U.S. state of O'
+[  1] publish  MagenticOneOrchestrator  -> output                   TextMessage                'How many of the twelve people who have walked on the Moon were born in the U.S. state of O'
+[  2] send     user                     -> Coder                    GroupChatReset             ''
+[  3] response Coder                    -> None                     NoneType                   ''
+[  4] send     user                     -> Executor                 GroupChatReset             ''
+[  5] response Executor                 -> None                     NoneType                   ''
+[  6] send     user                     -> WebSearcher              GroupChatReset             ''
+[  7] response WebSearcher              -> None                     NoneType                   ''
+[  8] publish  MagenticOneOrchestrator  -> output                   TextMessage                '\nWe are working to address the following user request:\n\nHow many of the twelve people who '
+[  9] publish  MagenticOneOrchestrator  -> group                    TextMessage                '\nWe are working to address the following user request:\n\nHow many of the twelve people who '
+[ 10] publish  MagenticOneOrchestrator  -> output                   TextMessage                'Please verify the birthplaces of the twelve Apollo moonwalkers using NASA biographies, the'
+[ 11] publish  MagenticOneOrchestrator  -> group                    TextMessage                'Please verify the birthplaces of the twelve Apollo moonwalkers using NASA biographies, the'
+[ 12] publish  MagenticOneOrchestrator  -> WebSearcher              GroupChatRequestPublish    ''
+[ 13] response MagenticOneOrchestrator  -> None                     NoneType                   ''
+[ 14] publish  WebSearcher              -> output                   ToolCallRequestEvent       '[\n {\n  "id": "toolu_01K3rYEhA1qFcjr8wEaw9h42",\n  "arguments": "{\\"url\\": \\"List of Apollo '
+[ 15] publish  WebSearcher              -> output                   ToolCallExecutionEvent     '[\n {\n  "content": "HTTP Error 429: Too Many Requests",\n  "name": "wiki_fetch",\n  "call_id"'
+[ 16] publish  WebSearcher              -> output                   ToolCallRequestEvent       '[\n {\n  "id": "toolu_01DEUsT1AnuvHw2cUNYigfYA",\n  "arguments": "{\\"query\\": \\"Apollo moonwa'
+[ 17] publish  WebSearcher              -> output                   ToolCallExecutionEvent     '[\n {\n  "content": "HTTP Error 429: Too Many Requests",\n  "name": "wiki_search",\n  "call_id'
+[ 18] publish  WebSearcher              -> output                   TextMessage                "**1** (not checked against sources)\n\nI couldn't confirm any birthplaces online. Both of my"
+[ 19] publish  WebSearcher              -> group                    TextMessage                "**1** (not checked against sources)\n\nI couldn't confirm any birthplaces online. Both of my"
+[ 20] publish  MagenticOneOrchestrator  -> output                   TextMessage                'Wikipedia returned HTTP 429, so please avoid it for now and use other sources. First, conf'
+[ 21] publish  MagenticOneOrchestrator  -> group                    TextMessage                'Wikipedia returned HTTP 429, so please avoid it for now and use other sources. First, conf'
+[ 22] publish  MagenticOneOrchestrator  -> WebSearcher              GroupChatRequestPublish    ''
+[ 23] publish  WebSearcher              -> output                   TextMessage                "I couldn't do any of the checks you asked for, so none of the birthplaces are confirmed. M"
+[ 24] publish  WebSearcher              -> group                    TextMessage                "I couldn't do any of the checks you asked for, so none of the birthplaces are confirmed. M"
+[ 25] publish  MagenticOneOrchestrator  -> output                   TextMessage                'Please run this Python script. It tries to fetch birthplace information from sources other'
+[ 26] publish  MagenticOneOrchestrator  -> group                    TextMessage                'Please run this Python script. It tries to fetch birthplace information from sources other'
+[ 27] publish  MagenticOneOrchestrator  -> Executor                 GroupChatRequestPublish    ''
+[ 28] publish  Executor                 -> output                   TextMessage                'Armstrong https://www.britannica.com/biography/Neil-Armstrong ERROR HTTP Error 403: Forbid'
+[ 29] publish  Executor                 -> group                    TextMessage                'Armstrong https://www.britannica.com/biography/Neil-Armstrong ERROR HTTP Error 403: Forbid'
+[ 30] publish  MagenticOneOrchestrator  -> output                   TextMessage                'Please run this script. It fetches the Wikipedia REST summary for each moonwalker and prin'
+[ 31] publish  MagenticOneOrchestrator  -> group                    TextMessage                'Please run this script. It fetches the Wikipedia REST summary for each moonwalker and prin'
+[ 32] publish  MagenticOneOrchestrator  -> Executor                 GroupChatRequestPublish    ''
+[ 33] publish  Executor                 -> output                   TextMessage                'Neil_Armstrong -> Neil Alden Armstrong was an American astronaut and aeronautical engineer'
+[ 34] publish  Executor                 -> group                    TextMessage                'Neil_Armstrong -> Neil Alden Armstrong was an American astronaut and aeronautical engineer'
+[ 35] publish  MagenticOneOrchestrator  -> output                   TextMessage                "Please run this script:\n```python\nimport urllib.request, urllib.parse, json\nq='''SELECT ?p"
+[ 36] publish  MagenticOneOrchestrator  -> group                    TextMessage                "Please run this script:\n```python\nimport urllib.request, urllib.parse, json\nq='''SELECT ?p"
+[ 37] publish  MagenticOneOrchestrator  -> Executor                 GroupChatRequestPublish    ''
+[ 38] publish  Executor                 -> output                   TextMessage                'Robert Wyatt | Bristol | \nYannick Agnel | Nîmes | \nNeil Armstrong | Wapakoneta | Ohio\nBuzz'
+[ 39] publish  Executor                 -> group                    TextMessage                'Robert Wyatt | Bristol | \nYannick Agnel | Nîmes | \nNeil Armstrong | Wapakoneta | Ohio\nBuzz'
+[ 40] publish  MagenticOneOrchestrator  -> output                   TextMessage                "Please run this script:\n```python\nimport urllib.request, urllib.parse, json\nnames=['Pete C"
+[ 41] publish  MagenticOneOrchestrator  -> group                    TextMessage                "Please run this script:\n```python\nimport urllib.request, urllib.parse, json\nnames=['Pete C"
+[ 42] publish  MagenticOneOrchestrator  -> Executor                 GroupChatRequestPublish    ''
+[ 43] publish  Executor                 -> output                   TextMessage                'Alan Bean | Wheeler | Texas\nEdgar Mitchell | Hereford | Texas\nAlan Shepard | Derry | New H'
+[ 44] publish  Executor                 -> group                    TextMessage                'Alan Bean | Wheeler | Texas\nEdgar Mitchell | Hereford | Texas\nAlan Shepard | Derry | New H'
+[ 45] publish  MagenticOneOrchestrator  -> output                   TextMessage                'The Wikidata results confirm all twelve birthplaces, and only Neil Armstrong (Wapakoneta) '
+[ 46] publish  MagenticOneOrchestrator  -> group                    TextMessage                'The Wikidata results confirm all twelve birthplaces, and only Neil Armstrong (Wapakoneta) '
+[ 47] publish  MagenticOneOrchestrator  -> Coder                    GroupChatRequestPublish    ''
+[ 48] publish  Coder                    -> output                   TextMessage                '1'
+[ 49] publish  Coder                    -> group                    TextMessage                '1'
+[ 50] publish  MagenticOneOrchestrator  -> output                   TextMessage                '1'
+[ 51] publish  MagenticOneOrchestrator  -> group                    TextMessage                '1'
+[ 52] publish  MagenticOneOrchestrator  -> output                   GroupChatTermination       ''
+expected: 1
+answer: 1
+messages: 53 RESULT: PASS
+saved: /Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/recordings/w3_moonwalkers_ohio_r1.pkl

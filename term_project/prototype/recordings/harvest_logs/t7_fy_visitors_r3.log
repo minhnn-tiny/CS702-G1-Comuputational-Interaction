@@ -1,0 +1,48 @@
+ANTHROPIC_API_KEY is set and takes precedence over the SDK's profile / federation auto-discovery; unset ANTHROPIC_API_KEY to use the auto-discovered credential.
+/Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/backend/agdbg/team.py:76: UserWarning: Using LocalCommandLineCodeExecutor may execute code on the local machine which can be unsafe. For security, it is recommended to use DockerCommandLineCodeExecutor instead. To install Docker, visit: https://docs.docker.com/get-docker/
+  "Executor", code_executor=LocalCommandLineCodeExecutor(work_dir=work_dir, timeout=60)
+/Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/backend/agdbg/team.py:75: UserWarning: No approval function set for CodeExecutorAgent. This means code will be executed automatically without human oversight. For security, consider setting an approval_func to review and approve code before execution. See the CodeExecutorAgent documentation for examples of approval functions.
+  executor = CodeExecutorAgent(
+/Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/.venv/lib/python3.12/site-packages/autogen_core/_single_threaded_agent_runtime.py:772: RuntimeWarning: Intervention handler on_response returned None. This might be unintentional. Consider returning the original message or DropMessage explicitly.
+  _warn_if_none(temp_message, "on_response")
+[  0] send     user                     -> MagenticOneOrchestrator  TextMessage                'How many visitors did the Lumen Valley Observatory admit in its financial year 2024/25? Us'
+[  1] publish  MagenticOneOrchestrator  -> output                   TextMessage                'How many visitors did the Lumen Valley Observatory admit in its financial year 2024/25? Us'
+[  2] send     user                     -> Coder                    GroupChatReset             ''
+[  3] response Coder                    -> None                     NoneType                   ''
+[  4] send     user                     -> Executor                 GroupChatReset             ''
+[  5] response Executor                 -> None                     NoneType                   ''
+[  6] send     user                     -> WebSearcher              GroupChatReset             ''
+[  7] response WebSearcher              -> None                     NoneType                   ''
+[  8] publish  MagenticOneOrchestrator  -> output                   TextMessage                '\nWe are working to address the following user request:\n\nHow many visitors did the Lumen Va'
+[  9] publish  MagenticOneOrchestrator  -> group                    TextMessage                '\nWe are working to address the following user request:\n\nHow many visitors did the Lumen Va'
+[ 10] publish  MagenticOneOrchestrator  -> output                   TextMessage                'Search the web for "Lumen Valley Observatory" in quotes, plus variants such as "Lumen Vall'
+[ 11] publish  MagenticOneOrchestrator  -> group                    TextMessage                'Search the web for "Lumen Valley Observatory" in quotes, plus variants such as "Lumen Vall'
+[ 12] publish  MagenticOneOrchestrator  -> WebSearcher              GroupChatRequestPublish    ''
+[ 13] response MagenticOneOrchestrator  -> None                     NoneType                   ''
+[ 14] publish  WebSearcher              -> output                   ToolCallRequestEvent       '[\n {\n  "id": "toolu_018xApzwC2DCogct87DXiXTY",\n  "arguments": "{\\"query\\": \\"\\\\\\"Lumen Val'
+[ 15] publish  WebSearcher              -> output                   ToolCallExecutionEvent     '[\n {\n  "content": "[1] Visiting Lumen Valley Observatory and its four telescopes\\nhttps://'
+[ 16] publish  WebSearcher              -> output                   ToolCallRequestEvent       '[\n {\n  "id": "toolu_01J72ewFiR2wUGUDKjdjcmYu",\n  "arguments": "{\\"url\\": \\"https://www.lum'
+[ 17] publish  WebSearcher              -> output                   ToolCallExecutionEvent     '[\n {\n  "content": "# Governance and reporting | Lumen Valley Observatory\\n\\nLumen Valley O'
+[ 18] publish  WebSearcher              -> output                   ToolCallRequestEvent       '[\n {\n  "id": "toolu_01TwYAhDHCYPB65Pb5V56ao8",\n  "arguments": "{\\"url\\": \\"https://www.lum'
+[ 19] publish  WebSearcher              -> output                   ToolCallExecutionEvent     '[\n {\n  "content": "Reports. Director: Dr. Ilse Varga (since 2019). Previous director: Prof'
+[ 20] publish  WebSearcher              -> output                   ThoughtEvent               'Need annual visitor reports.'
+[ 21] publish  WebSearcher              -> output                   ToolCallRequestEvent       '[\n {\n  "id": "toolu_01TNwsFvMF28pjZyA99Vjtvx",\n  "arguments": "{\\"query\\": \\"Lumen Valley '
+[ 22] publish  WebSearcher              -> output                   ToolCallExecutionEvent     '[\n {\n  "content": "[1] Annual Visitor Report 2025 | Lumen Valley Observatory\\nhttps://www.'
+[ 23] publish  WebSearcher              -> output                   TextMessage                'I could not get a fully verified total because the monthly tables were cut off in the sear'
+[ 24] publish  WebSearcher              -> group                    TextMessage                'I could not get a fully verified total because the monthly tables were cut off in the sear'
+[ 25] publish  MagenticOneOrchestrator  -> output                   TextMessage                'Please fetch the full page at https://www.lumenvalleyobservatory.org/reports/visitors-2024'
+[ 26] publish  MagenticOneOrchestrator  -> group                    TextMessage                'Please fetch the full page at https://www.lumenvalleyobservatory.org/reports/visitors-2024'
+[ 27] publish  MagenticOneOrchestrator  -> WebSearcher              GroupChatRequestPublish    ''
+[ 28] publish  WebSearcher              -> output                   ToolCallRequestEvent       '[\n {\n  "id": "toolu_01Pox5vvdszwkeVa7qpedspS",\n  "arguments": "{\\"url\\": \\"https://www.lum'
+[ 29] publish  WebSearcher              -> output                   ToolCallExecutionEvent     '[\n {\n  "content": "# Annual Visitor Report 2024 | Lumen Valley Observatory\\n\\nLumen Valley'
+[ 30] publish  WebSearcher              -> output                   ToolCallRequestEvent       '[\n {\n  "id": "toolu_01W2fBJvG6fSz61NSMme6wDX",\n  "arguments": "{\\"url\\": \\"https://www.lum'
+[ 31] publish  WebSearcher              -> output                   ToolCallExecutionEvent     '[\n {\n  "content": " 5,480. All figures are counts of admitted persons.",\n  "name": "fetch_'
+[ 32] publish  WebSearcher              -> output                   TextMessage                'The Lumen Valley Observatory admitted **39,910** visitors in its financial year 2024/25, w'
+[ 33] publish  WebSearcher              -> group                    TextMessage                'The Lumen Valley Observatory admitted **39,910** visitors in its financial year 2024/25, w'
+[ 34] publish  MagenticOneOrchestrator  -> output                   TextMessage                '39910'
+[ 35] publish  MagenticOneOrchestrator  -> group                    TextMessage                '39910'
+[ 36] publish  MagenticOneOrchestrator  -> output                   GroupChatTermination       ''
+expected: 39910
+answer: 39910
+messages: 37 RESULT: PASS
+saved: /Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/recordings/t7_fy_visitors_r3.pkl

@@ -1,0 +1,46 @@
+ANTHROPIC_API_KEY is set and takes precedence over the SDK's profile / federation auto-discovery; unset ANTHROPIC_API_KEY to use the auto-discovered credential.
+/Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/backend/agdbg/team.py:124: UserWarning: Using LocalCommandLineCodeExecutor may execute code on the local machine which can be unsafe. For security, it is recommended to use DockerCommandLineCodeExecutor instead. To install Docker, visit: https://docs.docker.com/get-docker/
+  "Executor", code_executor=LocalCommandLineCodeExecutor(work_dir=work_dir, timeout=60)
+/Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/backend/agdbg/team.py:123: UserWarning: No approval function set for CodeExecutorAgent. This means code will be executed automatically without human oversight. For security, consider setting an approval_func to review and approve code before execution. See the CodeExecutorAgent documentation for examples of approval functions.
+  executor = CodeExecutorAgent(
+/Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/.venv/lib/python3.12/site-packages/autogen_core/_single_threaded_agent_runtime.py:772: RuntimeWarning: Intervention handler on_response returned None. This might be unintentional. Consider returning the original message or DropMessage explicitly.
+  _warn_if_none(temp_message, "on_response")
+[  0] send     user                     -> MagenticOneOrchestrator  TextMessage                "According to the English Wikipedia article 'List of tallest buildings', how many completed"
+[  1] publish  MagenticOneOrchestrator  -> output                   TextMessage                "According to the English Wikipedia article 'List of tallest buildings', how many completed"
+[  2] send     user                     -> Coder                    GroupChatReset             ''
+[  3] response Coder                    -> None                     NoneType                   ''
+[  4] send     user                     -> Executor                 GroupChatReset             ''
+[  5] response Executor                 -> None                     NoneType                   ''
+[  6] send     user                     -> WebSearcher              GroupChatReset             ''
+[  7] response WebSearcher              -> None                     NoneType                   ''
+[  8] publish  MagenticOneOrchestrator  -> output                   TextMessage                '\nWe are working to address the following user request:\n\nAccording to the English Wikipedia'
+[  9] publish  MagenticOneOrchestrator  -> group                    TextMessage                '\nWe are working to address the following user request:\n\nAccording to the English Wikipedia'
+[ 10] publish  MagenticOneOrchestrator  -> output                   TextMessage                "Please fetch the current English Wikipedia article 'List of tallest buildings' (https://en"
+[ 11] publish  MagenticOneOrchestrator  -> group                    TextMessage                "Please fetch the current English Wikipedia article 'List of tallest buildings' (https://en"
+[ 12] publish  MagenticOneOrchestrator  -> WebSearcher              GroupChatRequestPublish    ''
+[ 13] response MagenticOneOrchestrator  -> None                     NoneType                   ''
+[ 14] publish  WebSearcher              -> output                   ToolCallRequestEvent       '[\n {\n  "id": "toolu_01KLzaXghfnuZKu35kEbWpQH",\n  "arguments": "{\\"url\\": \\"List of tallest'
+[ 15] publish  WebSearcher              -> output                   ToolCallExecutionEvent     '[\n {\n  "content": "# List of tallest buildings\\n\\nThis is a list of the tallest buildings.'
+[ 16] publish  WebSearcher              -> output                   ToolCallRequestEvent       '[\n {\n  "id": "toolu_01DgcX5EbGerhycTXrNxXWZx",\n  "arguments": "{\\"url\\": \\"List of tallest'
+[ 17] publish  WebSearcher              -> output                   ToolCallExecutionEvent     '[\n {\n  "content": "igher top occupied floor (the second category in the 1996 criteria for '
+[ 18] publish  WebSearcher              -> output                   ToolCallRequestEvent       '[\n {\n  "id": "toolu_016bpMBn9qF1hGdBT3HnRBAm",\n  "arguments": "{\\"url\\": \\"List of tallest'
+[ 19] publish  WebSearcher              -> output                   ToolCallExecutionEvent     '[\n {\n  "content": "h (1,728 feet (526.7 m), including the antenna) and South Towers (1,377'
+[ 20] publish  WebSearcher              -> output                   TextMessage                "I couldn't confirm the count from the article itself. The fetch tool returns only the arti"
+[ 21] publish  WebSearcher              -> group                    TextMessage                "I couldn't confirm the count from the article itself. The fetch tool returns only the arti"
+[ 22] publish  MagenticOneOrchestrator  -> output                   TextMessage                'Please write a Python script for the Executor that reads the tables of the English Wikiped'
+[ 23] publish  MagenticOneOrchestrator  -> group                    TextMessage                'Please write a Python script for the Executor that reads the tables of the English Wikiped'
+[ 24] publish  MagenticOneOrchestrator  -> Coder                    GroupChatRequestPublish    ''
+[ 25] publish  Coder                    -> output                   TextMessage                '```python\nimport requests, re, io\nimport pandas as pd\n\nURL = "https://en.wikipedia.org/wik'
+[ 26] publish  Coder                    -> group                    TextMessage                '```python\nimport requests, re, io\nimport pandas as pd\n\nURL = "https://en.wikipedia.org/wik'
+[ 27] publish  MagenticOneOrchestrator  -> output                   TextMessage                'Please run the Python script the Coder just provided and report the full output. That incl'
+[ 28] publish  MagenticOneOrchestrator  -> group                    TextMessage                'Please run the Python script the Coder just provided and report the full output. That incl'
+[ 29] publish  MagenticOneOrchestrator  -> Executor                 GroupChatRequestPublish    ''
+[ 30] publish  Executor                 -> output                   TextMessage                'The script ran, then exited with an error (POSIX exit code: 1)\nIts output was:\nTraceback ('
+[ 31] publish  Executor                 -> group                    TextMessage                'The script ran, then exited with an error (POSIX exit code: 1)\nIts output was:\nTraceback ('
+[ 32] publish  MagenticOneOrchestrator  -> output                   TextMessage                '11'
+[ 33] publish  MagenticOneOrchestrator  -> group                    TextMessage                '11'
+[ 34] publish  MagenticOneOrchestrator  -> output                   GroupChatTermination       ''
+expected: 11
+answer: 11
+messages: 35 RESULT: PASS
+saved: /Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/recordings/wt1_tallest_500m_r1.pkl

@@ -1,0 +1,32 @@
+ANTHROPIC_API_KEY is set and takes precedence over the SDK's profile / federation auto-discovery; unset ANTHROPIC_API_KEY to use the auto-discovered credential.
+/Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/backend/agdbg/team.py:124: UserWarning: Using LocalCommandLineCodeExecutor may execute code on the local machine which can be unsafe. For security, it is recommended to use DockerCommandLineCodeExecutor instead. To install Docker, visit: https://docs.docker.com/get-docker/
+  "Executor", code_executor=LocalCommandLineCodeExecutor(work_dir=work_dir, timeout=60)
+/Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/backend/agdbg/team.py:123: UserWarning: No approval function set for CodeExecutorAgent. This means code will be executed automatically without human oversight. For security, consider setting an approval_func to review and approve code before execution. See the CodeExecutorAgent documentation for examples of approval functions.
+  executor = CodeExecutorAgent(
+/Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/.venv/lib/python3.12/site-packages/autogen_core/_single_threaded_agent_runtime.py:772: RuntimeWarning: Intervention handler on_response returned None. This might be unintentional. Consider returning the original message or DropMessage explicitly.
+  _warn_if_none(temp_message, "on_response")
+[  0] send     user                     -> MagenticOneOrchestrator  TextMessage                "Who was born first, the author of 'The Left Hand of Darkness' or the author of 'Dune', and"
+[  1] publish  MagenticOneOrchestrator  -> output                   TextMessage                "Who was born first, the author of 'The Left Hand of Darkness' or the author of 'Dune', and"
+[  2] send     user                     -> Coder                    GroupChatReset             ''
+[  3] response Coder                    -> None                     NoneType                   ''
+[  4] send     user                     -> Executor                 GroupChatReset             ''
+[  5] response Executor                 -> None                     NoneType                   ''
+[  6] send     user                     -> WebSearcher              GroupChatReset             ''
+[  7] response WebSearcher              -> None                     NoneType                   ''
+[  8] publish  MagenticOneOrchestrator  -> output                   TextMessage                '\nWe are working to address the following user request:\n\nWho was born first, the author of '
+[  9] publish  MagenticOneOrchestrator  -> group                    TextMessage                '\nWe are working to address the following user request:\n\nWho was born first, the author of '
+[ 10] publish  MagenticOneOrchestrator  -> output                   TextMessage                "Please confirm two things. First, that 'The Left Hand of Darkness' (1969) was written by U"
+[ 11] publish  MagenticOneOrchestrator  -> group                    TextMessage                "Please confirm two things. First, that 'The Left Hand of Darkness' (1969) was written by U"
+[ 12] publish  MagenticOneOrchestrator  -> WebSearcher              GroupChatRequestPublish    ''
+[ 13] response MagenticOneOrchestrator  -> None                     NoneType                   ''
+[ 14] publish  WebSearcher              -> output                   ToolCallRequestEvent       '[\n {\n  "id": "toolu_01XMNS387CBVVvjbZ7oBoDnp",\n  "arguments": "{\\"url\\": \\"Ursula K. Le Gu'
+[ 15] publish  WebSearcher              -> output                   ToolCallExecutionEvent     '[\n {\n  "content": "# Ursula K. Le Guin\\n\\nUrsula Kroeber Le Guin ( KROH-b\\u0259r l\\u0259 G'
+[ 16] publish  WebSearcher              -> output                   TextMessage                'Your expected dates are right: Frank Herbert was born first, 9 years before Ursula K. Le G'
+[ 17] publish  WebSearcher              -> group                    TextMessage                'Your expected dates are right: Frank Herbert was born first, 9 years before Ursula K. Le G'
+[ 18] publish  MagenticOneOrchestrator  -> output                   TextMessage                '**Herbert, 9**\n\nFrank Herbert, author of *Dune*, was born on October 8, 1920. Ursula K. Le'
+[ 19] publish  MagenticOneOrchestrator  -> group                    TextMessage                '**Herbert, 9**\n\nFrank Herbert, author of *Dune*, was born on October 8, 1920. Ursula K. Le'
+[ 20] publish  MagenticOneOrchestrator  -> output                   GroupChatTermination       ''
+expected: Herbert|9
+answer: **Herbert, 9**  Frank Herbert, author of *Dune*, was born on October 8, 1920. Ursula K. Le Guin, author of *The Left Hand of Darkness*, was born on October 21, 1929. By birth year, 1929 − 1920 = 9.  These dates come from Wikipedia only. We couldn't reach Britannica, the Library of Congress or obitua
+messages: 21 RESULT: PASS
+saved: /Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/recordings/w11_leguin_herbert_r2.pkl

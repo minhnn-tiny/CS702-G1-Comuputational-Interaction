@@ -1,0 +1,16 @@
+import { chromium } from "playwright";
+const b = await chromium.launch();
+const p = await b.newPage({ viewport: { width: 1600, height: 1000 } });
+p.on("console", (m) => m.type() === "error" && console.log("CONSOLE", m.text()));
+await p.goto("http://127.0.0.1:8000/");
+await p.waitForSelector("select");
+await p.selectOption("select >> nth=0", "t1_telescopes");
+await p.waitForTimeout(2500);
+await p.screenshot({ path: process.argv[2] });
+await p.hover("svg rect.cursor-pointer >> nth=8");
+await p.waitForTimeout(400);
+await p.screenshot({ path: process.argv[2].replace(".png", "-hover.png") });
+await p.click("svg rect.cursor-pointer >> nth=12");
+await p.waitForTimeout(900);
+await p.screenshot({ path: process.argv[2].replace(".png", "-click.png") });
+await b.close();

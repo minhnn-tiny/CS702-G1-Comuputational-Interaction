@@ -1,0 +1,10 @@
+.venv/
+workdir/
+workdir-*/
+frontend/node_modules/
+frontend/dist/
+__pycache__/
+*.pyc
+.env
+recordings/harvest/
+recordings/archive/

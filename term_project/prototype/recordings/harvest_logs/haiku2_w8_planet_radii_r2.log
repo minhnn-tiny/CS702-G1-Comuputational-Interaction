@@ -1,0 +1,38 @@
+ANTHROPIC_API_KEY is set and takes precedence over the SDK's profile / federation auto-discovery; unset ANTHROPIC_API_KEY to use the auto-discovered credential.
+/Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/backend/agdbg/team.py:124: UserWarning: Using LocalCommandLineCodeExecutor may execute code on the local machine which can be unsafe. For security, it is recommended to use DockerCommandLineCodeExecutor instead. To install Docker, visit: https://docs.docker.com/get-docker/
+  "Executor", code_executor=LocalCommandLineCodeExecutor(work_dir=work_dir, timeout=60)
+/Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/backend/agdbg/team.py:123: UserWarning: No approval function set for CodeExecutorAgent. This means code will be executed automatically without human oversight. For security, consider setting an approval_func to review and approve code before execution. See the CodeExecutorAgent documentation for examples of approval functions.
+  executor = CodeExecutorAgent(
+/Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/.venv/lib/python3.12/site-packages/autogen_core/_single_threaded_agent_runtime.py:772: RuntimeWarning: Intervention handler on_response returned None. This might be unintentional. Consider returning the original message or DropMessage explicitly.
+  _warn_if_none(temp_message, "on_response")
+[  0] send     user                     -> MagenticOneOrchestrator  TextMessage                "How many of the eight planets of the Solar System have a mean radius larger than Earth's b"
+[  1] publish  MagenticOneOrchestrator  -> output                   TextMessage                "How many of the eight planets of the Solar System have a mean radius larger than Earth's b"
+[  2] send     user                     -> Coder                    GroupChatReset             ''
+[  3] response Coder                    -> None                     NoneType                   ''
+[  4] send     user                     -> Executor                 GroupChatReset             ''
+[  5] response Executor                 -> None                     NoneType                   ''
+[  6] send     user                     -> WebSearcher              GroupChatReset             ''
+[  7] response WebSearcher              -> None                     NoneType                   ''
+[  8] publish  MagenticOneOrchestrator  -> output                   TextMessage                '\nWe are working to address the following user request:\n\nHow many of the eight planets of t'
+[  9] publish  MagenticOneOrchestrator  -> group                    TextMessage                '\nWe are working to address the following user request:\n\nHow many of the eight planets of t'
+[ 10] publish  MagenticOneOrchestrator  -> output                   TextMessage                'Please fetch the NASA Planetary Fact Sheet (nssdc.gsfc.nasa.gov/planetary/factsheet/) and '
+[ 11] publish  MagenticOneOrchestrator  -> group                    TextMessage                'Please fetch the NASA Planetary Fact Sheet (nssdc.gsfc.nasa.gov/planetary/factsheet/) and '
+[ 12] publish  MagenticOneOrchestrator  -> WebSearcher              GroupChatRequestPublish    ''
+[ 13] response MagenticOneOrchestrator  -> None                     NoneType                   ''
+[ 14] publish  WebSearcher              -> output                   ToolCallRequestEvent       '[\n {\n  "id": "toolu_01AVuLy3nQ8vheJRitDzGhEH",\n  "arguments": "{\\"url\\": \\"https://nssdc.g'
+[ 15] publish  WebSearcher              -> output                   ToolCallExecutionEvent     '[\n {\n  "content": "HTTP Error 429: Too Many Requests",\n  "name": "wiki_fetch",\n  "call_id"'
+[ 16] publish  WebSearcher              -> output                   ToolCallRequestEvent       '[\n {\n  "id": "toolu_01JuYYKuCXzfEnGzUPF159jM",\n  "arguments": "{\\"url\\": \\"https://nssdc.g'
+[ 17] publish  WebSearcher              -> output                   ToolCallExecutionEvent     '[\n {\n  "content": "HTTP Error 429: Too Many Requests",\n  "name": "wiki_fetch",\n  "call_id"'
+[ 18] publish  WebSearcher              -> output                   ToolCallRequestEvent       '[\n {\n  "id": "toolu_01WyRKNgx2zRk4Nbk2n92mTS",\n  "arguments": "{\\"query\\": \\"NASA planetar'
+[ 19] publish  WebSearcher              -> output                   ToolCallExecutionEvent     '[\n {\n  "content": "[1] Earth radius\\nhttps://en.wikipedia.org/wiki/Earth_radius\\nvariabili'
+[ 20] publish  WebSearcher              -> output                   ToolCallRequestEvent       '[\n {\n  "id": "toolu_01QHaMmAqiTtVgYaJ6uiT16h",\n  "arguments": "{\\"url\\": \\"https://en.wiki'
+[ 21] publish  WebSearcher              -> output                   ToolCallExecutionEvent     '[\n {\n  "content": "# List of Solar System objects by size\\n\\nThis article includes a list '
+[ 22] publish  WebSearcher              -> output                   TextMessage                '**2**\n\nThis comes from standard mean radii I know (Mercury ~2,440 km, Venus ~6,052 km, Ear'
+[ 23] publish  WebSearcher              -> group                    TextMessage                '**2**\n\nThis comes from standard mean radii I know (Mercury ~2,440 km, Venus ~6,052 km, Ear'
+[ 24] publish  MagenticOneOrchestrator  -> output                   TextMessage                '2'
+[ 25] publish  MagenticOneOrchestrator  -> group                    TextMessage                '2'
+[ 26] publish  MagenticOneOrchestrator  -> output                   GroupChatTermination       ''
+expected: 2
+answer: 2
+messages: 27 RESULT: PASS
+saved: /Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/recordings/haiku2_w8_planet_radii_r2.pkl

@@ -1,0 +1,23 @@
+digraph G {
+  rankdir=LR; fontname="Helvetica"; fontsize=11; node [fontname="Helvetica", fontsize=10, shape=box, style="rounded,filled", fillcolor="#f8fafc", color="#475569"]; edge [fontname="Helvetica", fontsize=9, color="#475569"];
+  subgraph cluster_ui { label="Browser  (React + Tailwind, SVG/D3 scales)"; style="rounded"; color="#94a3b8";
+    compose [label="Compose panel\nbroadcast / direct send"]; queue [label="Queue panel\nRun · Step · Drop · Stop"]; history [label="Message history\ncards, Edit & revert, Reset here"]; overview [label="Overview\nsession columns, fork markers,\n3 colour encodings, hover, click"];
+  }
+  subgraph cluster_be { label="Backend  (Python 3.12, FastAPI)"; style="rounded"; color="#94a3b8";
+    api [label="HTTP API  /api/*\nstate · run · step · drop · send · edit · recordings"];
+    mgr [label="Session manager\nsessions & forks, checkpoints,\nedit-and-revert, pickle recordings"];
+    rec [label="Recorder\n(AutoGen InterventionHandler)\ntimestamp + save_state()\nbefore every message"];
+    llm [label="Model client\nAnthropic SDK → Claude"];
+  }
+  subgraph cluster_rt { label="AutoGen 0.7.5 SingleThreadedAgentRuntime"; style="rounded"; color="#94a3b8";
+    q [label="message queue", shape=cylinder, fillcolor="#eef2ff"];
+    orch [label="Magentic-One\nOrchestrator", fillcolor="#dbeafe"]; coder [label="Coder", fillcolor="#ffedd5"]; exe [label="Executor\n(local subprocess)", fillcolor="#dcfce7"]; ws [label="WebSearcher\n+ cached web tools", fillcolor="#fee2e2"];
+  }
+  {compose queue history overview} -> api [label="poll 0.7 s / POST", dir=both];
+  api -> mgr; mgr -> rec [label="history,\ncheckpoints"]; mgr -> q [label="start/stop/process_next\npublish/send, load_state"];
+  rec -> q [label="intercepts", dir=back];
+  q -> orch; q -> coder; q -> exe; q -> ws;
+  {orch coder ws} -> llm [style=dashed];
+  ws -> corpus [style=dashed]; corpus [label="corpus.json\n(cached web)", shape=note, fillcolor="#fef9c3"];
+  mgr -> store [style=dashed]; store [label="recordings/*.pkl", shape=folder, fillcolor="#fef9c3"];
+}

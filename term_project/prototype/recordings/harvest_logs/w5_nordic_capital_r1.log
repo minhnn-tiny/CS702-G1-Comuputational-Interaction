@@ -1,0 +1,41 @@
+ANTHROPIC_API_KEY is set and takes precedence over the SDK's profile / federation auto-discovery; unset ANTHROPIC_API_KEY to use the auto-discovered credential.
+/Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/backend/agdbg/team.py:124: UserWarning: Using LocalCommandLineCodeExecutor may execute code on the local machine which can be unsafe. For security, it is recommended to use DockerCommandLineCodeExecutor instead. To install Docker, visit: https://docs.docker.com/get-docker/
+  "Executor", code_executor=LocalCommandLineCodeExecutor(work_dir=work_dir, timeout=60)
+/Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/backend/agdbg/team.py:123: UserWarning: No approval function set for CodeExecutorAgent. This means code will be executed automatically without human oversight. For security, consider setting an approval_func to review and approve code before execution. See the CodeExecutorAgent documentation for examples of approval functions.
+  executor = CodeExecutorAgent(
+/Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/.venv/lib/python3.12/site-packages/autogen_core/_single_threaded_agent_runtime.py:772: RuntimeWarning: Intervention handler on_response returned None. This might be unintentional. Consider returning the original message or DropMessage explicitly.
+  _warn_if_none(temp_message, "on_response")
+[  0] send     user                     -> MagenticOneOrchestrator  TextMessage                'Among the capital cities of Denmark, Finland, Iceland, Norway and Sweden, which lies furth'
+[  1] publish  MagenticOneOrchestrator  -> output                   TextMessage                'Among the capital cities of Denmark, Finland, Iceland, Norway and Sweden, which lies furth'
+[  2] send     user                     -> Coder                    GroupChatReset             ''
+[  3] response Coder                    -> None                     NoneType                   ''
+[  4] send     user                     -> Executor                 GroupChatReset             ''
+[  5] response Executor                 -> None                     NoneType                   ''
+[  6] send     user                     -> WebSearcher              GroupChatReset             ''
+[  7] response WebSearcher              -> None                     NoneType                   ''
+[  8] publish  MagenticOneOrchestrator  -> output                   TextMessage                '\nWe are working to address the following user request:\n\nAmong the capital cities of Denmar'
+[  9] publish  MagenticOneOrchestrator  -> group                    TextMessage                '\nWe are working to address the following user request:\n\nAmong the capital cities of Denmar'
+[ 10] publish  MagenticOneOrchestrator  -> output                   TextMessage                'Please confirm the capitals of Denmark (Copenhagen), Finland (Helsinki), Iceland (Reykjaví'
+[ 11] publish  MagenticOneOrchestrator  -> group                    TextMessage                'Please confirm the capitals of Denmark (Copenhagen), Finland (Helsinki), Iceland (Reykjaví'
+[ 12] publish  MagenticOneOrchestrator  -> WebSearcher              GroupChatRequestPublish    ''
+[ 13] response MagenticOneOrchestrator  -> None                     NoneType                   ''
+[ 14] publish  WebSearcher              -> output                   ToolCallRequestEvent       '[\n {\n  "id": "toolu_0168bm4ZDCatzDh71R91xAjE",\n  "arguments": "{\\"url\\": \\"Reykjav\\\\u00edk'
+[ 15] publish  WebSearcher              -> output                   ToolCallExecutionEvent     '[\n {\n  "content": "# Reykjav\\u00edk\\n\\nReykjav\\u00edk is the capital and largest city of I'
+[ 16] publish  WebSearcher              -> output                   TextMessage                'The northernmost of the five capitals is Reykjavík. Its Wikipedia article (https://en.wiki'
+[ 17] publish  WebSearcher              -> group                    TextMessage                'The northernmost of the five capitals is Reykjavík. Its Wikipedia article (https://en.wiki'
+[ 18] publish  MagenticOneOrchestrator  -> output                   TextMessage                "Please find Reykjavík's precise latitude in decimal degrees or degrees-minutes-seconds fro"
+[ 19] publish  MagenticOneOrchestrator  -> group                    TextMessage                "Please find Reykjavík's precise latitude in decimal degrees or degrees-minutes-seconds fro"
+[ 20] publish  MagenticOneOrchestrator  -> WebSearcher              GroupChatRequestPublish    ''
+[ 21] publish  WebSearcher              -> output                   ToolCallRequestEvent       '[\n {\n  "id": "toolu_015biTcis6vLw8bmUtu4PfLB",\n  "arguments": "{\\"url\\": \\"https://geohack'
+[ 22] publish  WebSearcher              -> output                   ToolCallExecutionEvent     '[\n {\n  "content": "HTTP Error 429: Too Many Requests",\n  "name": "wiki_fetch",\n  "call_id"'
+[ 23] publish  WebSearcher              -> output                   ToolCallRequestEvent       '[\n {\n  "id": "toolu_01HFJEyvexm6gsJgLw9xCXaD",\n  "arguments": "{\\"url\\": \\"List of nationa'
+[ 24] publish  WebSearcher              -> output                   ToolCallExecutionEvent     '[\n {\n  "content": "# List of national capitals by latitude\\n\\nThis is a list of official n'
+[ 25] publish  WebSearcher              -> output                   TextMessage                "I couldn't get Reykjavík's precise latitude from GeoHack, GeoNames or the CIA World Factbo"
+[ 26] publish  WebSearcher              -> group                    TextMessage                "I couldn't get Reykjavík's precise latitude from GeoHack, GeoNames or the CIA World Factbo"
+[ 27] publish  MagenticOneOrchestrator  -> output                   TextMessage                "Reykjavík, 64.1\n\nWikipedia gives Reykjavík's latitude as 64°08′ N, which is about 64.13° N"
+[ 28] publish  MagenticOneOrchestrator  -> group                    TextMessage                "Reykjavík, 64.1\n\nWikipedia gives Reykjavík's latitude as 64°08′ N, which is about 64.13° N"
+[ 29] publish  MagenticOneOrchestrator  -> output                   GroupChatTermination       ''
+expected: Reykjav|64.1
+answer: Reykjavík, 64.1  Wikipedia gives Reykjavík's latitude as 64°08′ N, which is about 64.13° N. It also calls Reykjavík the world's northernmost capital of a sovereign state, so it lies north of Copenhagen, Helsinki, Oslo and Stockholm.  That was the only source I could check: GeoHack and GeoNames retur
+messages: 30 RESULT: PASS
+saved: /Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/recordings/w5_nordic_capital_r1.pkl

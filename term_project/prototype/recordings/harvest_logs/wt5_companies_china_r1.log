@@ -1,0 +1,59 @@
+ANTHROPIC_API_KEY is set and takes precedence over the SDK's profile / federation auto-discovery; unset ANTHROPIC_API_KEY to use the auto-discovered credential.
+/Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/backend/agdbg/team.py:124: UserWarning: Using LocalCommandLineCodeExecutor may execute code on the local machine which can be unsafe. For security, it is recommended to use DockerCommandLineCodeExecutor instead. To install Docker, visit: https://docs.docker.com/get-docker/
+  "Executor", code_executor=LocalCommandLineCodeExecutor(work_dir=work_dir, timeout=60)
+/Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/backend/agdbg/team.py:123: UserWarning: No approval function set for CodeExecutorAgent. This means code will be executed automatically without human oversight. For security, consider setting an approval_func to review and approve code before execution. See the CodeExecutorAgent documentation for examples of approval functions.
+  executor = CodeExecutorAgent(
+/Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/.venv/lib/python3.12/site-packages/autogen_core/_single_threaded_agent_runtime.py:772: RuntimeWarning: Intervention handler on_response returned None. This might be unintentional. Consider returning the original message or DropMessage explicitly.
+  _warn_if_none(temp_message, "on_response")
+[  0] send     user                     -> MagenticOneOrchestrator  TextMessage                "According to the English Wikipedia article 'List of largest companies by revenue', how man"
+[  1] publish  MagenticOneOrchestrator  -> output                   TextMessage                "According to the English Wikipedia article 'List of largest companies by revenue', how man"
+[  2] send     user                     -> Coder                    GroupChatReset             ''
+[  3] response Coder                    -> None                     NoneType                   ''
+[  4] send     user                     -> Executor                 GroupChatReset             ''
+[  5] response Executor                 -> None                     NoneType                   ''
+[  6] send     user                     -> WebSearcher              GroupChatReset             ''
+[  7] response WebSearcher              -> None                     NoneType                   ''
+[  8] publish  MagenticOneOrchestrator  -> output                   TextMessage                '\nWe are working to address the following user request:\n\nAccording to the English Wikipedia'
+[  9] publish  MagenticOneOrchestrator  -> group                    TextMessage                '\nWe are working to address the following user request:\n\nAccording to the English Wikipedia'
+[ 10] publish  MagenticOneOrchestrator  -> output                   TextMessage                "Please open the English Wikipedia article 'List of largest companies by revenue' (https://"
+[ 11] publish  MagenticOneOrchestrator  -> group                    TextMessage                "Please open the English Wikipedia article 'List of largest companies by revenue' (https://"
+[ 12] publish  MagenticOneOrchestrator  -> WebSearcher              GroupChatRequestPublish    ''
+[ 13] response MagenticOneOrchestrator  -> None                     NoneType                   ''
+[ 14] publish  WebSearcher              -> output                   ToolCallRequestEvent       '[\n {\n  "id": "toolu_01C1vQZTeFGG7PmNxokqbGV6",\n  "arguments": "{\\"url\\": \\"List_of_largest'
+[ 15] publish  WebSearcher              -> output                   ToolCallExecutionEvent     '[\n {\n  "content": "# List of largest companies by revenue\\n\\nThis list comprises the world'
+[ 16] publish  WebSearcher              -> output                   ThoughtEvent               "Table isn't included; try raw."
+[ 17] publish  WebSearcher              -> output                   ToolCallRequestEvent       '[\n {\n  "id": "toolu_018QgP8TwjF2E882jQ4d8NPz",\n  "arguments": "{\\"url\\": \\"https://en.wiki'
+[ 18] publish  WebSearcher              -> output                   ToolCallExecutionEvent     '[\n {\n  "content": "404: no Wikipedia article \'https://en.wikipedia.org/w/index.php?title=L'
+[ 19] publish  WebSearcher              -> output                   ToolCallRequestEvent       '[\n {\n  "id": "toolu_01UDhPavmooXkAshQgVXSdGp",\n  "arguments": "{\\"query\\": \\"List of large'
+[ 20] publish  WebSearcher              -> output                   ToolCallExecutionEvent     '[\n {\n  "content": "[1] List of largest Chinese companies\\nhttps://en.wikipedia.org/wiki/Li'
+[ 21] publish  WebSearcher              -> output                   ToolCallRequestEvent       '[\n {\n  "id": "toolu_01Hxc64QxLk4GcEyy2o4DTtt",\n  "arguments": "{\\"url\\": \\"Fortune Global '
+[ 22] publish  WebSearcher              -> output                   ToolCallExecutionEvent     '[\n {\n  "content": "# Fortune Global 500\\n\\nThe Fortune Global 500, also known as Global 50'
+[ 23] publish  WebSearcher              -> output                   TextMessage                "I could not verify the top ten from the article itself, so I don't have a confirmed number"
+[ 24] publish  WebSearcher              -> group                    TextMessage                "I could not verify the top ten from the article itself, so I don't have a confirmed number"
+[ 25] publish  MagenticOneOrchestrator  -> output                   TextMessage                'Please write one self-contained Python script for the Executor that gets the main ranked t'
+[ 26] publish  MagenticOneOrchestrator  -> group                    TextMessage                'Please write one self-contained Python script for the Executor that gets the main ranked t'
+[ 27] publish  MagenticOneOrchestrator  -> Coder                    GroupChatRequestPublish    ''
+[ 28] publish  Coder                    -> output                   TextMessage                '```python\nimport requests, io, re, sys\nimport pandas as pd\n\nUA = {"User-Agent": "Mozilla/5'
+[ 29] publish  Coder                    -> group                    TextMessage                '```python\nimport requests, io, re, sys\nimport pandas as pd\n\nUA = {"User-Agent": "Mozilla/5'
+[ 30] publish  MagenticOneOrchestrator  -> output                   TextMessage                'Please run the Python script the Coder just provided, exactly as written, and report the f'
+[ 31] publish  MagenticOneOrchestrator  -> group                    TextMessage                'Please run the Python script the Coder just provided, exactly as written, and report the f'
+[ 32] publish  MagenticOneOrchestrator  -> Executor                 GroupChatRequestPublish    ''
+[ 33] publish  Executor                 -> output                   TextMessage                "revid: 1377107474\nparse API failed: No module named 'bs4'\npage HTML failed: No module name"
+[ 34] publish  Executor                 -> group                    TextMessage                "revid: 1377107474\nparse API failed: No module named 'bs4'\npage HTML failed: No module name"
+[ 35] publish  MagenticOneOrchestrator  -> output                   TextMessage                "The last run failed because bs4 is not installed. The wikitext fallback also grabbed the '"
+[ 36] publish  MagenticOneOrchestrator  -> group                    TextMessage                "The last run failed because bs4 is not installed. The wikitext fallback also grabbed the '"
+[ 37] publish  MagenticOneOrchestrator  -> Coder                    GroupChatRequestPublish    ''
+[ 38] publish  Coder                    -> output                   TextMessage                'This script installs nothing that it depends on. It splits the raw wikitext into tables, p'
+[ 39] publish  Coder                    -> group                    TextMessage                'This script installs nothing that it depends on. It splits the raw wikitext into tables, p'
+[ 40] publish  MagenticOneOrchestrator  -> output                   TextMessage                "Please run the Coder's latest Python script exactly as written and report the full output."
+[ 41] publish  MagenticOneOrchestrator  -> group                    TextMessage                "Please run the Coder's latest Python script exactly as written and report the full output."
+[ 42] publish  MagenticOneOrchestrator  -> Executor                 GroupChatRequestPublish    ''
+[ 43] publish  Executor                 -> output                   TextMessage                'wikitext length: 24840\ntables found: 2\n\n--- table 0 caption: None\n{|class="wikitable sorta'
+[ 44] publish  Executor                 -> group                    TextMessage                'wikitext length: 24840\ntables found: 2\n\n--- table 0 caption: None\n{|class="wikitable sorta'
+[ 45] publish  MagenticOneOrchestrator  -> output                   TextMessage                '3'
+[ 46] publish  MagenticOneOrchestrator  -> group                    TextMessage                '3'
+[ 47] publish  MagenticOneOrchestrator  -> output                   GroupChatTermination       ''
+expected: 3
+answer: 3
+messages: 48 RESULT: PASS
+saved: /Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/recordings/wt5_companies_china_r1.pkl

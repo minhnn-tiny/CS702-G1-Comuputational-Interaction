@@ -1,0 +1,55 @@
+ANTHROPIC_API_KEY is set and takes precedence over the SDK's profile / federation auto-discovery; unset ANTHROPIC_API_KEY to use the auto-discovered credential.
+/Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/backend/agdbg/team.py:76: UserWarning: Using LocalCommandLineCodeExecutor may execute code on the local machine which can be unsafe. For security, it is recommended to use DockerCommandLineCodeExecutor instead. To install Docker, visit: https://docs.docker.com/get-docker/
+  "Executor", code_executor=LocalCommandLineCodeExecutor(work_dir=work_dir, timeout=60)
+/Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/backend/agdbg/team.py:75: UserWarning: No approval function set for CodeExecutorAgent. This means code will be executed automatically without human oversight. For security, consider setting an approval_func to review and approve code before execution. See the CodeExecutorAgent documentation for examples of approval functions.
+  executor = CodeExecutorAgent(
+/Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/.venv/lib/python3.12/site-packages/autogen_core/_single_threaded_agent_runtime.py:772: RuntimeWarning: Intervention handler on_response returned None. This might be unintentional. Consider returning the original message or DropMessage explicitly.
+  _warn_if_none(temp_message, "on_response")
+[  0] send     user                     -> MagenticOneOrchestrator  TextMessage                "How many days passed between the Pallas telescope's first light and the day it was declare"
+[  1] publish  MagenticOneOrchestrator  -> output                   TextMessage                "How many days passed between the Pallas telescope's first light and the day it was declare"
+[  2] send     user                     -> Coder                    GroupChatReset             ''
+[  3] response Coder                    -> None                     NoneType                   ''
+[  4] send     user                     -> Executor                 GroupChatReset             ''
+[  5] response Executor                 -> None                     NoneType                   ''
+[  6] send     user                     -> WebSearcher              GroupChatReset             ''
+[  7] response WebSearcher              -> None                     NoneType                   ''
+[  8] publish  MagenticOneOrchestrator  -> output                   TextMessage                '\nWe are working to address the following user request:\n\nHow many days passed between the P'
+[  9] publish  MagenticOneOrchestrator  -> group                    TextMessage                '\nWe are working to address the following user request:\n\nHow many days passed between the P'
+[ 10] publish  MagenticOneOrchestrator  -> output                   TextMessage                'Please search for "Pallas telescope" together with "Lumen Valley Observatory", and also se'
+[ 11] publish  MagenticOneOrchestrator  -> group                    TextMessage                'Please search for "Pallas telescope" together with "Lumen Valley Observatory", and also se'
+[ 12] publish  MagenticOneOrchestrator  -> WebSearcher              GroupChatRequestPublish    ''
+[ 13] response MagenticOneOrchestrator  -> None                     NoneType                   ''
+[ 14] publish  WebSearcher              -> output                   ToolCallRequestEvent       '[\n {\n  "id": "toolu_015uFeUjgNCa55MnzNnBbUaC",\n  "arguments": "{\\"query\\": \\"\\\\\\"Pallas te'
+[ 15] publish  WebSearcher              -> output                   ToolCallExecutionEvent     '[\n {\n  "content": "[1] Pallas robotic telescope declared operational - Lumen Valley Observ'
+[ 16] publish  WebSearcher              -> output                   ToolCallRequestEvent       '[\n {\n  "id": "toolu_01R5DgEZvLcNH9zSiCmznSpM",\n  "arguments": "{\\"url\\": \\"https://www.lum'
+[ 17] publish  WebSearcher              -> output                   ToolCallExecutionEvent     '[\n {\n  "content": "# Pallas robotic telescope declared operational - Lumen Valley Observat'
+[ 18] publish  WebSearcher              -> output                   TextMessage                'The Pallas telescope reached first light on 14 May 2024 and was declared operational on 3 '
+[ 19] publish  WebSearcher              -> group                    TextMessage                'The Pallas telescope reached first light on 14 May 2024 and was declared operational on 3 '
+[ 20] publish  MagenticOneOrchestrator  -> output                   TextMessage                'Please confirm both Pallas dates from at least one source other than lumenvalleyobservator'
+[ 21] publish  MagenticOneOrchestrator  -> group                    TextMessage                'Please confirm both Pallas dates from at least one source other than lumenvalleyobservator'
+[ 22] publish  MagenticOneOrchestrator  -> WebSearcher              GroupChatRequestPublish    ''
+[ 23] publish  WebSearcher              -> output                   ToolCallRequestEvent       '[\n {\n  "id": "toolu_01KRNH4tqU7hes2NngiaWZNs",\n  "arguments": "{\\"url\\": \\"https://en.wiki'
+[ 24] publish  WebSearcher              -> output                   ToolCallExecutionEvent     '[\n {\n  "content": "# Lumen Valley Observatory - Wikipedia\\n\\nThe Lumen Valley Observatory '
+[ 25] publish  WebSearcher              -> output                   ToolCallRequestEvent       '[\n {\n  "id": "toolu_014GCYBXEhbjWaDjBrjTbVUk",\n  "arguments": "{\\"url\\": \\"https://www.lum'
+[ 26] publish  WebSearcher              -> output                   ToolCallExecutionEvent     '[\n {\n  "content": "# Facilities | Lumen Valley Observatory\\n\\nLumen Valley Observatory | H'
+[ 27] publish  WebSearcher              -> output                   ToolCallRequestEvent       '[\n {\n  "id": "toolu_01XKPzHQ6CHYqBzw1V7mBRwx",\n  "arguments": "{\\"url\\": \\"https://skywand'
+[ 28] publish  WebSearcher              -> output                   ToolCallExecutionEvent     '[\n {\n  "content": "# A summer on the ridge: commissioning Pallas\\n\\nPosted 20 October 2024'
+[ 29] publish  WebSearcher              -> output                   TextMessage                "I couldn't find a second source that gives either exact date. The only exact dates are sti"
+[ 30] publish  WebSearcher              -> group                    TextMessage                "I couldn't find a second source that gives either exact date. The only exact dates are sti"
+[ 31] publish  MagenticOneOrchestrator  -> output                   TextMessage                'Please write a short Python script for the Executor to run that prints (date(2024,9,3) - d'
+[ 32] publish  MagenticOneOrchestrator  -> group                    TextMessage                'Please write a short Python script for the Executor to run that prints (date(2024,9,3) - d'
+[ 33] publish  MagenticOneOrchestrator  -> Coder                    GroupChatRequestPublish    ''
+[ 34] publish  Coder                    -> output                   TextMessage                '```python\nfrom datetime import date\n\nfirst_light = date(2024, 5, 14)\noperational = date(20'
+[ 35] publish  Coder                    -> group                    TextMessage                '```python\nfrom datetime import date\n\nfirst_light = date(2024, 5, 14)\noperational = date(20'
+[ 36] publish  MagenticOneOrchestrator  -> output                   TextMessage                'Please run this Python script and report the printed output:\n```python\nfrom datetime impor'
+[ 37] publish  MagenticOneOrchestrator  -> group                    TextMessage                'Please run this Python script and report the printed output:\n```python\nfrom datetime impor'
+[ 38] publish  MagenticOneOrchestrator  -> Executor                 GroupChatRequestPublish    ''
+[ 39] publish  Executor                 -> output                   TextMessage                '112\n112\n'
+[ 40] publish  Executor                 -> group                    TextMessage                '112\n112\n'
+[ 41] publish  MagenticOneOrchestrator  -> output                   TextMessage                '112'
+[ 42] publish  MagenticOneOrchestrator  -> group                    TextMessage                '112'
+[ 43] publish  MagenticOneOrchestrator  -> output                   GroupChatTermination       ''
+expected: 112
+answer: 112
+messages: 44 RESULT: PASS
+saved: /Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/recordings/t9_pallas_days_r2.pkl

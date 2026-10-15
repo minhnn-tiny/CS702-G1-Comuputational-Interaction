@@ -1,0 +1,42 @@
+ANTHROPIC_API_KEY is set and takes precedence over the SDK's profile / federation auto-discovery; unset ANTHROPIC_API_KEY to use the auto-discovered credential.
+/Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/backend/agdbg/team.py:124: UserWarning: Using LocalCommandLineCodeExecutor may execute code on the local machine which can be unsafe. For security, it is recommended to use DockerCommandLineCodeExecutor instead. To install Docker, visit: https://docs.docker.com/get-docker/
+  "Executor", code_executor=LocalCommandLineCodeExecutor(work_dir=work_dir, timeout=60)
+/Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/backend/agdbg/team.py:123: UserWarning: No approval function set for CodeExecutorAgent. This means code will be executed automatically without human oversight. For security, consider setting an approval_func to review and approve code before execution. See the CodeExecutorAgent documentation for examples of approval functions.
+  executor = CodeExecutorAgent(
+/Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/.venv/lib/python3.12/site-packages/autogen_core/_single_threaded_agent_runtime.py:772: RuntimeWarning: Intervention handler on_response returned None. This might be unintentional. Consider returning the original message or DropMessage explicitly.
+  _warn_if_none(temp_message, "on_response")
+[  0] send     user                     -> MagenticOneOrchestrator  TextMessage                "In the English Wikipedia article 'List of countries and dependencies by area', what rank i"
+[  1] publish  MagenticOneOrchestrator  -> output                   TextMessage                "In the English Wikipedia article 'List of countries and dependencies by area', what rank i"
+[  2] send     user                     -> Coder                    GroupChatReset             ''
+[  3] response Coder                    -> None                     NoneType                   ''
+[  4] send     user                     -> Executor                 GroupChatReset             ''
+[  5] response Executor                 -> None                     NoneType                   ''
+[  6] send     user                     -> WebSearcher              GroupChatReset             ''
+[  7] response WebSearcher              -> None                     NoneType                   ''
+[  8] publish  MagenticOneOrchestrator  -> output                   TextMessage                "\nWe are working to address the following user request:\n\nIn the English Wikipedia article '"
+[  9] publish  MagenticOneOrchestrator  -> group                    TextMessage                "\nWe are working to address the following user request:\n\nIn the English Wikipedia article '"
+[ 10] publish  MagenticOneOrchestrator  -> output                   TextMessage                'Please fetch https://en.wikipedia.org/wiki/List_of_countries_and_dependencies_by_area and '
+[ 11] publish  MagenticOneOrchestrator  -> group                    TextMessage                'Please fetch https://en.wikipedia.org/wiki/List_of_countries_and_dependencies_by_area and '
+[ 12] publish  MagenticOneOrchestrator  -> WebSearcher              GroupChatRequestPublish    ''
+[ 13] response MagenticOneOrchestrator  -> None                     NoneType                   ''
+[ 14] publish  WebSearcher              -> output                   ToolCallRequestEvent       '[\n {\n  "id": "toolu_01KHASxFuHNZfnvi3FFskfUB",\n  "arguments": "{\\"url\\": \\"https://en.wiki'
+[ 15] publish  WebSearcher              -> output                   ToolCallExecutionEvent     '[\n {\n  "content": "# List of countries and dependencies by area\\n\\nThis is a list of the w'
+[ 16] publish  WebSearcher              -> output                   TextMessage                "**18** (inferred: the fetched text didn't include the table, so I couldn't read Mongolia's"
+[ 17] publish  WebSearcher              -> group                    TextMessage                "**18** (inferred: the fetched text didn't include the table, so I couldn't read Mongolia's"
+[ 18] publish  MagenticOneOrchestrator  -> output                   TextMessage                "Write a Python script for the Executor that downloads the English Wikipedia article 'List "
+[ 19] publish  MagenticOneOrchestrator  -> group                    TextMessage                "Write a Python script for the Executor that downloads the English Wikipedia article 'List "
+[ 20] publish  MagenticOneOrchestrator  -> Coder                    GroupChatRequestPublish    ''
+[ 21] publish  Coder                    -> output                   TextMessage                "The WebSearcher's fetch tool left out the table, so the 18 so far is an inference, not a r"
+[ 22] publish  Coder                    -> group                    TextMessage                "The WebSearcher's fetch tool left out the table, so the 18 so far is an inference, not a r"
+[ 23] publish  MagenticOneOrchestrator  -> output                   TextMessage                "Please run the Coder's most recent Python script exactly as written. It fetches the Wikipe"
+[ 24] publish  MagenticOneOrchestrator  -> group                    TextMessage                "Please run the Coder's most recent Python script exactly as written. It fetches the Wikipe"
+[ 25] publish  MagenticOneOrchestrator  -> Executor                 GroupChatRequestPublish    ''
+[ 26] publish  Executor                 -> output                   TextMessage                "HTML method failed: No module named 'bs4'\n\n--- Raw wikitext around line 89 ---\n|-\n| {{nts|"
+[ 27] publish  Executor                 -> group                    TextMessage                "HTML method failed: No module named 'bs4'\n\n--- Raw wikitext around line 89 ---\n|-\n| {{nts|"
+[ 28] publish  MagenticOneOrchestrator  -> output                   TextMessage                '18'
+[ 29] publish  MagenticOneOrchestrator  -> group                    TextMessage                '18'
+[ 30] publish  MagenticOneOrchestrator  -> output                   GroupChatTermination       ''
+expected: 18
+answer: 18
+messages: 31 RESULT: PASS
+saved: /Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/recordings/wt2_mongolia_area_rank_r1.pkl

@@ -1,0 +1,34 @@
+ANTHROPIC_API_KEY is set and takes precedence over the SDK's profile / federation auto-discovery; unset ANTHROPIC_API_KEY to use the auto-discovered credential.
+/Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/backend/agdbg/team.py:124: UserWarning: Using LocalCommandLineCodeExecutor may execute code on the local machine which can be unsafe. For security, it is recommended to use DockerCommandLineCodeExecutor instead. To install Docker, visit: https://docs.docker.com/get-docker/
+  "Executor", code_executor=LocalCommandLineCodeExecutor(work_dir=work_dir, timeout=60)
+/Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/backend/agdbg/team.py:123: UserWarning: No approval function set for CodeExecutorAgent. This means code will be executed automatically without human oversight. For security, consider setting an approval_func to review and approve code before execution. See the CodeExecutorAgent documentation for examples of approval functions.
+  executor = CodeExecutorAgent(
+/Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/.venv/lib/python3.12/site-packages/autogen_core/_single_threaded_agent_runtime.py:772: RuntimeWarning: Intervention handler on_response returned None. This might be unintentional. Consider returning the original message or DropMessage explicitly.
+  _warn_if_none(temp_message, "on_response")
+[  0] send     user                     -> MagenticOneOrchestrator  TextMessage                'How many years passed between the founding of the university where Alan Turing earned his '
+[  1] publish  MagenticOneOrchestrator  -> output                   TextMessage                'How many years passed between the founding of the university where Alan Turing earned his '
+[  2] send     user                     -> Coder                    GroupChatReset             ''
+[  3] response Coder                    -> None                     NoneType                   ''
+[  4] send     user                     -> Executor                 GroupChatReset             ''
+[  5] response Executor                 -> None                     NoneType                   ''
+[  6] send     user                     -> WebSearcher              GroupChatReset             ''
+[  7] response WebSearcher              -> None                     NoneType                   ''
+[  8] publish  MagenticOneOrchestrator  -> output                   TextMessage                '\nWe are working to address the following user request:\n\nHow many years passed between the '
+[  9] publish  MagenticOneOrchestrator  -> group                    TextMessage                '\nWe are working to address the following user request:\n\nHow many years passed between the '
+[ 10] publish  MagenticOneOrchestrator  -> output                   TextMessage                'Please confirm three facts using authoritative sources, and report what each source says a'
+[ 11] publish  MagenticOneOrchestrator  -> group                    TextMessage                'Please confirm three facts using authoritative sources, and report what each source says a'
+[ 12] publish  MagenticOneOrchestrator  -> WebSearcher              GroupChatRequestPublish    ''
+[ 13] response MagenticOneOrchestrator  -> None                     NoneType                   ''
+[ 14] publish  WebSearcher              -> output                   ToolCallRequestEvent       '[\n {\n  "id": "toolu_01RZHT7k4d6WmSUmxcTY3XeQ",\n  "arguments": "{\\"url\\": \\"Turing Award\\"}'
+[ 15] publish  WebSearcher              -> output                   ToolCallExecutionEvent     '[\n {\n  "content": "# Turing Award\\n\\nThe ACM A. M. Turing Award is an annual prize given b'
+[ 16] publish  WebSearcher              -> output                   ToolCallRequestEvent       '[\n {\n  "id": "toolu_012ZDLuNYu1JtT3uR2Xt4Yjm",\n  "arguments": "{\\"query\\": \\"Alan Turing P'
+[ 17] publish  WebSearcher              -> output                   ToolCallExecutionEvent     '[\n {\n  "content": "[1] Alonzo Church\\nhttps://en.wikipedia.org/wiki/Alonzo_Church\\nstudent'
+[ 18] publish  WebSearcher              -> output                   TextMessage                "**220**\n\nAll three facts match what you expected. I didn't find any discrepancies. The sou"
+[ 19] publish  WebSearcher              -> group                    TextMessage                "**220**\n\nAll three facts match what you expected. I didn't find any discrepancies. The sou"
+[ 20] publish  MagenticOneOrchestrator  -> output                   TextMessage                '220'
+[ 21] publish  MagenticOneOrchestrator  -> group                    TextMessage                '220'
+[ 22] publish  MagenticOneOrchestrator  -> output                   GroupChatTermination       ''
+expected: 220
+answer: 220
+messages: 23 RESULT: PASS
+saved: /Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/recordings/w1_turing_award_gap_r2.pkl

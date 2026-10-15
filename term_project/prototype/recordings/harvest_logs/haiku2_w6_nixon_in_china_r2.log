@@ -1,0 +1,79 @@
+ANTHROPIC_API_KEY is set and takes precedence over the SDK's profile / federation auto-discovery; unset ANTHROPIC_API_KEY to use the auto-discovered credential.
+/Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/backend/agdbg/team.py:124: UserWarning: Using LocalCommandLineCodeExecutor may execute code on the local machine which can be unsafe. For security, it is recommended to use DockerCommandLineCodeExecutor instead. To install Docker, visit: https://docs.docker.com/get-docker/
+  "Executor", code_executor=LocalCommandLineCodeExecutor(work_dir=work_dir, timeout=60)
+/Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/backend/agdbg/team.py:123: UserWarning: No approval function set for CodeExecutorAgent. This means code will be executed automatically without human oversight. For security, consider setting an approval_func to review and approve code before execution. See the CodeExecutorAgent documentation for examples of approval functions.
+  executor = CodeExecutorAgent(
+/Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/.venv/lib/python3.12/site-packages/autogen_core/_single_threaded_agent_runtime.py:772: RuntimeWarning: Intervention handler on_response returned None. This might be unintentional. Consider returning the original message or DropMessage explicitly.
+  _warn_if_none(temp_message, "on_response")
+[  0] send     user                     -> MagenticOneOrchestrator  TextMessage                "In which year did the composer of the opera 'Nixon in China' win the Pulitzer Prize for Mu"
+[  1] publish  MagenticOneOrchestrator  -> output                   TextMessage                "In which year did the composer of the opera 'Nixon in China' win the Pulitzer Prize for Mu"
+[  2] send     user                     -> Coder                    GroupChatReset             ''
+[  3] response Coder                    -> None                     NoneType                   ''
+[  4] send     user                     -> Executor                 GroupChatReset             ''
+[  5] response Executor                 -> None                     NoneType                   ''
+[  6] send     user                     -> WebSearcher              GroupChatReset             ''
+[  7] response WebSearcher              -> None                     NoneType                   ''
+[  8] publish  MagenticOneOrchestrator  -> output                   TextMessage                '\nWe are working to address the following user request:\n\nIn which year did the composer of '
+[  9] publish  MagenticOneOrchestrator  -> group                    TextMessage                '\nWe are working to address the following user request:\n\nIn which year did the composer of '
+[ 10] publish  MagenticOneOrchestrator  -> output                   TextMessage                'Please search pulitzer.org for the Pulitzer Prize for Music winners list and fetch the ent'
+[ 11] publish  MagenticOneOrchestrator  -> group                    TextMessage                'Please search pulitzer.org for the Pulitzer Prize for Music winners list and fetch the ent'
+[ 12] publish  MagenticOneOrchestrator  -> WebSearcher              GroupChatRequestPublish    ''
+[ 13] response MagenticOneOrchestrator  -> None                     NoneType                   ''
+[ 14] publish  WebSearcher              -> output                   ToolCallRequestEvent       '[\n {\n  "id": "toolu_01PRaLTDUz73FnMWfvwNVewZ",\n  "arguments": "{\\"query\\": \\"Pulitzer Priz'
+[ 15] publish  WebSearcher              -> output                   ToolCallExecutionEvent     '[\n {\n  "content": "[1] Pulitzer Prize for Music\\nhttps://en.wikipedia.org/wiki/Pulitzer_Pr'
+[ 16] publish  WebSearcher              -> output                   ToolCallRequestEvent       '[\n {\n  "id": "toolu_01Y1vZpxzTHpm2uSYimCs27H",\n  "arguments": "{\\"url\\": \\"https://en.wiki'
+[ 17] publish  WebSearcher              -> output                   ToolCallExecutionEvent     '[\n {\n  "content": "# Pulitzer Prize for Music\\n\\nThe Pulitzer Prize for Music is one of se'
+[ 18] publish  WebSearcher              -> output                   ToolCallRequestEvent       '[\n {\n  "id": "toolu_01Wawi7yvJBPYsoYJzbJNMEq",\n  "arguments": "{\\"url\\": \\"https://en.wiki'
+[ 19] publish  WebSearcher              -> output                   ToolCallExecutionEvent     '[\n {\n  "content": "alis\'s piece premiered on April 1, 1994, and Columbia Records released '
+[ 20] publish  WebSearcher              -> output                   ToolCallRequestEvent       '[\n {\n  "id": "toolu_01TcXZk3L4d7r8snxDhAj6LK",\n  "arguments": "{\\"url\\": \\"https://en.wiki'
+[ 21] publish  WebSearcher              -> output                   ToolCallExecutionEvent     '[\n {\n  "content": "# John Adams (composer)\\n\\nJohn Coolidge Adams (born February 15, 1947)'
+[ 22] publish  WebSearcher              -> output                   TextMessage                '**Answer: 2002, On the Transmigration of Souls**\n\n- **Composer:** John Adams wrote *Nixon '
+[ 23] publish  WebSearcher              -> group                    TextMessage                '**Answer: 2002, On the Transmigration of Souls**\n\n- **Composer:** John Adams wrote *Nixon '
+[ 24] publish  MagenticOneOrchestrator  -> output                   TextMessage                'Please fetch the official Pulitzer Prize archive entry for John Adams in the Music categor'
+[ 25] publish  MagenticOneOrchestrator  -> group                    TextMessage                'Please fetch the official Pulitzer Prize archive entry for John Adams in the Music categor'
+[ 26] publish  MagenticOneOrchestrator  -> WebSearcher              GroupChatRequestPublish    ''
+[ 27] publish  WebSearcher              -> output                   ToolCallRequestEvent       '[\n {\n  "id": "toolu_01HJhNwDWZG3Z1zUMbjyxFtW",\n  "arguments": "{\\"url\\": \\"https://www.pul'
+[ 28] publish  WebSearcher              -> output                   ToolCallExecutionEvent     '[\n {\n  "content": "HTTP Error 429: Too Many Requests",\n  "name": "wiki_fetch",\n  "call_id"'
+[ 29] publish  WebSearcher              -> output                   ToolCallRequestEvent       '[\n {\n  "id": "toolu_017CzgV7w9WSPDxtecT3qvjb",\n  "arguments": "{\\"url\\": \\"https://www.pul'
+[ 30] publish  WebSearcher              -> output                   ToolCallExecutionEvent     '[\n {\n  "content": "404: no Wikipedia article \'https://www.pulitzer.org/prize-winners-by-ye'
+[ 31] publish  WebSearcher              -> output                   ToolCallRequestEvent       '[\n {\n  "id": "toolu_01MkWKWuH5YbRM5Rg6rcitc6",\n  "arguments": "{\\"url\\": \\"https://en.wiki'
+[ 32] publish  WebSearcher              -> output                   ToolCallExecutionEvent     '[\n {\n  "content": "# 2003 Pulitzer Prize\\n\\nWinners of the Pulitzer Prize in 2003 were:\\n\\'
+[ 33] publish  WebSearcher              -> output                   TextMessage                'I could not reach pulitzer.org, so I could not confirm the official award year or title.\n\n'
+[ 34] publish  WebSearcher              -> group                    TextMessage                'I could not reach pulitzer.org, so I could not confirm the official award year or title.\n\n'
+[ 35] publish  MagenticOneOrchestrator  -> output                   TextMessage                "Please search for 'John Adams Pulitzer Prize Music 2003 Transmigration of Souls' and fetch"
+[ 36] publish  MagenticOneOrchestrator  -> group                    TextMessage                "Please search for 'John Adams Pulitzer Prize Music 2003 Transmigration of Souls' and fetch"
+[ 37] publish  MagenticOneOrchestrator  -> WebSearcher              GroupChatRequestPublish    ''
+[ 38] publish  WebSearcher              -> output                   ToolCallRequestEvent       '[\n {\n  "id": "toolu_01AXSCVeWafJBQiy7Nhv7cJf",\n  "arguments": "{\\"query\\": \\"John Adams Pu'
+[ 39] publish  WebSearcher              -> output                   ToolCallExecutionEvent     '[\n {\n  "content": "[1] Pulitzer Prize for Music\\nhttps://en.wikipedia.org/wiki/Pulitzer_Pr'
+[ 40] publish  WebSearcher              -> output                   ToolCallRequestEvent       '[\n {\n  "id": "toolu_01YEiRdnWYwipGERSGWphxwC",\n  "arguments": "{\\"url\\": \\"https://en.wiki'
+[ 41] publish  WebSearcher              -> output                   ToolCallExecutionEvent     '[\n {\n  "content": "# On the Transmigration of Souls\\n\\nOn the Transmigration of Souls is a'
+[ 42] publish  WebSearcher              -> output                   TextMessage                '**Answer: 2003, On the Transmigration of Souls**, with the 2002 date being the premiere ye'
+[ 43] publish  WebSearcher              -> group                    TextMessage                '**Answer: 2003, On the Transmigration of Souls**, with the 2002 date being the premiere ye'
+[ 44] publish  MagenticOneOrchestrator  -> output                   TextMessage                "Search for 'Pulitzer Prize for Music 2003 winner On the Transmigration of Souls Adams' and"
+[ 45] publish  MagenticOneOrchestrator  -> group                    TextMessage                "Search for 'Pulitzer Prize for Music 2003 winner On the Transmigration of Souls Adams' and"
+[ 46] publish  MagenticOneOrchestrator  -> WebSearcher              GroupChatRequestPublish    ''
+[ 47] publish  WebSearcher              -> output                   ToolCallRequestEvent       '[\n {\n  "id": "toolu_01V4aiwNASHj5XA6PPrVZUrU",\n  "arguments": "{\\"query\\": \\"Pulitzer Priz'
+[ 48] publish  WebSearcher              -> output                   ToolCallExecutionEvent     '[\n {\n  "content": "[1] Pulitzer Prize for Music\\nhttps://en.wikipedia.org/wiki/Pulitzer_Pr'
+[ 49] publish  WebSearcher              -> output                   TextMessage                '**Answer: 2003, On the Transmigration of Souls.** Two Wikipedia pages give the award year '
+[ 50] publish  WebSearcher              -> group                    TextMessage                '**Answer: 2003, On the Transmigration of Souls.** Two Wikipedia pages give the award year '
+[ 51] publish  MagenticOneOrchestrator  -> output                   TextMessage                'Make one final attempt, and only one, to find a source that explicitly labels the award ye'
+[ 52] publish  MagenticOneOrchestrator  -> group                    TextMessage                'Make one final attempt, and only one, to find a source that explicitly labels the award ye'
+[ 53] publish  MagenticOneOrchestrator  -> WebSearcher              GroupChatRequestPublish    ''
+[ 54] publish  WebSearcher              -> output                   ToolCallRequestEvent       '[\n {\n  "id": "toolu_01R6Tq2UVPXCZaYu9NP3KxTG",\n  "arguments": "{\\"url\\": \\"https://en.wiki'
+[ 55] publish  WebSearcher              -> output                   ToolCallExecutionEvent     '[\n {\n  "content": "HTTP Error 429: Too Many Requests",\n  "name": "wiki_fetch",\n  "call_id"'
+[ 56] publish  WebSearcher              -> output                   TextMessage                'I made the one final attempt, and it failed. The fetch of https://en.wikipedia.org/wiki/Li'
+[ 57] publish  WebSearcher              -> group                    TextMessage                'I made the one final attempt, and it failed. The fetch of https://en.wikipedia.org/wiki/Li'
+[ 58] publish  MagenticOneOrchestrator  -> output                   TextMessage                'Make one last attempt to read a source that explicitly labels the award year, such as the '
+[ 59] publish  MagenticOneOrchestrator  -> group                    TextMessage                'Make one last attempt to read a source that explicitly labels the award year, such as the '
+[ 60] publish  MagenticOneOrchestrator  -> WebSearcher              GroupChatRequestPublish    ''
+[ 61] publish  WebSearcher              -> output                   ToolCallRequestEvent       '[\n {\n  "id": "toolu_01NxgtqdS927EJkVmhXzZg7s",\n  "arguments": "{\\"url\\": \\"https://en.wiki'
+[ 62] publish  WebSearcher              -> output                   ToolCallExecutionEvent     '[\n {\n  "content": " Martino, Notturno\\n1975: Dominick Argento, From the Diary of Virginia '
+[ 63] publish  WebSearcher              -> output                   TextMessage                '**Answer: 2003, On the Transmigration of Souls.** The Wikipedia winners table gives the aw'
+[ 64] publish  WebSearcher              -> group                    TextMessage                '**Answer: 2003, On the Transmigration of Souls.** The Wikipedia winners table gives the aw'
+[ 65] publish  MagenticOneOrchestrator  -> output                   TextMessage                '2003, On the Transmigration of Souls\n\nThe composer of *Nixon in China* is John Adams. He w'
+[ 66] publish  MagenticOneOrchestrator  -> group                    TextMessage                '2003, On the Transmigration of Souls\n\nThe composer of *Nixon in China* is John Adams. He w'
+[ 67] publish  MagenticOneOrchestrator  -> output                   GroupChatTermination       ''
+expected: 2003|Transmigration
+answer: 2003, On the Transmigration of Souls  The composer of *Nixon in China* is John Adams. He won the Pulitzer Prize for Music in 2003 for *On the Transmigration of Souls*, a work for orchestra and chorus written in response to the September 11, 2001 attacks. Two Wikipedia pages give the award year as 20
+messages: 68 RESULT: PASS
+saved: /Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/recordings/haiku2_w6_nixon_in_china_r2.pkl

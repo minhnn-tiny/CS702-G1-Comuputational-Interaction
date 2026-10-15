@@ -1,0 +1,45 @@
+ANTHROPIC_API_KEY is set and takes precedence over the SDK's profile / federation auto-discovery; unset ANTHROPIC_API_KEY to use the auto-discovered credential.
+/Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/backend/agdbg/team.py:124: UserWarning: Using LocalCommandLineCodeExecutor may execute code on the local machine which can be unsafe. For security, it is recommended to use DockerCommandLineCodeExecutor instead. To install Docker, visit: https://docs.docker.com/get-docker/
+  "Executor", code_executor=LocalCommandLineCodeExecutor(work_dir=work_dir, timeout=60)
+/Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/backend/agdbg/team.py:123: UserWarning: No approval function set for CodeExecutorAgent. This means code will be executed automatically without human oversight. For security, consider setting an approval_func to review and approve code before execution. See the CodeExecutorAgent documentation for examples of approval functions.
+  executor = CodeExecutorAgent(
+/Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/.venv/lib/python3.12/site-packages/autogen_core/_single_threaded_agent_runtime.py:772: RuntimeWarning: Intervention handler on_response returned None. This might be unintentional. Consider returning the original message or DropMessage explicitly.
+  _warn_if_none(temp_message, "on_response")
+[  0] send     user                     -> MagenticOneOrchestrator  TextMessage                'How many telescopes does the Lumen Valley Observatory currently operate? Reply with just t'
+[  1] publish  MagenticOneOrchestrator  -> output                   TextMessage                'How many telescopes does the Lumen Valley Observatory currently operate? Reply with just t'
+[  2] send     user                     -> Coder                    GroupChatReset             ''
+[  3] response Coder                    -> None                     NoneType                   ''
+[  4] send     user                     -> Executor                 GroupChatReset             ''
+[  5] response Executor                 -> None                     NoneType                   ''
+[  6] send     user                     -> WebSearcher              GroupChatReset             ''
+[  7] response WebSearcher              -> None                     NoneType                   ''
+[  8] publish  MagenticOneOrchestrator  -> output                   TextMessage                '\nWe are working to address the following user request:\n\nHow many telescopes does the Lumen'
+[  9] publish  MagenticOneOrchestrator  -> group                    TextMessage                '\nWe are working to address the following user request:\n\nHow many telescopes does the Lumen'
+[ 10] publish  MagenticOneOrchestrator  -> output                   TextMessage                'Please search the web for "Lumen Valley Observatory" and identify its official website, op'
+[ 11] publish  MagenticOneOrchestrator  -> group                    TextMessage                'Please search the web for "Lumen Valley Observatory" and identify its official website, op'
+[ 12] publish  MagenticOneOrchestrator  -> WebSearcher              GroupChatRequestPublish    ''
+[ 13] response MagenticOneOrchestrator  -> None                     NoneType                   ''
+[ 14] publish  WebSearcher              -> output                   ToolCallRequestEvent       '[\n {\n  "id": "toolu_01DgQGYsnQMd66Jk3v6jxREF",\n  "arguments": "{\\"query\\": \\"Lumen Valley '
+[ 15] publish  WebSearcher              -> output                   ToolCallExecutionEvent     '[\n {\n  "content": "[1] Visiting Lumen Valley Observatory and its four telescopes\\nhttps://'
+[ 16] publish  WebSearcher              -> output                   ToolCallRequestEvent       '[\n {\n  "id": "toolu_01RQv724Fs25ZHEfxUcMAeAE",\n  "arguments": "{\\"url\\": \\"https://www.lum'
+[ 17] publish  WebSearcher              -> output                   ToolCallExecutionEvent     '[\n {\n  "content": "# Facilities | Lumen Valley Observatory\\n\\nLumen Valley Observatory | H'
+[ 18] publish  WebSearcher              -> output                   ToolCallRequestEvent       '[\n {\n  "id": "toolu_01DiFPrkP39STqya9nYTvVbP",\n  "arguments": "{\\"url\\": \\"https://www.lum'
+[ 19] publish  WebSearcher              -> output                   ToolCallExecutionEvent     '[\n {\n  "content": "infrared instrument commissioned in 2022, and the 0.8 m Pallas robotic '
+[ 20] publish  WebSearcher              -> output                   TextMessage                'Six.\n\nSource: the official facilities page, https://www.lumenvalleyobservatory.org/facilit'
+[ 21] publish  WebSearcher              -> group                    TextMessage                'Six.\n\nSource: the official facilities page, https://www.lumenvalleyobservatory.org/facilit'
+[ 22] publish  MagenticOneOrchestrator  -> output                   TextMessage                'Please fetch https://www.lumenvalleyobservatory.org/facilities and report every telescope '
+[ 23] publish  MagenticOneOrchestrator  -> group                    TextMessage                'Please fetch https://www.lumenvalleyobservatory.org/facilities and report every telescope '
+[ 24] publish  MagenticOneOrchestrator  -> WebSearcher              GroupChatRequestPublish    ''
+[ 25] publish  WebSearcher              -> output                   ToolCallRequestEvent       '[\n {\n  "id": "toolu_01LMKksineo9fe8FWEs6ogoe",\n  "arguments": "{\\"query\\": \\"Lumen Valley '
+[ 26] publish  WebSearcher              -> output                   ToolCallExecutionEvent     '[\n {\n  "content": "[1] Visiting Lumen Valley Observatory and its four telescopes\\nhttps://'
+[ 27] publish  WebSearcher              -> output                   ToolCallRequestEvent       '[\n {\n  "id": "toolu_01EaLgwshwYgJrvc9cXa6nbR",\n  "arguments": "{\\"url\\": \\"https://visitha'
+[ 28] publish  WebSearcher              -> output                   ToolCallExecutionEvent     '[\n {\n  "content": "# Lumen Valley Observatory - largest telescopes and facilities | Halden'
+[ 29] publish  WebSearcher              -> output                   TextMessage                '**Official facilities page** (https://www.lumenvalleyobservatory.org/facilities), marked "'
+[ 30] publish  WebSearcher              -> group                    TextMessage                '**Official facilities page** (https://www.lumenvalleyobservatory.org/facilities), marked "'
+[ 31] publish  MagenticOneOrchestrator  -> output                   TextMessage                '6'
+[ 32] publish  MagenticOneOrchestrator  -> group                    TextMessage                '6'
+[ 33] publish  MagenticOneOrchestrator  -> output                   GroupChatTermination       ''
+expected: 6
+answer: 6
+messages: 34 RESULT: PASS
+saved: /Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/recordings/haiku2_t1_telescopes_r1.pkl

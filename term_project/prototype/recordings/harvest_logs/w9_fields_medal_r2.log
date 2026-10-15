@@ -1,0 +1,32 @@
+ANTHROPIC_API_KEY is set and takes precedence over the SDK's profile / federation auto-discovery; unset ANTHROPIC_API_KEY to use the auto-discovered credential.
+/Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/backend/agdbg/team.py:124: UserWarning: Using LocalCommandLineCodeExecutor may execute code on the local machine which can be unsafe. For security, it is recommended to use DockerCommandLineCodeExecutor instead. To install Docker, visit: https://docs.docker.com/get-docker/
+  "Executor", code_executor=LocalCommandLineCodeExecutor(work_dir=work_dir, timeout=60)
+/Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/backend/agdbg/team.py:123: UserWarning: No approval function set for CodeExecutorAgent. This means code will be executed automatically without human oversight. For security, consider setting an approval_func to review and approve code before execution. See the CodeExecutorAgent documentation for examples of approval functions.
+  executor = CodeExecutorAgent(
+/Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/.venv/lib/python3.12/site-packages/autogen_core/_single_threaded_agent_runtime.py:772: RuntimeWarning: Intervention handler on_response returned None. This might be unintentional. Consider returning the original message or DropMessage explicitly.
+  _warn_if_none(temp_message, "on_response")
+[  0] send     user                     -> MagenticOneOrchestrator  TextMessage                'Take the surname of the first woman to be awarded the Fields Medal, count its letters, and'
+[  1] publish  MagenticOneOrchestrator  -> output                   TextMessage                'Take the surname of the first woman to be awarded the Fields Medal, count its letters, and'
+[  2] send     user                     -> Coder                    GroupChatReset             ''
+[  3] response Coder                    -> None                     NoneType                   ''
+[  4] send     user                     -> Executor                 GroupChatReset             ''
+[  5] response Executor                 -> None                     NoneType                   ''
+[  6] send     user                     -> WebSearcher              GroupChatReset             ''
+[  7] response WebSearcher              -> None                     NoneType                   ''
+[  8] publish  MagenticOneOrchestrator  -> output                   TextMessage                '\nWe are working to address the following user request:\n\nTake the surname of the first woma'
+[  9] publish  MagenticOneOrchestrator  -> group                    TextMessage                '\nWe are working to address the following user request:\n\nTake the surname of the first woma'
+[ 10] publish  MagenticOneOrchestrator  -> output                   TextMessage                "Please check the International Mathematical Union's Fields Medal page (mathunion.org) or a"
+[ 11] publish  MagenticOneOrchestrator  -> group                    TextMessage                "Please check the International Mathematical Union's Fields Medal page (mathunion.org) or a"
+[ 12] publish  MagenticOneOrchestrator  -> WebSearcher              GroupChatRequestPublish    ''
+[ 13] response MagenticOneOrchestrator  -> None                     NoneType                   ''
+[ 14] publish  WebSearcher              -> output                   ToolCallRequestEvent       '[\n {\n  "id": "toolu_018AN7yfArbDWGHJB6Lom6Eh",\n  "arguments": "{\\"url\\": \\"Maryam Mirzakha'
+[ 15] publish  WebSearcher              -> output                   ToolCallExecutionEvent     '[\n {\n  "content": "# Maryam Mirzakhani\\n\\nMaryam Mirzakhani (Persian: \\u0645\\u0631\\u06cc\\u'
+[ 16] publish  WebSearcher              -> output                   TextMessage                'All three facts check out: the first woman to win the Fields Medal was Maryam Mirzakhani, '
+[ 17] publish  WebSearcher              -> group                    TextMessage                'All three facts check out: the first woman to win the Fields Medal was Maryam Mirzakhani, '
+[ 18] publish  MagenticOneOrchestrator  -> output                   TextMessage                '20140'
+[ 19] publish  MagenticOneOrchestrator  -> group                    TextMessage                '20140'
+[ 20] publish  MagenticOneOrchestrator  -> output                   GroupChatTermination       ''
+expected: 20140
+answer: 20140
+messages: 21 RESULT: PASS
+saved: /Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/recordings/w9_fields_medal_r2.pkl

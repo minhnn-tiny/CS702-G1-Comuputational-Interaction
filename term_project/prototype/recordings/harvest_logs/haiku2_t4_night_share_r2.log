@@ -1,0 +1,52 @@
+ANTHROPIC_API_KEY is set and takes precedence over the SDK's profile / federation auto-discovery; unset ANTHROPIC_API_KEY to use the auto-discovered credential.
+/Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/backend/agdbg/team.py:124: UserWarning: Using LocalCommandLineCodeExecutor may execute code on the local machine which can be unsafe. For security, it is recommended to use DockerCommandLineCodeExecutor instead. To install Docker, visit: https://docs.docker.com/get-docker/
+  "Executor", code_executor=LocalCommandLineCodeExecutor(work_dir=work_dir, timeout=60)
+/Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/backend/agdbg/team.py:123: UserWarning: No approval function set for CodeExecutorAgent. This means code will be executed automatically without human oversight. For security, consider setting an approval_func to review and approve code before execution. See the CodeExecutorAgent documentation for examples of approval functions.
+  executor = CodeExecutorAgent(
+/Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/.venv/lib/python3.12/site-packages/autogen_core/_single_threaded_agent_runtime.py:772: RuntimeWarning: Intervention handler on_response returned None. This might be unintentional. Consider returning the original message or DropMessage explicitly.
+  _warn_if_none(temp_message, "on_response")
+[  0] send     user                     -> MagenticOneOrchestrator  TextMessage                "What percentage of the Lumen Valley Observatory's 2025 visitors took part in a night tour?"
+[  1] publish  MagenticOneOrchestrator  -> output                   TextMessage                "What percentage of the Lumen Valley Observatory's 2025 visitors took part in a night tour?"
+[  2] send     user                     -> Coder                    GroupChatReset             ''
+[  3] response Coder                    -> None                     NoneType                   ''
+[  4] send     user                     -> Executor                 GroupChatReset             ''
+[  5] response Executor                 -> None                     NoneType                   ''
+[  6] send     user                     -> WebSearcher              GroupChatReset             ''
+[  7] response WebSearcher              -> None                     NoneType                   ''
+[  8] publish  MagenticOneOrchestrator  -> output                   TextMessage                '\nWe are working to address the following user request:\n\nWhat percentage of the Lumen Valle'
+[  9] publish  MagenticOneOrchestrator  -> group                    TextMessage                '\nWe are working to address the following user request:\n\nWhat percentage of the Lumen Valle'
+[ 10] publish  MagenticOneOrchestrator  -> output                   TextMessage                'Please confirm that Lumen Valley Observatory is a real, currently operating facility and f'
+[ 11] publish  MagenticOneOrchestrator  -> group                    TextMessage                'Please confirm that Lumen Valley Observatory is a real, currently operating facility and f'
+[ 12] publish  MagenticOneOrchestrator  -> WebSearcher              GroupChatRequestPublish    ''
+[ 13] response MagenticOneOrchestrator  -> None                     NoneType                   ''
+[ 14] publish  WebSearcher              -> output                   ToolCallRequestEvent       '[\n {\n  "id": "toolu_01Nkzxa9GshmNL9mcnGs3UEp",\n  "arguments": "{\\"query\\": \\"Lumen Valley '
+[ 15] publish  WebSearcher              -> output                   ToolCallExecutionEvent     '[\n {\n  "content": "[1] Annual Visitor Report 2025 | Lumen Valley Observatory\\nhttps://www.'
+[ 16] publish  WebSearcher              -> output                   ToolCallRequestEvent       '[\n {\n  "id": "toolu_014ivEXF7viiNM8paAiFBtpx",\n  "arguments": "{\\"url\\": \\"https://www.lum'
+[ 17] publish  WebSearcher              -> output                   ToolCallExecutionEvent     '[\n {\n  "content": "# Annual Visitor Report 2025 | Lumen Valley Observatory\\n\\nLumen Valley'
+[ 18] publish  WebSearcher              -> output                   ToolCallRequestEvent       '[\n {\n  "id": "toolu_011FRzwNfFkycjMnXWMPAecU",\n  "arguments": "{\\"url\\": \\"https://www.lum'
+[ 19] publish  WebSearcher              -> output                   ToolCallExecutionEvent     '[\n {\n  "content": "in the total): 6,120. School groups (included in the total): 7,850. All'
+[ 20] publish  WebSearcher              -> output                   TextMessage                '**Answer: 14.5%** (6,120 ÷ 42,310 × 100 = 14.46%, rounded to one decimal place)\n\n**Source '
+[ 21] publish  WebSearcher              -> group                    TextMessage                '**Answer: 14.5%** (6,120 ÷ 42,310 × 100 = 14.46%, rounded to one decimal place)\n\n**Source '
+[ 22] publish  MagenticOneOrchestrator  -> output                   TextMessage                'Please re-fetch https://www.lumenvalleyobservatory.org/reports/visitors-2025 and https://w'
+[ 23] publish  MagenticOneOrchestrator  -> group                    TextMessage                'Please re-fetch https://www.lumenvalleyobservatory.org/reports/visitors-2025 and https://w'
+[ 24] publish  MagenticOneOrchestrator  -> WebSearcher              GroupChatRequestPublish    ''
+[ 25] publish  WebSearcher              -> output                   ToolCallRequestEvent       '[\n {\n  "id": "toolu_01UPcTyYaoskqEGw8jkts8VU",\n  "arguments": "{\\"url\\": \\"https://www.lum'
+[ 26] publish  WebSearcher              -> output                   ToolCallExecutionEvent     '[\n {\n  "content": "# Annual Visitor Report 2025 | Lumen Valley Observatory\\n\\nLumen Valley'
+[ 27] publish  WebSearcher              -> output                   ToolCallRequestEvent       '[\n {\n  "id": "toolu_01SzrYaqrfSx1iXgnkW71P7m",\n  "arguments": "{\\"url\\": \\"https://www.lum'
+[ 28] publish  WebSearcher              -> output                   ToolCallExecutionEvent     '[\n {\n  "content": "in the total): 6,120. School groups (included in the total): 7,850. All'
+[ 29] publish  WebSearcher              -> output                   ToolCallRequestEvent       '[\n {\n  "id": "toolu_01MBCnWMK3C2HA3E896JErfK",\n  "arguments": "{\\"query\\": \\"lumenvalleyob'
+[ 30] publish  WebSearcher              -> output                   ToolCallExecutionEvent     '[\n {\n  "content": "[1] Annual Visitor Report 2025 | Lumen Valley Observatory\\nhttps://www.'
+[ 31] publish  WebSearcher              -> output                   TextMessage                'I re-fetched both pages. The text is the same as before, and the pages contain no publicat'
+[ 32] publish  WebSearcher              -> group                    TextMessage                'I re-fetched both pages. The text is the same as before, and the pages contain no publicat'
+[ 33] publish  MagenticOneOrchestrator  -> output                   TextMessage                'Write a short Python script in a ```python code block that computes (6120 / 42310) * 100 a'
+[ 34] publish  MagenticOneOrchestrator  -> group                    TextMessage                'Write a short Python script in a ```python code block that computes (6120 / 42310) * 100 a'
+[ 35] publish  MagenticOneOrchestrator  -> Coder                    GroupChatRequestPublish    ''
+[ 36] publish  Coder                    -> output                   TextMessage                "The observatory's pages give 6,120 night tour participants as a subset of 42,310 total vis"
+[ 37] publish  Coder                    -> group                    TextMessage                "The observatory's pages give 6,120 night tour participants as a subset of 42,310 total vis"
+[ 38] publish  MagenticOneOrchestrator  -> output                   TextMessage                "The answer is **14.5%**.\n\nThe Lumen Valley Observatory's own Annual Visitor Report 2025 (h"
+[ 39] publish  MagenticOneOrchestrator  -> group                    TextMessage                "The answer is **14.5%**.\n\nThe Lumen Valley Observatory's own Annual Visitor Report 2025 (h"
+[ 40] publish  MagenticOneOrchestrator  -> output                   GroupChatTermination       ''
+expected: 14.5
+answer: The answer is **14.5%**.  The Lumen Valley Observatory's own Annual Visitor Report 2025 (https://www.lumenvalleyobservatory.org/reports/visitors-2025) gives 42,310 total visitors for calendar year 2025. It also lists 6,120 night tour participants as included in that total. The observatory's night to
+messages: 41 RESULT: PASS
+saved: /Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/recordings/haiku2_t4_night_share_r2.pkl

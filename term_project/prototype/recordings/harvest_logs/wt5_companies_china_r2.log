@@ -1,0 +1,67 @@
+ANTHROPIC_API_KEY is set and takes precedence over the SDK's profile / federation auto-discovery; unset ANTHROPIC_API_KEY to use the auto-discovered credential.
+/Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/backend/agdbg/team.py:124: UserWarning: Using LocalCommandLineCodeExecutor may execute code on the local machine which can be unsafe. For security, it is recommended to use DockerCommandLineCodeExecutor instead. To install Docker, visit: https://docs.docker.com/get-docker/
+  "Executor", code_executor=LocalCommandLineCodeExecutor(work_dir=work_dir, timeout=60)
+/Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/backend/agdbg/team.py:123: UserWarning: No approval function set for CodeExecutorAgent. This means code will be executed automatically without human oversight. For security, consider setting an approval_func to review and approve code before execution. See the CodeExecutorAgent documentation for examples of approval functions.
+  executor = CodeExecutorAgent(
+/Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/.venv/lib/python3.12/site-packages/autogen_core/_single_threaded_agent_runtime.py:772: RuntimeWarning: Intervention handler on_response returned None. This might be unintentional. Consider returning the original message or DropMessage explicitly.
+  _warn_if_none(temp_message, "on_response")
+[  0] send     user                     -> MagenticOneOrchestrator  TextMessage                "According to the English Wikipedia article 'List of largest companies by revenue', how man"
+[  1] publish  MagenticOneOrchestrator  -> output                   TextMessage                "According to the English Wikipedia article 'List of largest companies by revenue', how man"
+[  2] send     user                     -> Coder                    GroupChatReset             ''
+[  3] response Coder                    -> None                     NoneType                   ''
+[  4] send     user                     -> Executor                 GroupChatReset             ''
+[  5] response Executor                 -> None                     NoneType                   ''
+[  6] send     user                     -> WebSearcher              GroupChatReset             ''
+[  7] response WebSearcher              -> None                     NoneType                   ''
+[  8] publish  MagenticOneOrchestrator  -> output                   TextMessage                '\nWe are working to address the following user request:\n\nAccording to the English Wikipedia'
+[  9] publish  MagenticOneOrchestrator  -> group                    TextMessage                '\nWe are working to address the following user request:\n\nAccording to the English Wikipedia'
+[ 10] publish  MagenticOneOrchestrator  -> output                   TextMessage                "Please fetch the current English Wikipedia article 'List of largest companies by revenue' "
+[ 11] publish  MagenticOneOrchestrator  -> group                    TextMessage                "Please fetch the current English Wikipedia article 'List of largest companies by revenue' "
+[ 12] publish  MagenticOneOrchestrator  -> WebSearcher              GroupChatRequestPublish    ''
+[ 13] response MagenticOneOrchestrator  -> None                     NoneType                   ''
+[ 14] publish  WebSearcher              -> output                   ToolCallRequestEvent       '[\n {\n  "id": "toolu_011Xqr96DQuNsWfG8T8tgTq8",\n  "arguments": "{\\"url\\": \\"https://en.wiki'
+[ 15] publish  WebSearcher              -> output                   ToolCallExecutionEvent     '[\n {\n  "content": "# List of largest companies by revenue\\n\\nThis list comprises the world'
+[ 16] publish  WebSearcher              -> output                   TextMessage                "I couldn't confirm the number. The tool I used returns article text without tables, so it "
+[ 17] publish  WebSearcher              -> group                    TextMessage                "I couldn't confirm the number. The tool I used returns article text without tables, so it "
+[ 18] publish  MagenticOneOrchestrator  -> output                   TextMessage                'Please write a Python script for the Executor that does the following:\n1. Fetch https://en'
+[ 19] publish  MagenticOneOrchestrator  -> group                    TextMessage                'Please write a Python script for the Executor that does the following:\n1. Fetch https://en'
+[ 20] publish  MagenticOneOrchestrator  -> Coder                    GroupChatRequestPublish    ''
+[ 21] publish  Coder                    -> output                   TextMessage                '```python\nimport requests, json, re\nfrom bs4 import BeautifulSoup\n\nURL = "https://en.wikip'
+[ 22] publish  Coder                    -> group                    TextMessage                '```python\nimport requests, json, re\nfrom bs4 import BeautifulSoup\n\nURL = "https://en.wikip'
+[ 23] publish  MagenticOneOrchestrator  -> output                   TextMessage                'Please run the Python script the Coder just provided and report the full output: the numbe'
+[ 24] publish  MagenticOneOrchestrator  -> group                    TextMessage                'Please run the Python script the Coder just provided and report the full output: the numbe'
+[ 25] publish  MagenticOneOrchestrator  -> Executor                 GroupChatRequestPublish    ''
+[ 26] publish  Executor                 -> output                   TextMessage                'The script ran, then exited with an error (POSIX exit code: 1)\nIts output was:\nTraceback ('
+[ 27] publish  Executor                 -> group                    TextMessage                'The script ran, then exited with an error (POSIX exit code: 1)\nIts output was:\nTraceback ('
+[ 28] publish  MagenticOneOrchestrator  -> output                   TextMessage                "The script failed with ModuleNotFoundError: No module named 'bs4'. Please rewrite it so it"
+[ 29] publish  MagenticOneOrchestrator  -> group                    TextMessage                "The script failed with ModuleNotFoundError: No module named 'bs4'. Please rewrite it so it"
+[ 30] publish  MagenticOneOrchestrator  -> Coder                    GroupChatRequestPublish    ''
+[ 31] publish  Coder                    -> output                   TextMessage                "This version uses only the Python standard library (`urllib` plus regex), so it doesn't ne"
+[ 32] publish  Coder                    -> group                    TextMessage                "This version uses only the Python standard library (`urllib` plus regex), so it doesn't ne"
+[ 33] publish  MagenticOneOrchestrator  -> output                   TextMessage                "Please run the Coder's latest Python script, the standard-library version using urllib, re"
+[ 34] publish  MagenticOneOrchestrator  -> group                    TextMessage                "Please run the Coder's latest Python script, the standard-library version using urllib, re"
+[ 35] publish  MagenticOneOrchestrator  -> Executor                 GroupChatRequestPublish    ''
+[ 36] publish  Executor                 -> output                   TextMessage                'wikitables found: 2\nHeader chunk: {|class="wikitable sortable sticky-header-multi sort-und'
+[ 37] publish  Executor                 -> group                    TextMessage                'wikitables found: 2\nHeader chunk: {|class="wikitable sortable sticky-header-multi sort-und'
+[ 38] publish  MagenticOneOrchestrator  -> output                   TextMessage                'Your last script skipped rows: the printed ranks were 1, 3, 4, 5, 7, 12, 13, 14, 15 and 16'
+[ 39] publish  MagenticOneOrchestrator  -> group                    TextMessage                'Your last script skipped rows: the printed ranks were 1, 3, 4, 5, 7, 12, 13, 14, 15 and 16'
+[ 40] publish  MagenticOneOrchestrator  -> Coder                    GroupChatRequestPublish    ''
+[ 41] publish  Coder                    -> output                   TextMessage                'The last script dropped rows 2, 6, 8, 9, 10 and 11. Those rows most likely start with a `!'
+[ 42] publish  Coder                    -> group                    TextMessage                'The last script dropped rows 2, 6, 8, 9, 10 and 11. Those rows most likely start with a `!'
+[ 43] publish  MagenticOneOrchestrator  -> output                   TextMessage                "Please run the Coder's latest Python script (wikitext raw chunks, parsed ranks 1–10, and t"
+[ 44] publish  MagenticOneOrchestrator  -> group                    TextMessage                "Please run the Coder's latest Python script (wikitext raw chunks, parsed ranks 1–10, and t"
+[ 45] publish  MagenticOneOrchestrator  -> Executor                 GroupChatRequestPublish    ''
+[ 46] publish  Executor                 -> output                   TextMessage                'wikitables found: 2\n\n=== RAW CHUNKS (first 14) ===\n--- chunk 0 ---\n{|class="wikitable sort'
+[ 47] publish  Executor                 -> group                    TextMessage                'wikitables found: 2\n\n=== RAW CHUNKS (first 14) ===\n--- chunk 0 ---\n{|class="wikitable sort'
+[ 48] publish  MagenticOneOrchestrator  -> output                   TextMessage                'The data is conclusive. The rowspan flag cells show that Walmart inherits the US flag from'
+[ 49] publish  MagenticOneOrchestrator  -> group                    TextMessage                'The data is conclusive. The rowspan flag cells show that Walmart inherits the US flag from'
+[ 50] publish  MagenticOneOrchestrator  -> Coder                    GroupChatRequestPublish    ''
+[ 51] publish  Coder                    -> output                   TextMessage                'Your reasoning holds up. The rowspan attributes in the raw wikitext settle it:\n\n- **Amazon'
+[ 52] publish  Coder                    -> group                    TextMessage                'Your reasoning holds up. The rowspan attributes in the raw wikitext settle it:\n\n- **Amazon'
+[ 53] publish  MagenticOneOrchestrator  -> output                   TextMessage                '3'
+[ 54] publish  MagenticOneOrchestrator  -> group                    TextMessage                '3'
+[ 55] publish  MagenticOneOrchestrator  -> output                   GroupChatTermination       ''
+expected: 3
+answer: 3
+messages: 56 RESULT: PASS
+saved: /Users/minh/Documents/courses/CS702-G1-Comuputational-Interaction/term_project/prototype/recordings/wt5_companies_china_r2.pkl
