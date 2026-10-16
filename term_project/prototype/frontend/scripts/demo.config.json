@@ -2,28 +2,14 @@
   "out": "../../phase2/video_segments",
   "mp4": "../../phase2/phase2_demo.mp4",
   "recording": "t13_fy_ratio_FAIL",
-  "expected": "6651.7 (39,910 visitors in FY 2024/25 ÷ 6 instruments)",
   "composeText": "Reminder to all agents: visitor statistics are published per calendar year with monthly tables; sum the months to get a financial-year figure.",
   "overviewClickIndex": 62,
   "edit": {
     "timestamp": 9,
     "keepUpTo": "Here is an initial fact sheet to consider:",
-    "why": "the orchestrator's own plan assumes a published 'annual report or financial statements' with a financial-year total, and tells the searcher not to estimate. The observatory only publishes calendar-year monthly tables — every later instruction inherits this wrong plan.",
     "text": "Here is an initial fact sheet to consider:\n\n**1. GIVEN OR VERIFIED FACTS**\n\n- The Lumen Valley Observatory's website is lumenvalleyobservatory.org.\n- Its governance page (https://www.lumenvalleyobservatory.org/about/governance) says the financial year runs 1 April to 31 March, so FY 2024/25 is 1 April 2024 to 31 March 2025.\n- Visitor statistics are published per calendar year with a monthly breakdown, in the Annual Visitor Report 2024 (https://www.lumenvalleyobservatory.org/reports/visitors-2024) and 2025 (https://www.lumenvalleyobservatory.org/reports/visitors-2025). The observatory publishes no financial-year total: the FY 2024/25 figure is the sum of the twelve monthly figures from April 2024 to March 2025, and that sum counts as the observatory's own figures.\n- The Facilities page (https://www.lumenvalleyobservatory.org/facilities) lists every instrument with its commissioning year; the instruments operated on 31 March 2025 are those commissioned by then.\n\n**2. FACTS TO LOOK UP**\n\n- The twelve monthly visitor figures (April 2024 to March 2025) from the two reports; read each page completely, using the offset parameter.\n- The instrument list with commissioning years from the Facilities page.\n\n**3. FACTS TO DERIVE**\n\n- FY 2024/25 visitors = sum of the twelve monthly figures.\n- Instrument count on 31 March 2025 = instruments commissioned on or before that date.\n- Ratio = visitors divided by instruments, rounded to one decimal place.\n\n\nHere is the plan to follow as best as possible:\n\n- **WebSearcher:** Fetch https://www.lumenvalleyobservatory.org/reports/visitors-2024 and https://www.lumenvalleyobservatory.org/reports/visitors-2025 completely and report the twelve monthly figures for April 2024 to March 2025, quoting them exactly. Then fetch https://www.lumenvalleyobservatory.org/facilities and list the instruments with their commissioning years.\n- **Coder:** Write a short Python script that sums the twelve monthly figures, counts the instruments commissioned on or before 31 March 2025, divides, and rounds to one decimal place.\n- **Executor:** Run the script.\n- **Coder:** Report the number as the final answer, citing the two reports and the Facilities page. Do not look for an annual report or financial statements: none exists, and the monthly sum is the required figure."
   },
-  "resultCaption": "With the plan rewritten, the same team sums the monthly figures and reaches 6651.7 (expected) instead of giving up after 228 messages — the paper's 'modify the plan' steering strategy.",
-  "cards": {
-    "title": "<span class='tag'>CS702 Computational Interaction · Term project · Phase 2 prototype</span><h1>Interactive Debugging and Steering of Multi-Agent AI Systems</h1><p>Re-implementation of <b>AGDebugger</b> — Epperson, Bansal, Dibia, Fourney, Gerrits, Zhu &amp; Amershi, <i>CHI 2025</i>, doi:10.1145/3706598.3713581</p><p style='margin-top:26px'>Team: <b>Nguyen Nhat Minh</b> · <b>Do Duc Anh</b></p>",
-    "problem": [
-      "<h2>The problem</h2><p>Teams of LLM agents (an orchestrator, a coder, a code executor, a web searcher…) solve tasks by exchanging dozens of messages. One wrong step cascades, and a run of 50–90 messages ends with a wrong answer or no answer.</p><p>Ordinary chat logs and print statements do not tell the developer <i>where</i> it went wrong, or let them try a fix without starting over.</p>",
-      "<h2>Target users, goal and tasks</h2><p><b>Users:</b> developers building and tuning multi-agent systems.</p><p><b>Goal:</b> find the message that derailed a run and steer the team to the correct result.</p><ul><li>browse a long message history and step the runtime,</li><li>send new messages to agents,</li><li>reset the whole team to an earlier point, edit the offending message and continue,</li><li>keep an overview of long runs and of the branches created by edits.</li></ul>",
-      "<h2>Prototype: three components from the paper</h2><ul><li><b>C1</b> Message history, sending and execution control (Run / Step / Drop)</li><li><b>C2</b> Reset-and-edit with session forking, on real per-message checkpoints</li><li><b>C3</b> Overview visualisation of sessions, forks and message types</li></ul><p class='small'>Own implementation on AutoGen 0.7.5 (Python/FastAPI) + React/TypeScript. Team under debug: Magentic-One orchestrator, Coder, Executor, WebSearcher over a cached web corpus. Model under debug: Claude Haiku 5.5 (low reasoning effort); runs harvested across models and effort levels.</p>"
-    ],
-    "outro": [
-      "<h2>Status</h2><ul><li><b>Fully working:</b> instrumented runtime with per-message checkpoints, C1, C2, recordings that replay without model calls</li><li><b>Basic:</b> C3 overview (plain SVG, three colour encodings, fork markers, hover, click-to-scroll)</li><li><b>Harness:</b> 29 tasks over a cached corpus and live Wikipedia; 97/97 Opus 5.5 runs succeeded, natural failures come from the Haiku 5.5 team</li><li><b>Next:</b> more failing runs, E1 error-anchored context assembly, study instruments, pilot (Weeks 10–12)</li></ul>"
-    ]
-  },
-  "messages": 228,
-  "expectedNumber": "6651.7",
-  "resultCaptionFail": "The steered branch computed 6651.7 but the orchestrator keeps demanding an 'official' figure and re-plans — the edit was not enough; a second edit of its plan message would be the next move."
+  "clips": "../../phase2/narration_clips",
+  "tag": "CS702 Computational Interaction · Term project · Phase 2 prototype",
+  "steeredRecording": "t13_fy_ratio_STEERED"
 }

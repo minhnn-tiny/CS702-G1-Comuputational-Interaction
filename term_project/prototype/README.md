@@ -53,3 +53,18 @@ backend/agdbg/
 frontend/src/   React + Tailwind UI; components/Overview.tsx is the D3-style session map
 recordings/     saved runs (*.pkl: history + per-message checkpoints); harvest/ and archive/ hold the bulk runs
 ```
+
+## Demo video pipeline (`frontend/scripts/`)
+
+`narration.json` holds the single text used for on-screen captions, spoken narration and the transcript.
+`synth.py` synthesises each line with macOS TTS (Karen Premium) and records its duration; `demo.mjs` records the UI
+with Playwright, holding each caption for its clip's duration and logging when it appears; `assemble.py` lays the
+clips and a WebVTT on that timeline and muxes `phase2_demo_narrated.mp4`.
+
+```bash
+cd frontend
+python3 scripts/synth.py scripts/narration.json ../../phase2/narration_clips
+node scripts/demo.mjs scripts/demo.config.json      # needs ./run.sh serving on :8000 and ANTHROPIC_API_KEY (one Step is live)
+python3 scripts/assemble.py scripts/demo.config.json
+```
+

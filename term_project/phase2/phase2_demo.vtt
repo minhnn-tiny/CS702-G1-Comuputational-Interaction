@@ -3,106 +3,105 @@ Kind: captions
 Language: en
 
 1
-00:00:00.200 --> 00:00:09.400
-CS702 Computational Interaction · Term project · Phase 2 prototype
-Interactive Debugging and Steering of Multi-Agent AI Systems — re-implementation of AGDebugger (Epperson et al., CHI 2025). Team: Nguyen Nhat Minh, Do Duc Anh.
+00:00:00.080 --> 00:00:12.584
+CS702 phase two prototype. Interactive Debugging and Steering of Multi-Agent AI Systems: re-implementing AGDebugger from CHI 2025. Team: Nguyen Nhat Minh and Do Duc Anh.
 
 2
-00:00:09.400 --> 00:00:20.400
-The problem: teams of LLM agents solve tasks by exchanging dozens of messages. One wrong step cascades, and a run of 50–90 messages ends with a wrong answer or no answer. Chat logs and print statements do not show where it went wrong, nor let the developer try a fix without starting over.
+00:00:13.516 --> 00:00:26.891
+The problem: teams of LLM agents exchange dozens of messages to solve a task. One wrong step cascades, and a long run ends with a wrong answer or none. Logs do not show where it went wrong, or let the developer try a fix without starting over.
 
 3
-00:00:20.400 --> 00:00:31.400
-Target users: developers building and tuning multi-agent systems. Goal: find the message that derailed a run and steer the team to the correct result. Tasks: browse a long history and step the runtime; send messages to agents; reset the team to an earlier point, edit the offending message and continue; keep an overview of long runs and their branches.
+00:00:27.803 --> 00:00:44.627
+Target users: developers building and tuning multi-agent systems. Goal: find the message that derailed a run and steer the team to the correct result. Tasks: browse and step a long history, send messages, reset to an earlier point and edit the offending message, and keep an overview of the branches.
 
 4
-00:00:31.400 --> 00:00:53.400
-Prototype: three components from the paper. C1 message history, sending and execution control. C2 reset-and-edit with session forking on real per-message checkpoints. C3 overview visualisation. Own implementation on AutoGen 0.7.5 + React; team under debug: Magentic-One orchestrator, Coder, Executor, WebSearcher; model Claude Haiku 5.5 at low effort.
+00:00:45.543 --> 00:01:10.285
+Our prototype re-implements the paper's three components: C1, message history with sending and execution control; C2, reset-and-edit with session forking on real checkpoints; and C3, an overview visualisation. Own implementation on AutoGen 0.7.5 and React. The team under debug: a Magentic-One orchestrator, Coder, Executor and WebSearcher on Claude Haiku 5.5.
 
 5
-00:00:59.200 --> 00:01:04.000
-Recorded failing run loaded (t13_fy_ratio_FAIL) — replayed from the saved history and checkpoints, no model calls.
+00:01:29.732 --> 00:01:35.272
+A recorded failing run is loaded, replayed from saved history and checkpoints, with no model calls.
 
 6
-00:01:04.000 --> 00:01:12.000
-C1 · Message history: every runtime message as a card — sender → recipient or topic, message type, payload. Tool calls and results included.
+00:01:35.878 --> 00:01:43.948
+C1, message history: every runtime message is a card with sender, recipient, type and payload, tool calls included.
 
 7
-00:01:12.000 --> 00:01:19.000
-Long payloads expand in place. Colour of the left bar = sending agent.
+00:01:45.033 --> 00:01:48.807
+Long payloads expand in place. The coloured bar marks the sending agent.
 
 8
-00:01:19.000 --> 00:01:28.000
-After 228 messages the run ends without the answer. Expected: 6651.7 (39,910 visitors in FY 2024/25 ÷ 6 instruments).
+00:01:49.412 --> 00:01:59.560
+After 228 messages the run ends without an answer. Expected: 6651.7, financial-year visitors divided by six instruments.
 
 9
-00:01:33.000 --> 00:01:37.600
-C1 · Sending: compose a broadcast (group topic) or a direct message to one agent; it lands in the runtime queue.
+00:02:00.671 --> 00:02:05.723
+Sending: a broadcast to the group or a direct message to one agent lands in the runtime queue.
 
 10
-00:01:37.600 --> 00:01:42.000
-C1 · Execution control: Run processes the queue continuously, Step processes exactly one message, Drop discards the next one.
+00:02:06.029 --> 00:02:11.661
+Run processes the queue continuously, Step processes one message, Drop discards the next.
 
 11
-00:01:42.000 --> 00:01:44.200
-Dropped — the queue is empty again and the agents never saw the message.
+00:02:12.297 --> 00:02:15.870
+Dropped. The queue is empty again and the agents never saw the message.
 
 12
-00:01:48.400 --> 00:01:51.400
-C3 · Overview: one column per session, one rectangle per message in order. Legend buttons filter.
+00:02:20.983 --> 00:02:27.497
+C3, the overview: one column per session, one rectangle per message. Legend buttons filter.
 
 13
-00:01:51.400 --> 00:01:54.400
-Colour by sender: orchestrator, Coder, Executor, WebSearcher, user.
+00:02:28.127 --> 00:02:33.709
+Colour by sender: orchestrator, Coder, Executor, WebSearcher and user.
 
 14
-00:01:54.400 --> 00:01:57.400
+00:02:34.330 --> 00:02:36.499
 Colour by recipient topic or agent.
 
 15
-00:01:57.400 --> 00:02:00.700
-Colour by message type — tool calls stand out from text.
+00:02:37.121 --> 00:02:40.462
+Colour by message type. Tool calls stand out from text.
 
 16
-00:02:00.700 --> 00:02:04.400
-Hover shows the message; click scrolls the history to it.
+00:02:41.072 --> 00:02:44.359
+Hover shows the message. A click scrolls the history to it.
 
 17
-00:02:04.400 --> 00:02:07.400
-Legend filter dims every other message type.
+00:02:44.688 --> 00:02:47.091
+The legend filter dims every other message type.
 
 18
-00:02:09.000 --> 00:02:15.000
-C2 · The mistake starts at t=9: the orchestrator's own plan assumes a published 'annual report or financial statements' with a financial-year total and tells the searcher not to estimate. The observatory only publishes calendar-year monthly tables — every later instruction inherits this wrong plan.
+00:02:48.432 --> 00:03:01.657
+C2. The mistake starts at message nine: the orchestrator's plan assumes a published financial-year report and forbids estimating. The observatory only publishes monthly tables, so every later instruction inherits the wrong plan.
 
 19
-00:02:16.000 --> 00:02:19.500
-Edit the message in place: the fact sheet and plan are rewritten to point at the two monthly visitor reports, the financial-year definition and the facilities page.
+00:03:03.184 --> 00:03:11.069
+We edit the plan in place: the fact sheet and plan now point at the two monthly visitor reports, the financial-year definition and the facilities page.
 
 20
-00:02:21.300 --> 00:02:28.300
-Reset-and-edit: every agent's state is restored from the checkpoint taken before t=9, the edited message is re-published, and a new session (S1) forks off — the old branch stays viewable.
+00:03:13.224 --> 00:03:22.177
+Reset-and-edit restores every agent from the checkpoint before message nine, re-publishes the edited plan and forks a new session. The old branch stays viewable.
 
 21
-00:02:28.500 --> 00:02:31.000
-Step: the runtime processes just this one message (live model call).
+00:03:22.811 --> 00:03:25.831
+Step: the runtime processes just this one message.
 
 22
-00:02:37.200 --> 00:02:41.800
-Step processed the edited broadcast; the orchestrator's request-to-speak now waits in the queue. Run continues the branch to completion.
+00:03:31.038 --> 00:03:37.353
+The edited broadcast is processed; the orchestrator's request-to-speak waits in the queue. Run continues the branch.
 
 23
-00:02:43.600 --> 00:02:49.600
-Steered branch finished. With the plan rewritten, the same team sums the monthly figures and reaches 6651.7 — the expected answer — instead of giving up after 228 messages. The paper's 'modify the plan' steering strategy.
+00:03:42.221 --> 00:03:55.534
+The steered branch finished: with the plan rewritten, the same team sums the monthly figures and reaches 6651.7 instead of giving up after 228 messages. The paper's modify-the-plan strategy.
 
 24
-00:02:49.600 --> 00:02:54.200
-Overview now shows both sessions; the amber marker is the fork point. Session tabs switch between branches.
+00:03:56.161 --> 00:04:02.617
+The overview now shows both sessions. The amber marker is the fork point, and the session tabs switch between branches.
 
 25
-00:02:54.200 --> 00:02:58.500
+00:04:03.336 --> 00:04:06.553
 The original failing branch is still browsable for comparison.
 
 26
-00:03:02.200 --> 00:03:12.000
-Status. Fully working: instrumented runtime with per-message checkpoints, C1, C2, recordings that replay without model calls. Basic: C3 overview. Harness: 29 tasks over a cached corpus and live Wikipedia; 97/97 Opus 5.5 runs succeeded, natural failures come from the Haiku 5.5 team. Next: more failing runs, E1 error-anchored context assembly, study instruments, pilot.
+00:04:10.884 --> 00:04:11.867
+Status. Fully working: runtime with per-message checkpoints, C1, C2, replayable recordings. Basic: the C3 overview. Harness: 29 tasks; 97 of 97 Opus runs succeeded, natural failures come from the Haiku team. Next: more failing runs, E1, study instruments and the pilot.
