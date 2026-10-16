@@ -2,7 +2,7 @@ import { useState } from "react";
 import { post } from "../api";
 
 const TYPES = [
-  { v: "GroupChatMessage", label: "GroupChatMessage (text broadcast to agents)" },
+  { v: "GroupChatMessage", label: "Text message (broadcast or to one agent)" },
   { v: "GroupChatRequestPublish", label: "GroupChatRequestPublish (ask one agent to respond)" },
   { v: "GroupChatStart", label: "GroupChatStart (new task for the orchestrator)" },
 ];

@@ -68,3 +68,11 @@ node scripts/demo.mjs scripts/demo.config.json      # needs ./run.sh serving on 
 python3 scripts/assemble.py scripts/demo.config.json
 ```
 
+The submitted video is re-voiced with the free edge-tts neural voice `en-US-AvaNeural` at +22 % and each scene is
+shortened to its line (sped up at most 2.5x); the broken outro (status card) is cut. Run on assemble.py output, then
+copy the five `phase2_demo*` files from the output directory into `../../phase2/`:
+
+```bash
+python3 scripts/revoice.py ../../phase2 /tmp/revoiced en-US-AvaNeural +22%
+```
+

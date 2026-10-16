@@ -11,9 +11,10 @@ import uuid
 from pathlib import Path
 from typing import Any
 
+from autogen_agentchat.base import Response
 from autogen_agentchat.messages import TextMessage
 from autogen_agentchat.teams._group_chat._events import (
-    GroupChatMessage,
+    GroupChatAgentResponse,
     GroupChatRequestPublish,
     GroupChatStart,
 )
@@ -81,6 +82,8 @@ class Manager:
         self.web = web or (TASKS[task_id].get("web", "corpus") if task_id else "corpus")
         self.team = make_team(WORKDIR, self.team_id, self.web)
         self.runtime = self.team._runtime
+        # AgentChat's runtime re-raises a failed handler on the next step and shuts the queue; keep it debuggable
+        self.runtime._ignore_unhandled_handler_exceptions = True
         await self.team._init(self.runtime)
         self.runtime._intervention_handlers = [self.recorder]
         if task_id:
@@ -160,7 +163,9 @@ class Manager:
         if type_ == "GroupChatStart":
             await self.start_task(content)
         elif type_ == "GroupChatMessage":
-            self._bg(self.runtime.publish_message(GroupChatMessage(message=TextMessage(content=content, source=source)), topic))
+            # GroupChatMessage is only AutoGen's UI log event; agents receive broadcasts as AgentResponse, like the orchestrator's
+            text = TextMessage(content=content, source=source)
+            self._bg(self.runtime.publish_message(GroupChatAgentResponse(response=Response(chat_message=text), name=source), topic))
         elif type_ == "GroupChatRequestPublish":
             self._bg(self.runtime.publish_message(GroupChatRequestPublish(), topic))
         else:
