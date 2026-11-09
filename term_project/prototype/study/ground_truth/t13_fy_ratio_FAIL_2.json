@@ -1,0 +1,22 @@
+{
+  "recording": "t13_fy_ratio_FAIL_2",
+  "task": "t13_visitors_per_instrument",
+  "expected": "6651.7",
+  "messages": 233,
+  "outcome": "refused to answer after computing the correct figures",
+  "errors": [
+    {"id": "E1", "timestamps": [36], "agent": "MagenticOneOrchestrator", "type": "ignored evidence",
+     "description": "After t=34 delivered the complete monthly data (FY total 39,910) and the facilities page (six instruments, all commissioned by 2024, 'all six in regular operation'), still demands a directly published FY total and a dated instrument count, and adds 'do not estimate'.",
+     "primary": true},
+    {"id": "E2", "timestamps": [47], "agent": "MagenticOneOrchestrator", "type": "wrong instruction",
+     "description": "Instructs the Coder to write that the request cannot be answered and explicitly 'do not present 6,651.7 as the observatory's figure', although the team has the number.",
+     "primary": true},
+    {"id": "E3", "timestamps": [9], "agent": "MagenticOneOrchestrator", "type": "wrong plan",
+     "description": "Initial plan frames the task as needing a single published FY total and an explicit year-end count; does not anticipate summing months or inferring the count from commissioning dates."},
+    {"id": "E4", "timestamps": [65, 85, 93], "agent": "MagenticOneOrchestrator", "type": "stall loop",
+     "description": "Re-plan chases charity-register accounts and a 2021 'five telescopes' article, then rewrites the fact sheet repeatedly (t=85…229) with no new tool calls."},
+    {"id": "E5", "timestamps": [231], "agent": "MagenticOneOrchestrator", "type": "misreported result",
+     "description": "Final answer says the 2025 report does not state whether night tours are included; the report (t=21) says they are 'included in the total'. Declines to give 6651.7."}
+  ],
+  "known_fix": null
+}

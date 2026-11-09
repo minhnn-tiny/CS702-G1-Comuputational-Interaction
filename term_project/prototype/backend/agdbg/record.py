@@ -9,7 +9,7 @@ from pathlib import Path
 from dotenv import load_dotenv
 
 for env in (Path(__file__).resolve().parents[2] / ".env", Path(__file__).resolve().parents[4] / ".env"):
-    load_dotenv(env)
+    load_dotenv(env, override=True)  # the repository .env wins over a stale key in the shell environment
 
 from .manager import Manager  # noqa: E402
 from .serialize import entry_json  # noqa: E402

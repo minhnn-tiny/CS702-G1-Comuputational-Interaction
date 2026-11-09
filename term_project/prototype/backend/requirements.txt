@@ -6,3 +6,4 @@ tiktoken
 fastapi
 uvicorn[standard]
 python-dotenv
+matplotlib   # study/analyze.py figures

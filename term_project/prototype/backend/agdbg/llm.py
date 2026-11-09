@@ -22,6 +22,7 @@ from autogen_core.models import (
 from autogen_core.tools import Tool, ToolSchema
 
 DEFAULT_MODEL = os.environ.get("AGDBG_MODEL", "claude-haiku-5-5")
+ERRORS: list[dict[str, Any]] = []  # recent model-call failures, shown in the UI
 
 MODEL_INFO = ModelInfo(
     vision=False,
@@ -51,7 +52,7 @@ class AnthropicClient(ChatCompletionClient):
     def __init__(self, model: str = DEFAULT_MODEL, max_tokens: int = 4096) -> None:
         self._model = model
         self._max_tokens = max_tokens
-        self._client = anthropic.AsyncAnthropic()
+        self._client = anthropic.AsyncAnthropic(max_retries=6)
         self._total = RequestUsage(prompt_tokens=0, completion_tokens=0)
         self._last = RequestUsage(prompt_tokens=0, completion_tokens=0)
         # Raw assistant content (thinking + tool_use blocks) keyed by first tool-call id,
@@ -131,12 +132,17 @@ class AnthropicClient(ChatCompletionClient):
             kwargs["tools"] = [_tool_def(t) for t in tools]
         # drop_block: after a reset-and-edit (or a tool-list change) an agent's replayed thinking blocks may be
         # bound to a different prefix; let the API drop them instead of failing the turn.
-        resp = await self._client.beta.messages.create(
-            betas=["server-side-fallback-2026-07-01", "thinking-binding-controls-2026-08-01"],
-            fallbacks="default",
-            thinking={"type": "adaptive", "block_binding": {"prefix_mismatch_behavior": "drop_block"}},
-            **kwargs,
-        )
+        try:
+            resp = await self._client.beta.messages.create(
+                betas=["server-side-fallback-2026-07-01", "thinking-binding-controls-2026-08-01"],
+                fallbacks="default",
+                thinking={"type": "adaptive", "block_binding": {"prefix_mismatch_behavior": "drop_block"}},
+                **kwargs,
+            )
+        except Exception as e:  # surfaced in the UI; the runtime keeps the step debuggable
+            ERRORS.append({"model": self._model, "error": f"{type(e).__name__}: {str(e)[:300]}"})
+            del ERRORS[:-20]
+            raise
 
         usage = RequestUsage(prompt_tokens=resp.usage.input_tokens, completion_tokens=resp.usage.output_tokens)
         self._last = usage

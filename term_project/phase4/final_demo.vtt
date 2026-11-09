@@ -1,0 +1,51 @@
+WEBVTT
+Kind: captions
+Language: en
+
+1
+00:00:00.047 --> 00:00:09.311
+Agent Team Debugger: a re-implementation of AGDebugger, CHI 2025, with error-anchored context. Nguyen Nhat Minh and Do Duc Anh.
+
+2
+00:00:10.555 --> 00:00:21.019
+A developer opens a failing run: the team was asked for an observatory's financial-year visitors per instrument, and after 228 runtime messages gave no answer.
+
+3
+00:00:21.330 --> 00:00:26.274
+Scrolling to the end: the orchestrator re-planned twenty-two times and gave up.
+
+4
+00:00:28.493 --> 00:00:37.445
+The overview maps the whole session: one rectangle per message, coloured by type, sender or recipient; a click jumps the history to it.
+
+5
+00:00:39.025 --> 00:00:48.025
+Rather than read everything, the developer opens the error context panel: a judge pass over the session, run once and stored with the recording.
+
+6
+00:00:48.331 --> 00:00:53.923
+Five ranked suspects appear in the panel, the overview and on the cards, each with a reason.
+
+7
+00:00:54.294 --> 00:01:03.630
+Selecting one assembles its context: who said what to that agent, the tool calls before it, warnings, cited evidence, and a suggested edit.
+
+8
+00:01:04.661 --> 00:01:10.541
+One click opens the editor on that message, pre-filled with the original text and the suggestion.
+
+9
+00:01:10.862 --> 00:01:18.494
+The developer rewrites the instruction: read both monthly visitor reports and the facilities page; do not look for annual accounts.
+
+10
+00:01:20.313 --> 00:01:27.969
+Save edit and revert restores all agents to the checkpoint before this message and forks a new session, which then continues live.
+
+11
+00:01:33.919 --> 00:01:48.319
+The finished branch, saved from a live continuation of this edit: the same team sums the monthly tables and answers 6651.7. Both sessions stay side by side, the failing one with its suspect markers.
+
+12
+00:01:49.164 --> 00:01:56.340
+Agent Team Debugger: history, reset-and-edit, overview and error-anchored context on AutoGen and React.

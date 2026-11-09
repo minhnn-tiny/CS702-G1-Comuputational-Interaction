@@ -1,0 +1,30 @@
+# Phase 3 backup demo video — transcript
+
+`phase3_demo_backup.mp4`, 5:42. On-screen captions, spoken narration and this transcript are the same text; times are when each line appears.
+
+- **0:00** CS702 term project, phase three. Interactive Debugging and Steering of Multi-Agent AI Systems: re-implementing AGDebugger from CHI 2025, with an error-anchored context extension. Team: Nguyen Nhat Minh and Do Duc Anh. This is the backup recording of the live demo.
+- **0:19** Teams of LLM agents exchange dozens of messages to solve one task. One wrong step cascades, and a long run ends with a wrong answer or none. Plain logs do not show where it went wrong, or let the developer test a fix without starting over.
+- **0:34** Target users: developers building and tuning multi-agent systems. Goal: find the message that derailed a run and steer the team to the correct answer. Tasks: browse and step a long history, send messages, reset to an earlier point and edit the offending message, keep an overview of the branches, and, new in our extension, get the suspects ranked for you.
+- **0:57** The system: C1, message history with sending, stepping and queue editing; C2, reset-and-edit with session forking on real checkpoints; C3, an overview visualisation; and E1, error-anchored context assembly. Own implementation on AutoGen 0.7.5 and React. The team under debug is a Magentic-One orchestrator with Coder, Executor and WebSearcher on Claude Haiku 5.5.
+- **1:49** A recorded failing run is loaded: history and per-message checkpoints replay without any model call.
+- **1:55** C1, the message history. Every runtime message is a card: sender, recipient, type and payload, tool calls included. The flag button records an error judgement for the study log.
+- **2:08** The task asks for financial-year visitors divided by instruments. After 228 runtime messages, 125 of them shown as cards, the team gives up. Expected: 6651.7.
+- **2:23** Sending: a broadcast to the group or a direct message to one agent lands in the runtime queue.
+- **2:30** Run processes the queue continuously, Step processes one message, Drop discards the next.
+- **2:36** New: a queued message can be edited before the agents see it, or removed from any position in the queue.
+- **2:43** Dropped. The queue is empty again; the agents never saw the message.
+- **2:53** C3, the overview: one column per session, one rectangle per message, colour by type, sender or recipient. Legend buttons filter.
+- **3:03** Coloured by sender: orchestrator, Coder, Executor, WebSearcher and user.
+- **3:09** Coloured by type: tool calls and results stand out from text.
+- **3:13** Hover shows the message; a click scrolls the history to it.
+- **3:19** E1, our extension. In the paper, participants spent ten of fifteen minutes just reading before their first edit. The error context panel holds the result of one judge pass over the session, run earlier and stored with the recording: up to five suspect messages, ranked, each with a reason.
+- **3:37** The suspects are marked in the overview and on the cards. Here the judge points at the searcher's report that the monthly tables were unusable, and at the orchestrator's instruction that forbade using them.
+- **3:48** Clicking a suspect assembles its context: the flagged message, who said what to that agent, the preceding tool calls, warnings in that window, and the evidence the judge cited. At the bottom, a concrete suggested edit.
+- **4:03** Edit this message and revert opens the editor on that card, pre-filled with the original text and the suggestion.
+- **4:10** We replace the instruction: fetch both monthly visitor reports completely and the facilities page, and do not look for annual accounts. This is the paper's add-specific-instructions strategy.
+- **4:24** Reset-and-edit restores every agent from the checkpoint before message twenty-five, re-publishes the edited instruction and forks a new session. The old branch stays viewable. Run or Step now continues the branch live, with real model calls.
+- **4:44** The finished branch, saved from a live continuation of this same edit: the team reads the monthly tables, sums them and answers 6651.7.
+- **4:55** The overview shows both sessions, the fork marker, and the suspect markers on the failing branch.
+- **5:02** The original failing branch is still browsable for comparison.
+- **5:11** For the user study the same build runs in three conditions from the URL: reduced, without reset and overview; full; and full with E1. Every action is logged per participant.
+- **5:23** Status: C1 to C3 and E1 are complete and integrated. Harness: 29 tasks, 3 natural failing runs so far on Claude Haiku, zero on Claude Opus. Study materials are ready; sessions run in weeks 12 to 15. Thank you.

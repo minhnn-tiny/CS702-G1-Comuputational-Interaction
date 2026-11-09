@@ -8,3 +8,5 @@ __pycache__/
 .env
 recordings/harvest/
 recordings/archive/
+logs/
+study/results/

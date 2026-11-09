@@ -1,0 +1,24 @@
+{
+  "recording": "wt2_mongolia_rank_FAIL",
+  "task": "wt2_mongolia_area_rank",
+  "expected": "18",
+  "messages": 224,
+  "outcome": "guessed 19 'from memory' after 20 re-plans",
+  "errors": [
+    {"id": "E1", "timestamps": [17, 26, 33], "agent": "WebSearcher", "type": "tool misuse",
+     "description": "The fetch tool takes an article title or /wiki/ URL and returns plain-text extracts without tables; the searcher repeatedly passes index.php?action=raw, mobile and ?action=render URLs that can only return 404."},
+    {"id": "E2", "timestamps": [24, 31], "agent": "MagenticOneOrchestrator", "type": "wrong instruction",
+     "description": "Instructs the same unsupported URL routes and mirror sites, and sets a verification bar ('quote the table row, do not guess a number') that the tool cannot meet."},
+    {"id": "E3", "timestamps": [36], "agent": "WebSearcher", "type": "misreported result",
+     "description": "Has fetched the Mongolia article (t=34), which states Mongolia is 'the 18th-largest country in the world', but reports 'could not get the rank' and frames the figure as unusable.",
+     "primary": true},
+    {"id": "E4", "timestamps": [44], "agent": "MagenticOneOrchestrator", "type": "ignored evidence",
+     "description": "The re-planned fact sheet records '18th-largest' but discounts it as 'a country-only statement from a different article' and never dispatches a check; from here on no agent is instructed again.",
+     "primary": true},
+    {"id": "E5", "timestamps": [52, 60, 68, 180], "agent": "MagenticOneOrchestrator", "type": "stall loop",
+     "description": "Fact sheet rewritten 20 times (t=44…220) with growing speculation about Antarctica and Greenland rows; no tool call after t=34."},
+    {"id": "E6", "timestamps": [222], "agent": "MagenticOneOrchestrator", "type": "hallucinated fact",
+     "description": "Final answer: 'my best estimate from memory is 19' and 'no tool ever ran', contradicting the fetches at t=15, 27 and 34."}
+  ],
+  "known_fix": null
+}

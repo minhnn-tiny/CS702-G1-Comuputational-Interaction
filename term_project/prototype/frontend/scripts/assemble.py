@@ -16,7 +16,7 @@ from pathlib import Path
 cfg_path = Path(sys.argv[1]).resolve()
 cfg = json.loads(cfg_path.read_text())
 here = cfg_path.parent.parent  # config paths are relative to the frontend directory, where demo.mjs runs
-lines = json.loads((cfg_path.parent / "narration.json").read_text())["lines"]
+lines = json.loads((cfg_path.parent / cfg.get("narration", "narration.json")).read_text())["lines"]
 out = (here / cfg["out"]).resolve()
 clips = (here / cfg["clips"]).resolve()
 timing = json.loads((clips / "timing.json").read_text())
@@ -34,6 +34,13 @@ for f in log["files"]:
     offset += dur(out / f)
 total = dur(mp4)
 cues = [(starts[c["segment"]] + c["t"], c["id"]) for c in log["cues"]]
+need = cues[-1][0] + timing[cues[-1][1]] + 0.8
+if total < need:  # the recorder sometimes truncates the final segment: hold the last frame until the narration ends
+    padded = mp4.with_name(mp4.stem + "_padded.mp4")
+    subprocess.run(["ffmpeg", "-v", "warning", "-y", "-i", str(mp4), "-vf", f"tpad=stop_mode=clone:stop_duration={need - total:.3f}", "-c:v", "libx264", "-preset", "medium", "-crf", "23", "-movflags", "+faststart", str(padded)], check=True)
+    padded.replace(mp4)
+    total = dur(mp4)
+    print(f"padded video to {total:.1f}s so the last line is not cut")
 
 
 def ts(t: float) -> str:
@@ -41,7 +48,7 @@ def ts(t: float) -> str:
 
 
 vtt = ["WEBVTT", "Kind: captions", "Language: en", ""]
-md = ["# Phase 2 demo video — transcript", "", f"`{mp4.name}`, {int(total // 60)}:{int(total % 60):02d}. On-screen captions, spoken narration and this transcript are the same text; times are when each line appears.", ""]
+md = [f"# {cfg.get('transcriptTitle', 'Demo video')} — transcript", "", f"`{mp4.name}`, {int(total // 60)}:{int(total % 60):02d}. On-screen captions, spoken narration and this transcript are the same text; times are when each line appears.", ""]
 for i, (t, cid) in enumerate(cues):
     end = min(t + timing[cid], cues[i + 1][0] if i + 1 < len(cues) else total)
     vtt += [str(i + 1), f"{ts(t)} --> {ts(end)}", lines[cid], ""]

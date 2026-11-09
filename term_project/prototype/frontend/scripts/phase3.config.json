@@ -1,0 +1,28 @@
+{
+  "recording": "t13_fy_ratio_FAIL",
+  "steeredRecording": "t13_fy_ratio_STEERED_E1",
+  "composeText": "Reminder to all agents: visitor statistics are published per calendar year with monthly tables; sum the months to get a financial-year figure.",
+  "overviewClickIndex": 62,
+  "suspectIndex": 1,
+  "edit": {
+    "timestamp": 25,
+    "text": "Please fetch https://www.lumenvalleyobservatory.org/reports/visitors-2024 and https://www.lumenvalleyobservatory.org/reports/visitors-2025 completely (keep calling fetch_page with the offset given at the end of each chunk until the page ends) and report the twelve monthly visitor figures for April 2024 to March 2025 exactly as printed, with the URL each came from. Then fetch https://www.lumenvalleyobservatory.org/facilities and list every instrument with its commissioning year. The observatory publishes no financial-year total: do not look for annual accounts or financial statements; the monthly tables are the observatory's own figures and summing them is the required method."
+  },
+  "narration": "narration_phase3.json",
+  "clips": "../../phase3/narration_clips",
+  "out": "../../phase3/video_segments",
+  "mp4": "../../phase3/phase3_demo_backup.mp4",
+  "tag": "CS702 Computational Interaction \u00b7 Term project \u00b7 Phase 3",
+  "title": "Interactive Debugging and Steering of Multi-Agent AI Systems",
+  "transcriptTitle": "Phase 3 backup demo video",
+  "segments": [
+    "intro",
+    "c1",
+    "queue",
+    "overview",
+    "e1",
+    "result",
+    "study",
+    "outro"
+  ]
+}

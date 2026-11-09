@@ -1,0 +1,9 @@
+video_segments/
+narration_clips/
+submission/
+phase4_submission.zip
+build/_report.*
+build/tectonic.log
+build/figures
+final_demo.mp4
+final_demo_narration.m4a

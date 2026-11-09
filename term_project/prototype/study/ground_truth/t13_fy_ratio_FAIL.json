@@ -1,0 +1,23 @@
+{
+  "recording": "t13_fy_ratio_FAIL",
+  "task": "t13_visitors_per_instrument",
+  "expected": "6651.7",
+  "messages": 228,
+  "outcome": "gave up after 22 re-plans without dispatching an agent",
+  "errors": [
+    {"id": "E1", "timestamps": [23], "agent": "WebSearcher", "type": "ignored evidence / misreported result",
+     "description": "Reports 'not found' although the search snippets at t=15 already show the monthly tables of both Annual Visitor Reports; never fetches visitors-2024 in full and claims calendar-month tables cannot give an April–March total.",
+     "primary": true},
+    {"id": "E2", "timestamps": [25], "agent": "MagenticOneOrchestrator", "type": "wrong instruction",
+     "description": "Sends the searcher after non-existent annual accounts and forbids 'estimating or substituting calendar-year figures', ruling out the correct method (sum of twelve monthly figures).",
+     "primary": true},
+    {"id": "E3", "timestamps": [32, 41, 48], "agent": "MagenticOneOrchestrator", "type": "wrong plan (escalation)",
+     "description": "Escalates to the Charity Commission, Companies House and guessed URLs (404s) instead of returning to the monthly tables."},
+    {"id": "E4", "timestamps": [56, 64, 72, 80], "agent": "MagenticOneOrchestrator", "type": "stall loop",
+     "description": "After the stall counter trips, re-plans repeatedly (fact sheet rewritten 22 times, t=56…224) without instructing any agent; no tool call happens after t=46."},
+    {"id": "E5", "timestamps": [226], "agent": "MagenticOneOrchestrator", "type": "misreported result",
+     "description": "Final answer claims 'no source was actually checked', contradicting the fetches at t=17–21 and t=43–46."}
+  ],
+  "known_fix": {"timestamp": 25, "strategy": "add specific instructions", "result": "t13_fy_ratio_STEERED_E1 — 65 messages, 6651.7 (PASS)"},
+  "alt_fix": {"timestamp": 9, "strategy": "modify plan", "result": "t13_fy_ratio_STEERED — 23 messages, 6651.7 (PASS)"}
+}

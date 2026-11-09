@@ -22,9 +22,12 @@ from autogen_core import AgentId, TopicId
 from autogen_core._queue import Queue
 
 from .recorder import Entry, Recorder
+from .judge import judge as run_judge
 from .serialize import entry_json, envelope_json, inner_text, is_text, with_content
+from .study import StudyLog
 from .tasks import TASKS
 from .team import make_team
+from . import llm
 
 ROOT = Path(__file__).resolve().parents[2]
 RECORDINGS = ROOT / "recordings"
@@ -52,6 +55,18 @@ def _rewrite(obj: Any, old: str, new: str) -> Any:
     return obj
 
 
+def visible(history: list[Entry]) -> list[Entry]:
+    """History minus runtime noise: empty RPC acks, and the text copies relayed to AutoGen's UI output topic."""
+    out = []
+    for e in history:
+        if e.kind == "response" and e.message is None:
+            continue
+        if e.kind == "publish" and e.topic_id is not None and e.topic_id.type.startswith("output_topic") and is_text(e.message):
+            continue
+        out.append(e)
+    return out
+
+
 class Manager:
     def __init__(self) -> None:
         self.team_id: str | None = None
@@ -63,6 +78,9 @@ class Manager:
         self.recorder = Recorder(self._checkpoint)
         self.lock = asyncio.Lock()
         self.busy = False
+        self.suspects: dict[int, Any] = {}  # E1 judge result per session id
+        self.judging = False
+        self.study = StudyLog()
 
     # --- lifecycle -------------------------------------------------------
     async def start(self, task_id: str | None = None, team_id: str | None = None, web: str | None = None) -> None:
@@ -74,6 +92,8 @@ class Manager:
         self.checkpoints = {}
         self.prior_sessions = []
         self.reset_from = None
+        self.suspects = {}
+        llm.ERRORS.clear()
         self.recorder = Recorder(self._checkpoint)
         shutil.rmtree(WORKDIR, ignore_errors=True)
         WORKDIR.mkdir(parents=True)
@@ -120,8 +140,20 @@ class Manager:
             self.runtime.start()
 
     async def stop(self) -> None:
-        if self.running:
-            await self.runtime.stop()
+        """Pause: AutoGen's runtime.stop() discards the queue, so let the in-flight message finish, keep what is
+        queued, stop, and put the pending envelopes back so Step / Run can resume the branch."""
+        if not self.running:
+            return
+        ctx = self.runtime._run_context
+        ctx._stopped.set()  # the loop exits after the message it is on (or blocks on an empty queue)
+        for _ in range(2400):
+            if ctx._run_task.done() or (self.runtime._message_queue.empty() and not self.runtime._background_tasks):
+                break
+            await asyncio.sleep(0.05)
+        pending = list(self.queue)
+        await self.runtime.stop()
+        for env in pending:
+            self.runtime._message_queue.put_nowait(env)
 
     async def step(self) -> None:
         if self.running or not self.queue:
@@ -129,7 +161,7 @@ class Manager:
         self.busy = True
         try:
             await self.runtime.process_next()
-            for _ in range(2400):  # wait for the handler (and its model call) to finish, max 2 min
+            for _ in range(12000):  # wait for the handler (and its model call) to finish, max 10 min
                 if not self.runtime._background_tasks:
                     break
                 await asyncio.sleep(0.05)
@@ -141,6 +173,51 @@ class Manager:
             return
         self.recorder.drop_next = True
         await self.runtime.process_next()
+
+    def edit_queued(self, index: int, content: str) -> None:
+        """Queue editing: change the text of a message that is waiting in the queue, before it is processed."""
+        if self.running:
+            raise ValueError("stop the run before editing the queue")
+        q = self.runtime._message_queue._queue  # type: ignore[attr-defined]
+        if not 0 <= index < len(q):
+            raise ValueError(f"no queued message #{index}")
+        q[index].message = with_content(q[index].message, content)
+
+    async def drop_queued(self, index: int) -> None:
+        if self.running:
+            raise ValueError("stop the run before editing the queue")
+        q = self.runtime._message_queue._queue  # type: ignore[attr-defined]
+        if not 0 <= index < len(q):
+            raise ValueError(f"no queued message #{index}")
+        if index == 0:
+            await self.drop()
+        else:
+            env = q[index]
+            del q[index]
+            self.runtime._message_queue.task_done()  # one enqueued item will never be processed
+            fut = getattr(env, "future", None)
+            if fut is not None and not fut.done():
+                fut.cancel()
+
+    # --- E1: error-anchored context assembly ------------------------------
+    async def judge(self, session: int | None = None) -> dict[str, Any]:
+        sid = len(self.prior_sessions) if session is None else session
+        sessions = [*self.prior_sessions, self._session_json(len(self.prior_sessions))]
+        if not 0 <= sid < len(sessions):
+            raise ValueError(f"no session {sid}")
+        if not self.task_id:
+            raise ValueError("no task loaded")
+        generation = (self.recording, self.task_id, self.team_id, sid, len(sessions[sid]["messages"]))
+        self.judging = True
+        try:
+            result = await run_judge(TASKS[self.task_id]["task"], TASKS[self.task_id]["expected"], sessions[sid]["messages"])
+        finally:
+            self.judging = False
+        current = [*self.prior_sessions, self._session_json(len(self.prior_sessions))]
+        if generation != (self.recording, self.task_id, self.team_id, sid, len(current[sid]["messages"]) if sid < len(current) else -1):
+            raise ValueError("the loaded run changed while the judge was running; result discarded")
+        self.suspects[sid] = result
+        return result
 
     # --- sending ----------------------------------------------------------
     def _bg(self, coro: Any) -> None:
@@ -179,6 +256,8 @@ class Manager:
             raise ValueError(f"no message at timestamp {timestamp}")
         if entry.kind == "response":
             raise ValueError("responses cannot be replayed")
+        if new_content is not None:
+            with_content(entry.message, new_content)  # raises before anything is touched if the payload is not editable text
         await self.stop()
         # The checkpoint at `timestamp` was taken when that message was dequeued, i.e. after the handler that
         # produced it had already queued its whole burst (e.g. the orchestrator's instruction + the follow-up
@@ -211,17 +290,7 @@ class Manager:
         return {"id": sid, "reset_from": self.reset_from, "messages": [entry_json(e) for e in self._visible()]}
 
     def _visible(self) -> list[Entry]:
-        """History minus runtime noise: empty RPC acks, and the text copies relayed to AutoGen's UI output topic."""
-        h = self.recorder.history
-        out = []
-        for i, e in enumerate(h):
-            if e.kind == "response" and e.message is None:
-                continue
-            if (e.kind == "publish" and e.topic_id is not None and e.topic_id.type.startswith("output_topic")
-                    and is_text(e.message)):
-                continue
-            out.append(e)
-        return out
+        return visible(self.recorder.history)
 
     def state(self) -> dict[str, Any]:
         sessions = [*self.prior_sessions, self._session_json(len(self.prior_sessions))]
@@ -237,6 +306,11 @@ class Manager:
             "queue": [envelope_json(e) for e in self.queue],
             "sessions": sessions,
             "current_session": len(self.prior_sessions),
+            "suspects": {str(k): v for k, v in self.suspects.items()},
+            "judging": self.judging,
+            "errors": llm.ERRORS[-3:],
+            "participant": self.study.participant,
+            "condition": self.study.condition,
         }
 
     # --- recordings -------------------------------------------------------
@@ -254,6 +328,7 @@ class Manager:
                     "checkpoints": self.checkpoints,
                     "prior_sessions": self.prior_sessions,
                     "reset_from": self.reset_from,
+                    "suspects": self.suspects,
                 },
                 f,
             )
@@ -272,6 +347,7 @@ class Manager:
         self.checkpoints = data["checkpoints"]
         self.prior_sessions = data["prior_sessions"]
         self.reset_from = data["reset_from"]
+        self.suspects = data.get("suspects", {})
         if self.checkpoints:
             await self.runtime.load_state(self.checkpoints[max(self.checkpoints)])
 

@@ -12,16 +12,35 @@ export interface Msg {
 }
 export type QueueMsg = Omit<Msg, "timestamp" | "editable" | "body">;
 export interface Session { id: number; reset_from: number | null; messages: Msg[] }
+export interface Suspect {
+  rank: number;
+  timestamp: number;
+  category: string;
+  reason: string;
+  evidence: number[];
+  suggestion: string;
+  editable: boolean;
+}
+export interface Judgement { model: string; summary: string; suspects: Suspect[] }
+export type Condition = "reduced" | "full" | "e1";
 export interface State {
   agents: string[];
   targets: string[];
   task_id: string | null;
   task: string | null;
+  web: string;
   recording: string | null;
   running: boolean;
   busy: boolean;
   queue: QueueMsg[];
   sessions: Session[];
   current_session: number;
+  suspects: Record<string, Judgement>;
+  judging: boolean;
+  errors: { model: string; error: string }[];
+  participant: string;
+  condition: Condition;
 }
 export type ColorField = "type" | "sender" | "recipient";
+/** A request from the context panel (or a suspect badge) to open the editor on one history card. */
+export interface EditRequest { timestamp: number; hint?: string; nonce: number }
