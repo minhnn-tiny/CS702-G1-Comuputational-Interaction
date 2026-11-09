@@ -72,7 +72,7 @@ text(s, Inches(0.8), Inches(3.2), Inches(11.5), Inches(0.8), "Re-implementing AG
 text(s, Inches(0.8), Inches(4.6), Inches(11.5), Inches(0.6), "Nguyen Nhat Minh  ·  Do Duc Anh", 22, True, RGBColor(0xFF, 0xFF, 0xFF))
 text(s, Inches(0.8), Inches(5.2), Inches(11.5), Inches(0.6), "CS702 Computational Interaction, AY2026-27 Term 1 · Phase 3 presentation · Week 13", 16, False, RGBColor(0x94, 0xA3, 0xB8))
 text(s, Inches(0.8), Inches(6.3), Inches(11.5), Inches(0.6), "Paper: https://doi.org/10.1145/3706598.3713581   ·   Reference code: github.com/microsoft/agdebugger (consulted only for its runtime hook)", 12, False, RGBColor(0x94, 0xA3, 0xB8))
-notes(s, "0:00–0:15. Good afternoon. We replicated AGDebugger, a CHI 2025 interactive debugger for teams of LLM agents, and extended it with automatic error localisation. Minh presents the paper and the architecture, Anh runs the live demo.")
+notes(s, "0:00–0:15. Good afternoon. We replicated AGDebugger, a CHI 2025 interactive debugger for teams of LLM agents, and extended it with automatic error localisation. Speaker split: Minh slides 1–6 and 8–10, Anh the live demo (slide 7); swap if you prefer, the notes carry the timing either way.")
 
 # 2 paper ---------------------------------------------------------------
 n += 1
@@ -183,7 +183,7 @@ bullets(s, Inches(6.9), Inches(1.2), Inches(6), Inches(5.6), [
     (1, "Repeat check: the t=25 edit replayed 3× reaches 6651.7 3/3 (two late, after 219–229 msgs); a plain reset at t=25 reaches it 0/3."),
     (1, "Judge on t13: the top-2 suspects are the searcher's 'tables unusable' report and the orchestrator's 'do not estimate' instruction — editing #2 steered the team to 6651.7 in one branch."),
     "Instruments ready: consent form, facilitator script, task sheets, questionnaires, data templates, analysis script (prototype/study/).",
-    "Pilot in Week 12, sessions Weeks 12–15 [update status before the talk].",
+    "Recruitment under way; pilot and first sessions Week 13, remaining sessions Weeks 14–15.",
 ], 15)
 notes(s, "7:30–7:50. One breath: the study design is the proposal's: Part 1 adds our E1 as a third condition; Part 2 replicates the steering task. We have no participant data yet; the harness numbers and the judge's output on the demo run are the preliminary results.")
 
@@ -192,8 +192,8 @@ n += 1
 s = prs.slides.add_slide(BLANK); header(s, "Status, timeline, risks", n)
 bullets(s, Inches(0.5), Inches(1.2), Inches(12.3), Inches(5.6), [
     "Done: C1, C2, C3, E1 integrated end to end; queue editing; study conditions and logging; harness with 29 tasks, 158 Haiku runs and 3 coded failing recordings; demo videos and runbook.",
-    "Week 12: pilot (2 sessions), fix wording of task sheets; code one more failing recording from the harvest as a spare for Part 1 (target 4 with coded error lists).",
-    "Weeks 12–15: 14 sessions (or 12 in the fallback design); Week 15–16: analysis, final report (ACM format), 1–2 min demo video, source release.",
+    "Week 13: pilot (2 sessions), fix wording of task sheets; code one more failing recording from the harvest as a spare for Part 1.",
+    "Weeks 13–15: 14 sessions (or 12 in the fallback design); Week 16: analysis, final report (ACM format), demo video, source release (due 4 Dec).",
     "Risks: recruitment (fallback design); model non-determinism in Part 2 (same checkpoint, same edit can diverge; outcome logged per run, headless repeat-run check available); irreversible actions (local subprocess executor in a scratch directory, cached corpus; checkpoints restore agent state, not files).",
     "Not pursued: agent-configuration panel (unused in the paper's study, read-only in the reference release).",
 ], 17)
